@@ -2555,7 +2555,7 @@ justify-content: right;
 
 @media screen and (max-width: 1148px) {
 
-    .service_hero_sec1 h4 {
+    .service_hero_sec1 a {
         font-size: 125%;
     }
 
@@ -2570,7 +2570,7 @@ justify-content: right;
 
 @media screen and (max-width: 905px) {
 
-    .service_hero_sec1 h4 {
+    .service_hero_sec1 a {
         font-size: 110%;
     }
 
@@ -2590,7 +2590,7 @@ justify-content: right;
 
 @media screen and (max-width: 767px) {
 
-    .service_hero_sec1 h4 {
+    .service_hero_sec1 a {
         font-size: 100%;
         padding-right: 4%;
         padding-top: 3%;
@@ -2610,7 +2610,7 @@ justify-content: right;
 
 @media screen and (max-width: 570px) {
 
-    .service_hero_sec1 h4 {
+    .service_hero_sec1 a {
         font-size: 90%;
         padding-top: 6%;
     }
@@ -2697,7 +2697,7 @@ justify-content: right;
 
 @media screen and (max-width: 1178px) {
 
-    .service_hero_sec11 h4 {
+    .service_hero_sec11 a {
         font-size: 105%;
     }
 
@@ -2712,7 +2712,7 @@ justify-content: right;
 
 @media screen and (max-width: 910px) {
 
-    .service_hero_sec11 h4 {
+    .service_hero_sec11 a {
         font-size: 100%;
     }
 
@@ -2732,7 +2732,7 @@ justify-content: right;
 
 @media screen and (max-width: 767px) {
 
-    .service_hero_sec11 h4 {
+    .service_hero_sec11 a {
         font-size: 90%;
         padding-right: 4%;
         padding-top: 3%;
@@ -2755,7 +2755,7 @@ justify-content: right;
 
 @media screen and (max-width: 578px) {
 
-    .service_hero_sec11 h4 {
+    .service_hero_sec11 a {
         font-size: 80%;
         padding-top: 6%;
     }
@@ -2780,7 +2780,7 @@ justify-content: right;
         border-top-right-radius: 1.2rem;
     }
 
-    .service_hero_sec11 h4 {
+    .service_hero_sec11 a {
         font-size: 70%;
         padding-top: 6%;
     }
@@ -2804,7 +2804,7 @@ justify-content: right;
         border-top-right-radius: 1.2rem;
     }
 
-    .service_hero_sec11 h4 {
+    .service_hero_sec11 a {
         font-size: 65%;
         padding-top: 6%;
     }
