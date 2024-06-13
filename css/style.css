@@ -514,6 +514,7 @@
     height: max-content;
     overflow: hidden;
     z-index: 0;
+    border-top-left-radius: 3rem;
 }
 
 .home_services_card_img img {
@@ -857,7 +858,7 @@
     color: var(--theme_color3);
     font-size: 1.1rem;
     font-family: "Poppins", sans-serif;
-    font-weight: lighter;
+    font-weight: 300;
     padding-bottom: 4%;
 }
 
@@ -875,7 +876,7 @@
     color: var(--theme_color3);
     font-size: 1.1rem;
     font-family: "Poppins", sans-serif;
-    font-weight: lighter;
+    font-weight: 300;
 }
 
 @media screen and (min-width: 1025px) and (max-width: 1432px) {
@@ -2131,7 +2132,7 @@ justify-content: right;
     padding-top: 19%;
     padding-left: 5%;
     padding-right: 5%;
-    /* padding-bottom: 8%; */
+    padding-bottom: 2%;
     border-bottom-left-radius: 3rem;
 }
 
@@ -2139,7 +2140,7 @@ justify-content: right;
     font-family: "Poppins", sans-serif;
     font-size: 110%;
     color: var(--theme_color3);
-    font-weight: 100;
+    font-weight: 300;
     padding-bottom: 2%;
 }
 
@@ -2525,12 +2526,18 @@ justify-content: right;
     margin-left: 9%;
 }
 
-.service_hero_sec1 h4 {
+.service_hero_sec1 a {
     font-size: 151%;
     color: var(--theme_color3);
     font-weight: 600;
     padding-right: 4%;
     padding-top: 3%;
+    text-decoration: none;
+}
+
+.service_hero_sec1 a:hover{
+    text-decoration: none;
+    color: var(--theme_color3);
 }
 
 .service_hero_sec1 img {
@@ -2666,12 +2673,13 @@ justify-content: right;
     margin-left: 9%;
 }
 
-.service_hero_sec11 h4 {
+.service_hero_sec11 a {
     font-size: 151%;
     color: var(--theme_color3);
     font-weight: 600;
     padding-right: 4%;
     padding-top: 3%;
+    text-decoration: none;
 }
 
 .service_hero_sec11 img {
@@ -3570,6 +3578,15 @@ justify-content: right;
     font-size: 80%;
     font-weight: 400;
     width: 85%;
+}
+
+.contact_card_content a {
+    color: var(--theme_color3);
+    font-family: "Poppins", sans-serif;
+    font-size: 90%;
+    font-weight: 400;
+    width: 85%;
+    text-decoration: none;
 }
 
 .contact_form {
@@ -5515,6 +5532,11 @@ padding-bottom: 2%;
     justify-content: space-around;
 }
 
+.admin_sidebar_mobile_sec2 {
+    display: flex;
+    justify-content: space-around;
+}
+
 .admin_sidebar_mobile_career {
     background-color: var(--theme_color2);
     color: var(--theme_color3);
@@ -5529,7 +5551,7 @@ padding-bottom: 2%;
     background-color: var(--theme_color2);
     color: var(--theme_color3);
     text-align: center;
-    margin-bottom: 0.4%
+    margin-bottom: 0.6%
 }
 
 .admin_sidebar_mobile_news {
@@ -5538,6 +5560,7 @@ padding-bottom: 2%;
     width: 50%;
     text-align: center;
     margin-right: 0.5%;
+    margin-bottom: 0.6%
 }
 
 .admin_sidebar_mobile_projects {
@@ -5545,6 +5568,7 @@ padding-bottom: 2%;
     background-color: var(--theme_color2);
     color: var(--theme_color3);
     text-align: center;
+    margin-bottom: 0.6%
 }
 
 .admin_sidebar_mobile_reviews{
@@ -5553,7 +5577,14 @@ padding-bottom: 2%;
     width: 50%;
     text-align: center;
     margin-right: 0.5%;
-    margin-bottom: 0.4%
+}
+
+.admin_sidebar_mobile_logout{
+    width: 50%;
+    background-color: var(--theme_color1);
+    color: var(--theme_color3);
+    text-align: center;
+    font-size: 140%;
 }
 
 .admin_sidebar_mobile {
@@ -5836,6 +5867,11 @@ padding-bottom: 2%;
         font-size: 120%;
     }
 
+    .admin_sidebar_mobile_reviews{
+        padding: 1.5%;
+        font-size: 120%;
+    }
+
     .admin_sidebar_logo_img {
         width: 50px;
         height: 50px;
@@ -5927,6 +5963,11 @@ padding-bottom: 2%;
         padding: 2%;
         font-size: 120%;
     }
+
+.admin_sidebar_mobile_reviews{
+    padding: 2%;
+    font-size: 120%;
+}
 
     .admin_right {
         width: 100%;
@@ -7262,6 +7303,7 @@ html {
 .admin_sidebar_mobile_products,
 .admin_sidebar_mobile_news,
 .admin_sidebar_mobile_projects,
+.admin_sidebar_mobile_reviews,
 .admin_sidebar_careers,
 .admin_sidebar_products,
 .admin_sidebar_news,
@@ -7527,6 +7569,7 @@ body {
     border: none;
     padding: 4%;
     outline: none;
+    font-family: "Poppins", sans-serif;
 }
 
 .application-form input#resume {
