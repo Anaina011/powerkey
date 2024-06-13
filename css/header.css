@@ -1,0 +1,358 @@
+/* =========the color pallette========== */
+:root {
+    --theme_color1: #E62B00;
+    --theme_color2: #000000;
+    --theme_color3: #FFFFFF;
+    --background_gray: #111111;
+
+
+
+    --dark_right: linear-gradient(to right, #E62B00, #DF7800);
+    --dark_top: linear-gradient(to top, #E62B00, #E25D00);
+    --dark_left: linear-gradient(to left, #E62B00, #DF7800);
+    --gray_backgoud: linear-gradient(to bottom, #000000, #666666);
+
+}
+
+* {
+    font-family: 'Big Shoulders Text', sans-serif;
+}
+
+.body {
+    margin: 0;
+    padding: 0;
+}
+
+.row {
+    width: 100%;
+    height: auto;
+    padding: 0;
+}
+
+
+/* ============================================================
+STYLES FOR HEADER AND NAVBAR START HERE
+============================================================ */
+
+.header_primary_row1 {
+    padding: 0 !important;
+}
+
+.header_primary_row2 {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.home_header {
+    background-image: var(--dark_right);
+}
+
+.header_logo_container {
+    width: 100%;
+    height: 100%;
+    background-color: #ffff;
+    border-top-right-radius: 3rem;
+    padding: 8%;
+}
+
+.header_logo_container img {
+    width: 100%;
+    height: auto;
+    border-top-right-radius: 2rem;
+
+}
+
+.home_header_items_container {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 0%;
+}
+
+.home_header_items_container img {
+    width: 15%;
+}
+
+.home_header_items_text_container {
+    margin-left: 10%;
+}
+
+.home_header_items_text_title {
+    font-weight: 500;
+    color: #ffff;
+    font-size: 135%;
+}
+
+.home_header_items_text_subtitle {
+    font-weight: 200;
+    color: #ffff;
+    font-size: 80%;
+    font-family: "Poppins", sans-serif;
+    font-size: 100%;
+}
+
+.home_header_items_text_subtitle a {
+    text-decoration: none;
+    color: #ffffff;
+    font-family: "Poppins", sans-serif;
+    font-size: 100%;
+}
+
+.header{
+    position: relative;
+}
+
+.home_navbar {
+    z-index: 2;
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: auto;
+}
+
+.home_navbar_container {
+    width: 80%;
+    height: auto;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    background-color: #000000;
+    display: flex;
+    justify-content: center;
+    justify-content: space-around;
+    /* border-bottom-left-radius: 0.7rem;
+    border-bottom-right-radius: 0.7rem; */
+}
+
+.home_navbar_container p {
+    margin: 0;
+}
+
+.home_navbar_container a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bold;
+    font-weight: 400;
+    font-size: 110%;
+}
+
+.home_navbar_container a:hover {
+    color: #E25D00;
+}
+
+
+
+
+@media screen and (max-width: 1488px) {
+    .home_header_items_text_title {
+        font-size: 125%;
+    }
+    
+    .home_header_items_text_subtitle {
+        font-size: 80%;
+    }
+    
+    .home_header_items_text_subtitle a {
+        font-size: 100%;
+    }
+    
+}
+
+@media screen and (max-width: 900px) {
+    .home_header_items_text_title {
+        font-size: 105%;
+    }
+    
+    .home_header_items_text_subtitle {
+        font-size: 70%;
+    }
+    
+    .home_header_items_text_subtitle a {
+        font-size: 100%;
+    }
+    
+}
+
+
+
+@media screen and (max-width: 767px) {
+    .header_primary_row2_1 {
+        display: none;
+    }
+
+    .header_primary_row2_2 {
+        display: none;
+    }
+
+    .header_primary_row2_3 {
+        display: none;
+    }
+
+    .home_navbar {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 767px) {
+    .header_primary_row2_4 {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .header_logo_container {
+        width: 50%;
+    }
+    .header_logo_container {
+        padding: 3%;
+    }
+
+    .header_logo_container img{
+        width: 70%;
+    }
+}
+
+@media screen and (max-width: 1050px) {
+    .home_navbar_container a {
+        font-size: 70%;
+
+    }
+}
+
+/* ============================================================
+STYLES FOR HEADER AND NAVBAR END HERE
+============================================================ */
+
+
+
+/* ============================================================
+STYLES FOR HAMBURGER MENU START HERE
+============================================================ */
+
+
+
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
+:root {
+    --bar-width: 40px;
+    --bar-height: 4px;
+    --hamburger-gap: 6px;
+    --foreground: #ffffff;
+    --background: white;
+    --hamburger-margin: 30px;
+    --animation-timing: 200ms ease-in-out;
+    --hamburger-height: calc(var(--bar-height) * 3 + var(--hamburger-gap) * 2);
+}
+
+.hamburger-menu {
+    --x-width: calc(var(--hamburger-height) * 1.41421356237);
+    display: flex;
+    flex-direction: column;
+    gap: var(--hamburger-gap);
+    width: max-content;
+    position: absolute;
+    top: var(--hamburger-margin);
+    right: var(--hamburger-margin);
+    z-index: 2;
+    cursor: pointer;
+}
+
+.hamburger-menu:has(input:checked) {
+    --foreground: #E62B00;
+    --background: #ffffff;
+}
+
+.hamburger-menu:has(input:focus-visible)::before,
+.hamburger-menu:has(input:focus-visible)::after,
+.hamburger-menu input:focus-visible {
+    border: 1px solid var(--background);
+    box-shadow: 0 0 0 1px var(--foreground);
+}
+
+.hamburger-menu::before,
+.hamburger-menu::after,
+.hamburger-menu input {
+    content: "";
+    width: var(--bar-width);
+    height: var(--bar-height);
+    background-color: var(--foreground);
+    border-radius: 9999px;
+    transform-origin: left center;
+    transition: opacity var(--animation-timing), width var(--animation-timing),
+        rotate var(--animation-timing), translate var(--animation-timing),
+        background-color var(--animation-timing);
+}
+
+.hamburger-menu input {
+    appearance: none;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    pointer-events: none;
+}
+
+.hamburger-menu:has(input:checked)::before {
+    rotate: 45deg;
+    width: var(--x-width);
+    translate: 0 calc(var(--bar-height) / -2);
+}
+
+.hamburger-menu:has(input:checked)::after {
+    rotate: -45deg;
+    width: var(--x-width);
+    translate: 0 calc(var(--bar-height) / 2);
+}
+
+.hamburger-menu input:checked {
+    opacity: 0;
+    width: 0;
+}
+
+.sidebar {
+    transition: transform var(--animation-timing);
+    /* Keep the transition property */
+    transform: translateX(100%);
+    /* Start off-screen to the right */
+    padding: 0.5rem 1rem;
+    padding-top: calc(var(--hamburger-height) + var(--hamburger-margin) + 1rem);
+    background-color: var(--foreground);
+    color: #000;
+    max-width: 10rem;
+    min-height: max-content;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    border-top-left-radius: 2rem;
+    border-bottom-left-radius: 2rem;
+    /* Position sidebar to the right */
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+}
+
+.hamburger-menu:has(input:checked)+.sidebar {
+    transform: translateX(0);
+    /* Slide in from right to left */
+    background-color: #ffff;
+}
+
+
+
+
+/* ============================================================
+STYLES FOR HAMBURGER MENU START HERE
+============================================================ */
