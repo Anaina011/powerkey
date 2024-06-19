@@ -102,6 +102,11 @@ STYLES FOR HEADER AND NAVBAR START HERE
     font-size: 100%;
 }
 
+.home_header_items_text_subtitle a:hover{
+    text-decoration: none;
+    color: #ffffff;
+}
+
 .header{
     position: relative;
 }
@@ -144,6 +149,7 @@ STYLES FOR HEADER AND NAVBAR START HERE
 
 .home_navbar_container a:hover {
     color: #E25D00;
+    text-decoration: none;
 }
 
 

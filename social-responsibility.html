@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
+    <!-- Font Awesome link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
+    <!--================= BIG SHOULDER FONT LINK ================= -->
+    <link href='https://fonts.googleapis.com/css?family=Big Shoulders Text' rel='stylesheet'>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div id="header-container">
+        <!-- The header content will be inserted here -->
+    </div>
+
+
+
+
+
+
+    <section class="service_hero">
+        <div class="service_hero_sec">
+            <div class="service_hero_sec_img">
+                <img src="img/privacy_policy_hero.png" alt="">
+            </div>
+            <div class="service_hero_sec11">
+                <a href="index.html">POWER KEY</a>
+                <div class="service_hero_sec1_img">
+                    <img src="img/service_hero_asset.png" alt="">
+                </div>
+                <h5>SOCIAL RESPONSIBILITY</h5>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <section class="social_responsibility_section">
+        <div class="social_responsibility_content">
+            <h4>Corporate Social Responsibility</h4>
+            <h5>We believe in treating the environment and society with respect and dignity, and we view the balance of
+                social responsibility, environmental protection, safety as well as a sustainable economy as key factors
+                in ensuring business continuity and success. <br><br>
+
+                On our part, we demonstrate our beliefs in the values we represent - tolerance, openness, reliability
+                and cooperativeness - in our business activities and societal involvement. We have also introduced
+                efficient tools to ensure the comprehensive implementation of social, safety and environmental
+                considerations within the organization, involving our employees, business associates, supply chain
+                partners as well as individual societies and cultures around the globe. <br><br>
+
+                All PKI employees are involved in our Corporate Social Responsibility framework, with emphasis on the
+                following fields:
+            </h5>
+            <ul>
+                <li>Human Resource Management</li>
+                <li>Corporate Citizen Activities</li>
+                <li>Occupational Health and Safety</li>
+                <li>Supply Chain Management</li>
+                <li>Environmental Sustainability</li>
+                <li>Business Ethics</li>
+            </ul>
+        </div>
+    </section>
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+        crossorigin="anonymous"></script>
+
+    <!--header and footer script start-->
+
+    <script>
+        function includeHTML(filePath, targetElement) {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', filePath, true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    targetElement.insertAdjacentHTML('beforebegin', xhr.responseText);
+                }
+            };
+            xhr.send();
+        }
+        var headerPath = 'header.html';
+        var footerPath = 'footer.html';
+        var headerContainer = document.getElementById('header-container');
+        includeHTML(headerPath, headerContainer);
+
+        var xhrFooter = new XMLHttpRequest();
+        xhrFooter.open('GET', footerPath, true);
+        xhrFooter.onreadystatechange = function () {
+            if (xhrFooter.readyState === 4 && xhrFooter.status === 200) {
+                document.body.insertAdjacentHTML('beforeend', xhrFooter.responseText);
+            }
+        };
+        xhrFooter.send();
+    </script>
+
+    <!--header and footer script end-->
+
+
+
+
+
+</body>
+
+</html>

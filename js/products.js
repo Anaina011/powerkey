@@ -1,4 +1,4 @@
-const productsPerPage = 6;
+const productsPerPage = 9;
 let currentPage = 1;
 let totalPages = 1;
 let allProducts = []; // Store all products here to allow searching
