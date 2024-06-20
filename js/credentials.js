@@ -1,122 +1,133 @@
+// Variables for auto-logout
+let logoutTimer;
 
+// Function to handle auto-logout after inactivity
+function startAutoLogoutTimer() {
+    // Set the timer for 30 minutes (1800000 milliseconds)
+    const autoLogoutTime = 5000;
 
-// ********************************************************************************************
-// Function to logout user after 1 hour of inactivity since last user activity
-// ********************************************************************************************
+    // Clear any existing timer
+    if (logoutTimer) {
+        clearTimeout(logoutTimer);
+    }
 
-// window.onload = function () {
-//     console.log('***')
-//     // Function to handle user logout
-//     function logoutUser() {
-//         console.log("Logging out user due to inactivity or tab/window close");
-//         auth.signOut().then(() => {
-//             // Clear any user session data
-//             localStorage.clear();
-//             sessionStorage.clear();
+    // Set a new timer
+    logoutTimer = setTimeout(() => {
+        firebase.auth().signOut().then(() => {
+            
+            window.location.href = "login.html"; // Redirect to login page
+        }).catch((error) => {
+            console.error("Error signing out: ", error);
+        });
+    }, autoLogoutTime);
+}
 
-//             // Redirect to login page after logout
-//             window.location.href = 'index.html';
-//         });
-//     }
+// Function to reset the auto-logout timer
+function resetAutoLogoutTimer() {
+    startAutoLogoutTimer();
+}
 
-//     // Function to set login time
-//     function setLoginTime() {
-//         var loginTime = new Date().getTime();
-//         localStorage.setItem('loginTime', loginTime);
-//         console.log("Login time set at: " + new Date(loginTime));
-//     }
+// Event listeners to reset the auto-logout timer on user interactions
+document.addEventListener("mousemove", resetAutoLogoutTimer);
+document.addEventListener("keypress", resetAutoLogoutTimer);
 
-//     // Function to check inactivity based on login time
-//     function checkInactivity() {
-//         var loginTime = localStorage.getItem('loginTime');
-//         if (loginTime) {
-//             var currentTime = new Date().getTime();
-//             var timeSinceLogin = currentTime - loginTime;
+// Function to handle login
+function login() {
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
 
-//             if (timeSinceLogin > 30 * 60 * 1000) { // 1 hour
-//                 logoutUser();
-//             } else {
-//                 // Reset the inactivity timeout to check again after the remaining time
-//                 var remainingTime = 30 * 60 * 1000 - timeSinceLogin;
-//                 clearTimeout(inactivityTimeout);
-//                 inactivityTimeout = setTimeout(logoutUser, remainingTime);
-//             }
-//         }
-//     }
+    firebase.auth().signInWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+            // Redirect to dashboard after successful login
+            window.location.href = "dashboard.html";
+        })
+        .catch((error) => {
+            console.error("Error signing in: ", error);
+            alert("Login failed: " + error.message);
+        });
+}
 
-//     // Set login time on load if not already set
-//     if (!localStorage.getItem('loginTime')) {
-//         setLoginTime();
-//     }
+// Function to handle logout
+function logout() {
+    firebase.auth().signOut()
+        .then(() => {
+            // Redirect to login page after successful logout
+            window.location.href = "login.html";
+        })
+        .catch((error) => {
+            console.error("Error signing out: ", error);
+        });
+}
 
-//     // Check inactivity on page load/reload
-//     checkInactivity();
+// Function to check user authentication state and redirect accordingly
+firebase.auth().onAuthStateChanged((user) => {
+    const currentPage = window.location.pathname;
 
-//     // Event listeners for user activity to reset login time
-//     document.addEventListener("mousemove", function () {
-//         setLoginTime();
-//         checkInactivity();
-//     });
+    if (user) {
+        // If user is logged in and on login page, redirect to dashboard
+        if (currentPage.includes("login.html")) {
+            window.location.href = "dashboard.html";
+        } else {
+            // Start the auto-logout timer if on the dashboard page
+            if (currentPage.includes("dashboard.html")) {
+                startAutoLogoutTimer();
+            }
+        }
+    } else {
+        // If user is not logged in and not on login page, redirect to login page
+        if (!currentPage.includes("login.html")) {
+            window.location.href = "login.html";
+        }
+    }
+});
+// Ensure that these scripts are included in your dashboard page
+document.addEventListener("DOMContentLoaded", function () {
+    // Check user authentication state on page load
+    firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+            // User is authenticated, load dashboard data
+            fetchProducts();
+            fetchProjects();
+            fetchVacancies();
+            refreshPendingReviewsTable();
+            refreshApprovedReviewsTable();
+        } else {
+            // User is not authenticated, redirect to login page
+            window.location.href = "login.html";
+        }
+    });
 
-//     document.addEventListener("keypress", function () {
-//         setLoginTime();
-//         checkInactivity();
-//     });
-
-//     // Variable to store the inactivity timeout
-//     var inactivityTimeout;
-
-//     // Log out the user when closing the tab or browser
-//     window.addEventListener("beforeunload", function () {
-//         logoutUser();
-//     });
-
-
-//     window.addEventListener('unload', function () {
-//         logoutUser();
-//     });
-
-// };
-
-
-
-
-
-
-
+    // Attach event listeners for login and logout buttons
+    document.getElementById("login_button").addEventListener("click", login);
+    document.getElementById("logout_button").addEventListener("click", logout);
+});
 
 
 function logoutUser() {
     const confirmation = confirm("Are you sure you want to log out?");
     if (confirmation) {
-        auth.signOut().then(() => {
-            // Clear any user session data
-            // For example, clear any local storage or session storage
-            localStorage.clear(); // You can use sessionStorage.clear() if you're using sessionStorage
+        firebase.auth().signOut().then(() => {
+            localStorage.clear();
             sessionStorage.clear();
-            // Redirect to home page after logout
             window.location.href = 'index.html';
         }).catch((error) => {
             console.error(error.message);
         });
     }
-
 }
 
-
-// In your login.html page (after successful authentication):
-var auth = firebase.auth();
-auth.onAuthStateChanged(function (user) {
+firebase.auth().onAuthStateChanged(function (user) {
     if (!user) {
-        // User is authenticated, allow access to admin.html
         window.location.href = 'login.html';
     }
 });
 
+document.getElementById("signoutbtn").addEventListener("click", logoutUser);
 
-// Add an event listener to the Log Out button
-const signoutBtn = document.getElementById("signoutbtn");
-signoutBtn.addEventListener("click", logoutUser);
-
-// Check if the user is logged in when the page loads
-window.addEventListener("load", checkUserCred);
+function checkUserCred() {
+    firebase.auth().onAuthStateChanged(function (user) {
+        if (!user) {
+            window.location.href = 'login.html';
+        }
+    });
+}
