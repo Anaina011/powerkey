@@ -267,7 +267,7 @@ STYLES FOR HAMBURGER MENU START HERE
     gap: var(--hamburger-gap);
     width: max-content;
     position: absolute;
-    top: var(--hamburger-margin);
+    top: 37%;
     right: var(--hamburger-margin);
     z-index: 2;
     cursor: pointer;
@@ -355,6 +355,9 @@ STYLES FOR HAMBURGER MENU START HERE
     /* Slide in from right to left */
     background-color: #ffff;
 }
+
+
+
 
 
 

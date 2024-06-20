@@ -4,7 +4,7 @@ let logoutTimer;
 // Function to handle auto-logout after inactivity
 function startAutoLogoutTimer() {
     // Set the timer for 30 minutes (1800000 milliseconds)
-    const autoLogoutTime = 5000;
+    const autoLogoutTime = 15000;
 
     // Clear any existing timer
     if (logoutTimer) {
