@@ -8684,14 +8684,10 @@ body {
 
 
 
-
-
-
-
-
-
 .product-container {
-    padding: 20px 40px; /* Add more padding to the left and right */
+    padding: 20px; /* Add padding to the container */
+    margin: 0 auto; /* Center the container */
+    max-width: 1200px; /* Set a max-width to limit the container's width */
 }
 
 .product-row {
@@ -8706,9 +8702,10 @@ body {
     border-top-left-radius: 4rem;
     border-bottom-right-radius: 4rem;
     overflow: hidden;
-    transition: transform 0.3s;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s, background-color 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     background-color: white;
+    width: 28%; /* Further reduce the width to ensure all cards fit */
     margin: 0 10px;
     padding: 10px; /* Add padding */
     display: flex;
@@ -8727,10 +8724,11 @@ body {
     flex-direction: column;
     align-items: center;
     width: 100%;
+    transition: opacity 0.3s;
 }
 
 .product-name {
-    font-size: 1.6em;
+    font-size: 1.4em; /* Adjust font size */
     margin: 10px 0; /* Adjust margin */
     text-align: center;
     color: var(--theme_color2);
@@ -8762,7 +8760,7 @@ body {
     justify-content: center;
     align-items: flex-start; /* Align text to the left */
     transform: translateY(100%);
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
     opacity: 0;
     visibility: hidden;
 }
@@ -8773,17 +8771,38 @@ body {
     visibility: visible;
 }
 
+.product-card:hover .product-name{
+    color: var(--theme_color3);
+    font-size: 190%;
+    margin-left: 5%;
+}
+
 .product-details {
     text-align: left; /* Align text to the left */
-    margin: 0;
+    margin: 5%;
     padding: 0;
     list-style-type: disc; /* Add bullet points */
+    font-size: 100%;
 }
 
 .product-details li {
     margin-bottom: 5px;
     margin-left: 20px; /* Indent bullet points */
     line-height: 1.5;
+}
+
+/* Hide product name and button on hover */
+.product-card:hover .product-info {
+    opacity: 0;
+}
+
+.product-card img {
+    transition: opacity 0.3s;
+}
+
+/* Ensure the image stays in the background on hover */
+.product-card:hover img {
+    opacity: 0.3;
 }
 
 /* Button styles */
@@ -8797,7 +8816,7 @@ body {
     transition: 0.4s;
     padding: 10px 20px;
     position: relative;
-    margin-bottom: 12%
+    margin-bottom: 12%;
 }
 
 .home-slide-button1 button i {
