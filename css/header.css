@@ -271,7 +271,6 @@ STYLES FOR HAMBURGER MENU START HERE
     right: var(--hamburger-margin);
     z-index: 2;
     cursor: pointer;
-    overflow: hidden;
 }
 
 .hamburger-menu:has(input:checked) {
@@ -356,6 +355,7 @@ STYLES FOR HAMBURGER MENU START HERE
     /* Slide in from right to left */
     background-color: #ffff;
 }
+
 
 
 
