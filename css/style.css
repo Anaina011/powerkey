@@ -4565,12 +4565,13 @@ justify-content: right;
     height: auto;
 }
 
-.service_hero_sec12 h5 {
+.service_hero_sec12 a {
     font-size: 155%;
     color: var(--theme_color1);
     font-weight: 600;
     padding-left: 4%;
     padding-top: 4%;
+    text-decoration: none;
 }
 
 @media screen and (max-width: 1148px) {
@@ -8540,14 +8541,14 @@ html {
 .home-slide-button1 button {
     font-size: 1.2em;
     background-image: var(--dark_bottom);
-    color: #fff;
+    color: #fff; 
     border: none;
     border-top-right-radius: 0.8rem;
     cursor: pointer;
     transition: 0.4s;
     padding: 10px 20px;
     position: relative;
-    margin-bottom: 12%;
+    margin-bottom: 8%;
 }
 
 .home-slide-button1 button i {
