@@ -122,9 +122,9 @@ FOOTER SECTION START
                                     <a href="">Ghala <br>
                                         Muscat <br>
                                         Sultanate of Oman <br>
-                                        P.O.BOX 90 <br>
+                                        P.O. BOX 90 <br>
                                         Postal Code 123E <br>
-                                        Email:info@pk-int.com <br>
+                                        Email: info@pk-int.com <br>
                                         Tel: +968 2254 4509</a>
                                 </div>
                             </div>
@@ -134,14 +134,16 @@ FOOTER SECTION START
                 </div>
             </div>
             <div class="sub_subscribe_container">
-                <h4>
-                    Sign up for industrey alert, news & inslights
-                </h4>
+                <h4>Sign up for industry alerts, news & insights</h4>
                 <div class="sub_subscribe_box">
-                    <input type="email" placeholder="E-mail address">
-                     <button onclick="subscribe()">SUBSCRIBE</button>
+                    <input type="email" id="emailInput" placeholder="E-mail address">
+                    <button onclick="subscribe()">SUBSCRIBE</button>
                 </div>
             </div>
+            <!-- Admin Download Button -->
+            <!-- <div>
+                <button onclick="downloadEmails()">Download Emails</button>
+            </div> -->
             <div class="footer_basement_container">
                 <div class="footer_basement_holder">
                     <div class="row">
@@ -181,6 +183,22 @@ FOOTER SECTION START
     <!-- ======================================
 FOOTER SECTION END
 ====================================== -->
+
+
+
+
+
+     <!-- Import the Firebase core (always required) -->
+     <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-app.js"></script>
+     <!-- Import only the Firebase database module -->
+     <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-auth.js"></script>
+     <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-database.js"></script>
+     <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-storage.js"></script>
+     <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase.js"></script>
+
+    
+    <script src="js/fireconfig.js"></script>
+    <script src="js/subscribe.js"></script>
 
 
 

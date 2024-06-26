@@ -61,15 +61,15 @@ function displayPage(products, page) {
             infinite: false,
             slidesToShow: 3,
             slidesToScroll: 3,
-            dots: true, // Disable dots
+            dots: false, // Disable dots
             responsive: [
                 {
                     breakpoint: 1024,
                     settings: {
                         slidesToShow: 2.5,
                         slidesToScroll: 2,
-                        arrows: true,
-                        dots: true
+                        arrows: false,
+                        dots: false
                     }
                 },
                 {
@@ -77,8 +77,8 @@ function displayPage(products, page) {
                     settings: {
                         slidesToShow: 1.5,
                         slidesToScroll: 1,
-                        arrows: true,
-                        dots: true
+                        arrows: false,
+                        dots: false
                     }
                 },
                 {
@@ -86,8 +86,8 @@ function displayPage(products, page) {
                     settings: {
                         slidesToShow: 1.2,
                         slidesToScroll: 1,
-                        arrows: true,
-                        dots: true
+                        arrows: false,
+                        dots: false
                     }
                 },
                 {
@@ -95,8 +95,8 @@ function displayPage(products, page) {
                     settings: {
                         slidesToShow: 1.1,
                         slidesToScroll: 1,
-                        arrows: true,
-                        dots: true
+                        arrows: false,
+                        dots: false
                     }
                 }
             ]

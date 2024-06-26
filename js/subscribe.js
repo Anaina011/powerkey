@@ -1,46 +1,36 @@
-console.log("Firebase initialized:", firebaseConfig);
-
-    var database = firebase.database();
-
-    function subscribe() {
-        var email = document.getElementById('email').value;
-        console.log('Email entered:', email);
-        if (email) {
-            database.ref('subscribers/').push({
-                email: email
-            }).then(function() {
-                alert('Subscribed successfully!');
-            }).catch(function(error) {
-                console.error('Error subscribing: ', error);
-            });
-        } else {
-            alert('Please enter a valid email address.');
-        }
-    }
-
-    function downloadEmails() {
-        database.ref('subscribers/').once('value', function(snapshot) {
-            var subscribers = snapshot.val();
-            var csvContent = "data:text/csv;charset=utf-8,Email\n";
-            for (var key in subscribers) {
-                if (subscribers.hasOwnProperty(key)) {
-                    csvContent += subscribers[key].email + "\n";
-                }
-            }
-            var encodedUri = encodeURI(csvContent);
-            var link = document.createElement("a");
-            link.setAttribute("href", encodedUri);
-            link.setAttribute("download", "subscribers.csv");
-            document.body.appendChild(link); // Required for FF
-            link.click(); // This will download the data file named "subscribers.csv".
+ // Subscribe Function
+ function subscribe() {
+    const email = document.getElementById('emailInput').value;
+    if (email) {
+        const newEmailRef = firebase.database().ref('emails').push();
+        newEmailRef.set({
+            email: email
+        }).then(() => {
+            alert('Subscribed successfully!');
+        }).catch(error => {
+            console.error('Error subscribing:', error);
         });
+    } else {
+        alert('Please enter a valid email address.');
     }
+}
 
-    // Test Firebase write access
-    database.ref('test/').set({
-        test: "test value"
-    }).then(function() {
-        console.log('Test write successful!');
-    }).catch(function(error) {
-        console.error('Error writing test value: ', error);
+// Download Emails Function
+function downloadEmails() {
+    firebase.database().ref('emails').once('value').then(snapshot => {
+        const emails = [];
+        snapshot.forEach(childSnapshot => {
+            emails.push(childSnapshot.val().email);
+        });
+        const csvContent = "data:text/csv;charset=utf-8," + emails.join("\n");
+        const encodedUri = encodeURI(csvContent);
+        const link = document.createElement("a");
+        link.setAttribute("href", encodedUri);
+        link.setAttribute("download", "emails.csv");
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }).catch(error => {
+        console.error('Error fetching emails:', error);
     });
+}
