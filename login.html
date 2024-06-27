@@ -27,7 +27,7 @@
                     LOGIN
                 </button>
                 <button onclick="redirectToHome()"
-                    style="cursor: pointer; border: 1px solid #ffffff42; background-color: #ffffff00; color: #ffffff77; margin-left: 20%; padding: 3%; border-radius: 5px;">
+                    style="cursor: pointer; border: 1px solid #fff; background-color: #000000e3; color: #ffffff;margin-left: 30%; padding: 3%; border-radius: 0.5rem;">
                     <i style="color: #ffffff77;" class="fa-solid fa-arrow-left"></i>&nbsp;&nbsp;Return home
                 </button>
                 <script>
@@ -105,6 +105,15 @@
 
 
     <style>
+/* the color pallette*/
+:root {
+    --theme_color3: #FFFFFF;
+
+    --dark_bottom: linear-gradient(to bottom, #E62B00, #E25D00);
+    --dark_top: linear-gradient(to top, #E62B00, #E25D00);
+
+}
+
         body {
             margin: 0;
             width: 100%;
@@ -113,7 +122,7 @@
         .login_base {
             width: 100%;
             height: 100vh;
-            background-color: black;
+            background-image: var(--dark_top);
         }
 
         .login-box {
@@ -124,7 +133,7 @@
             padding: 40px;
             margin: 20px auto;
             transform: translate(-50%, -55%);
-            background: rgba(0, 0, 0, .9);
+            background: rgba(255, 255, 255, 0.9);
             box-sizing: border-box;
             box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
             border-radius: 10px;
@@ -139,7 +148,7 @@
         .login-box p:first-child {
             margin: 0 0 30px;
             padding: 0;
-            color: #fff;
+            color: #000000;
             text-align: center;
             font-size: 1.5rem;
             font-weight: bold;
@@ -154,10 +163,10 @@
             width: 100%;
             padding: 10px 0;
             font-size: 16px;
-            color: #fff;
+            color: #000000;
             margin-bottom: 30px;
             border: none;
-            border-bottom: 1px solid #fff;
+            border-bottom: 1px solid #000000;
             outline: none;
             background: transparent;
         }
@@ -168,7 +177,7 @@
             left: 0;
             padding: 10px 0;
             font-size: 16px;
-            color: #fff;
+            color: #000000;
             pointer-events: none;
             transition: .5s;
         }
@@ -177,7 +186,7 @@
         .login-box .user-box input:valid~label {
             top: -20px;
             left: 0;
-            color: #fff;
+            color: #000000;
             font-size: 12px;
         }
 
@@ -186,7 +195,7 @@
             display: inline-block;
             padding: 10px 20px;
             font-weight: bold;
-            color: #fff;
+            color: #000000;
             font-size: 16px;
             text-decoration: none;
             text-transform: uppercase;
@@ -197,7 +206,7 @@
         }
 
         .login-box a:hover {
-            background: #fff;
+            background: #020202;
             color: #272727;
             border-radius: 5px;
         }
@@ -212,7 +221,7 @@
             left: -100%;
             width: 100%;
             height: 2px;
-            background: linear-gradient(90deg, transparent, #fff);
+            background: linear-gradient(90deg, transparent, #000000);
             animation: btn-anim1 1.5s linear infinite;
         }
 
@@ -232,7 +241,7 @@
             right: 0;
             width: 2px;
             height: 100%;
-            background: linear-gradient(180deg, transparent, #fff);
+            background: linear-gradient(180deg, transparent, #000000);
             animation: btn-anim2 1.5s linear infinite;
             animation-delay: .375s
         }
@@ -253,7 +262,7 @@
             right: -100%;
             width: 100%;
             height: 2px;
-            background: linear-gradient(270deg, transparent, #fff);
+            background: linear-gradient(270deg, transparent, #000000);
             animation: btn-anim3 1.5s linear infinite;
             animation-delay: .75s
         }
@@ -274,7 +283,7 @@
             left: 0;
             width: 2px;
             height: 100%;
-            background: linear-gradient(360deg, transparent, #fff);
+            background: linear-gradient(360deg, transparent, #000000);
             animation: btn-anim4 1.5s linear infinite;
             animation-delay: 1.125s
         }
@@ -291,18 +300,18 @@
         }
 
         .login-box p:last-child {
-            color: #aaa;
+            color: #000000;
             font-size: 14px;
         }
 
         .login-box a.a2 {
-            color: #fff;
+            color: #000000;
             text-decoration: none;
         }
 
         .login-box a.a2:hover {
             background: transparent;
-            color: #aaa;
+            color: #000000;
             border-radius: 5px;
         }
     </style>
