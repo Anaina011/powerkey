@@ -1157,6 +1157,37 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* VISION, MISSION, VALUES STARTS */
 
 .home_vision_sec {
@@ -2670,7 +2701,8 @@ justify-content: right;
 .hero_heading1 {
     position: absolute;
     top: 50%;
-    left: 42%;
+    left:60%;
+    width: 100%;
     transform: translate(-50%, -50%);
     font-size: 6rem; /* Adjust the size as needed */
     color: white; /* Adjust the color as needed */
@@ -2732,7 +2764,7 @@ justify-content: right;
 @media screen and (max-width: 1288px) {
 .hero_heading1 {
     top: 53%;
-    left: 40%;
+    left: 60%;
     font-size: 5rem; 
 }
 
@@ -2773,8 +2805,8 @@ justify-content: right;
 
     .hero_heading1 {
         top: 50%;
-        left: 65%;
-        font-size: 4.5rem; 
+        left: 60%;
+        font-size: 4.8rem; 
         width: 100%;
     }
 
@@ -2811,9 +2843,9 @@ justify-content: right;
     }
 
     .hero_heading1 {
-        top: 60%;
-        left: 65%;
-        font-size: 3.8rem; 
+        top: 57%;
+        left: 61%;
+        font-size: 4.1rem; 
     }
 
     .hero_heading2 {
@@ -2859,7 +2891,7 @@ justify-content: right;
     .hero_heading1 {
         top: 46%;
         left: 65%;
-        font-size: 3.3rem; 
+        font-size: 3.8rem; 
     }
 
     .hero_heading2 {
@@ -2896,7 +2928,7 @@ justify-content: right;
 
 @media screen and (max-width: 650px) {
     .hero_heading1 {
-        top: 46%;
+        top: 41%;
         left: 65%;
         font-size: 2.8rem; 
     }
@@ -2922,7 +2954,7 @@ justify-content: right;
         top: 45%;
         left: 45%;
         width: 70%;
-        font-size: 2rem; 
+        font-size: 3.2rem; 
     }
 
     .service_hero_sec1 a {
@@ -2955,8 +2987,8 @@ justify-content: right;
 
     .hero_heading1 {
         top: 46%;
-        left: 63%;
-        font-size: 2rem; 
+        left: 60%;
+        font-size: 2.5rem; 
     }
 
     .hero_heading2 {
@@ -2984,7 +3016,7 @@ justify-content: right;
     .hero_heading1 {
         top: 46%;
         left: 62%;
-        font-size: 1.5rem; 
+        font-size: 2rem; 
     }
 
     .hero_heading2 {
@@ -3030,8 +3062,8 @@ justify-content: right;
 
     .hero_heading1 {
         top: 34%;
-        left: 59%;
-        font-size: 1.2rem; 
+        left: 56%;
+        font-size: 1.8rem; 
     }
 
     .hero_heading2 {
@@ -3073,6 +3105,12 @@ justify-content: right;
         left: 51%;
         width: 90%;
         font-size: 1rem; 
+    }
+
+    .hero_heading1 {
+        top: 34%;
+        left: 58%;
+        font-size: 1.2rem; 
     }
 } 
 
@@ -9180,10 +9218,6 @@ html {
 
 
 
-
-
-
-
 .product-container {
     padding: 20px;
     /* Add padding to the container */
@@ -9191,11 +9225,54 @@ html {
     /* Center the container */
     max-width: 1200px;
     /* Set a max-width to limit the container's width */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
 }
+
+@media screen and (max-width: 1024px) {
+    .product-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 530px) {
+    .product-container {
+         grid-template-columns: 1fr;
+    }
+
+    
+    .product-container {
+display: flex;
+flex-direction: column;
+align-items: center;
+    }
+
+    .product-card {
+        width: 80%;
+        padding: 10px;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .product-card {
+        width: 95%;
+
+    }
+}
+
+@media screen and (max-width: 260px) {
+    .product-card {
+        width: 99%;
+
+    }
+}
+
 
 .product-row {
     margin-bottom: 30px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     /* Adjust for even spacing */
 }
@@ -9209,9 +9286,6 @@ html {
     transition: transform 0.3s, background-color 0.3s;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     background-color: white;
-    width: 28%;
-    /* Further reduce the width to ensure all cards fit */
-    margin: 0 10px;
     padding: 10px;
     /* Add padding */
     display: flex;
@@ -9438,7 +9512,6 @@ html {
 
 
 
-
 .pagination-container {
     display: flex;
     justify-content: center;
@@ -9476,18 +9549,45 @@ html {
     .product-details {
         font-size: 90%;
     }
+
+    .home-slide-button1 button {
+    font-size: 1.1em;
+    padding: 9px 16px;
+    }
+}
+
+@media screen and (max-width:620px) {
+    .product-card:hover .product-name {
+        font-size: 150%;
+    }
+
+    .product-details {
+        font-size: 85%;
+        text-align: left;
+        /* Align text to the left */
+        margin: 1%;
+    }
+
+    .product-name {
+        margin: 5px 0;
+        /* Adjust margin */
+    }
+
+    .product-card:hover .home-slide-button1 button {
+        padding: 9px 20px;
+    }
 }
 
 @media screen and (max-width:576px) {
     .product-card:hover .product-name {
-        font-size: 160%;
+        font-size: 150%;
     }
 
     .product-details {
-        font-size: 90%;
+        font-size: 80%;
         text-align: left;
         /* Align text to the left */
-        margin: 2%;
+        margin: 1%;
     }
 
     .product-name {

@@ -1,4 +1,3 @@
-
 let currentPage = 1;
 const productsPerPage = 9;
 let allProducts = {};
@@ -12,96 +11,36 @@ function displayPage(products, page) {
     let end = start + productsPerPage;
     let pageProducts = productKeys.slice(start, end);
 
-    let rows = Math.ceil(pageProducts.length / 3);
-
-    for (let i = 0; i < rows; i++) {
-        let row = document.createElement("div");
-        row.className = "product-row";
-        row.id = `row-${i}`;
-
-        let rowStart = i * 3;
-        let rowEnd = rowStart + 3;
-        let productSlice = pageProducts.slice(rowStart, rowEnd);
-
-        productSlice.forEach(key => {
-            const product = products[key];
-            const card = document.createElement("div");
-            card.className = "product-card";
-            card.innerHTML = `
-                <img src="${product.product_image}" class="product-image">
-                <div class="product-info">
-                    <div class="product-name">${product.product_name}</div>
-                    <div class="home-slide-button1 contact-button">
-                        <a href="contact.html">
-                            <button>
-                                Contact Us <div class="arrow-wrapper"><div class="arrow"></div></div>
-                            </button>
-                        </a>
-                    </div>
+    pageProducts.forEach(key => {
+        const product = products[key];
+        const card = document.createElement("div");
+        card.className = "product-card";
+        card.innerHTML = `
+            <img src="${product.product_image}" class="product-image">
+            <div class="product-info">
+                <div class="product-name">${product.product_name}</div>
+                <div class="home-slide-button1 contact-button">
+                    <a href="contact.html">
+                        <button>
+                            Contact Us <div class="arrow-wrapper"><div class="arrow"></div></div>
+                        </button>
+                    </a>
                 </div>
-                <div class="hidden-product-info">
-                    <div class="product-name">${product.product_name}</div>
-                    <ul class="product-details">${product.product_details.map(detail => `<li>${detail}</li>`).join('')}</ul>
-                    <div class="home-slide-button1 contact-button">
-                        <a href="contact.html">
-                            <button>
-                                Contact Us <div class="arrow-wrapper"><div class="arrow"></div></div>
-                            </button>
-                        </a>
-                    </div>
+            </div>
+            <div class="hidden-product-info">
+                <div class="product-name">${product.product_name}</div>
+                <ul class="product-details">${product.product_details.map(detail => `<li>${detail}</li>`).join('')}</ul>
+                <div class="home-slide-button1 contact-button">
+                    <a href="contact.html">
+                        <button>
+                            Contact Us <div class="arrow-wrapper"><div class="arrow"></div></div>
+                        </button>
+                    </a>
                 </div>
-            `;
-            row.appendChild(card);
-        });
-
-        container.appendChild(row);
-
-        // Initialize Slick Carousel for the row
-        $(`#row-${i}`).slick({
-            infinite: false,
-            slidesToShow: 3,
-            slidesToScroll: 3,
-            dots: false, // Disable dots
-            responsive: [
-                {
-                    breakpoint: 1024,
-                    settings: {
-                        slidesToShow: 2.5,
-                        slidesToScroll: 2,
-                        arrows: false,
-                        dots: false
-                    }
-                },
-                {
-                    breakpoint: 768,
-                    settings: {
-                        slidesToShow: 1.5,
-                        slidesToScroll: 1,
-                        arrows: false,
-                        dots: false
-                    }
-                },
-                {
-                    breakpoint: 550,
-                    settings: {
-                        slidesToShow: 1.2,
-                        slidesToScroll: 1,
-                        arrows: false,
-                        dots: false
-                    }
-                },
-                {
-                    breakpoint: 380,
-                    settings: {
-                        slidesToShow: 1.1,
-                        slidesToScroll: 1,
-                        arrows: false,
-                        dots: false
-                    }
-                }
-            ]
-        });
-    }
+            </div>
+        `;
+        container.appendChild(card);
+    });
 }
 
 function fetchAndDisplayProducts() {

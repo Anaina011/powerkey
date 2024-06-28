@@ -48,3 +48,5 @@ firebase.database().ref('approvedReviews').orderByChild('timestamp').limitToLast
 }).catch((error) => {
     console.error('Error fetching reviews: ', error);
 });
+
+
