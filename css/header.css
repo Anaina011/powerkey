@@ -333,7 +333,7 @@ STYLES FOR HAMBURGER MENU START HERE
     padding-top: calc(var(--hamburger-height) + var(--hamburger-margin) + 1rem);
     background-color: var(--foreground);
     color: #000;
-    max-width: 10rem;
+    max-width: 15rem;
     min-height: max-content;
     position: fixed;
     top: 0;

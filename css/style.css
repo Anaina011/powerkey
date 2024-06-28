@@ -2126,10 +2126,11 @@ justify-content: right;
 }
 
 .add_review_col button {
-    padding: 1%;
+    padding: 2%;
     border-radius: 8px;
     border: 2px solid hwb(11 0% 10%);
     font-weight: 600;
+    font-size: 130%;
 }
 
 .review_popup_col {
@@ -2184,6 +2185,11 @@ justify-content: right;
         margin-top: 5px;
         left: 20%;
         z-index: 10;
+    }
+
+    .add_review_col button {
+        padding: 2%;
+        font-size: 105%;
     }
 }
 
@@ -9234,6 +9240,7 @@ html {
     .product-container {
         grid-template-columns: repeat(2, 1fr);
     }
+    
 }
 
 @media screen and (max-width: 530px) {

@@ -1,44 +1,58 @@
 document.addEventListener("DOMContentLoaded", function() {
-  function animateCounter(element, finalValue) {
-      const duration = 3000; // Animation duration in ms
-      const initial = "0".repeat(finalValue.length).split('');
-      const final = finalValue.split('');
+    function animateCounter(element, finalValue) {
+        const duration = 1000; // Total animation duration in ms
+        const digits = finalValue.split('');
+        const digitElements = [];
 
-      function updateDigit(digitIndex) {
-          const digitElement = document.createElement('span');
-          digitElement.innerText = '0';
-          element.appendChild(digitElement);
+        // Clear the element before starting the animation
+        element.innerHTML = '';
 
-          const interval = setInterval(() => {
-              let currentValue = parseInt(digitElement.innerText);
-              currentValue = (currentValue + 1) % 10;
-              digitElement.innerText = currentValue;
+        // Create digit elements and initialize with '0'
+        digits.forEach(() => {
+            const digitElement = document.createElement('span');
+            digitElement.innerText = '0';
+            element.appendChild(digitElement);
+            digitElements.push(digitElement);
+        });
 
-              // Stop the interval when the final value is reached
-              if (currentValue == final[digitIndex]) {
-                  clearInterval(interval);
-              }
-          }, duration / 20);
-      }
+        function updateDigit(digitIndex) {
+            const finalDigit = parseInt(digits[digitIndex]);
+            const steps = 100; // Number of steps for the animation
+            const interval = duration / steps; // Interval between each step
+            const stepIncrement = finalDigit / steps; // Increment per step
 
-      // Clear the element before starting the animation
-      element.innerHTML = '';
+            let currentCount = 0;
+            const digitInterval = setInterval(() => {
+                currentCount += stepIncrement;
+                digitElements[digitIndex].innerText = Math.floor(currentCount);
 
-      // Start animation for each digit
-      for (let i = 0; i < final.length; i++) {
-          updateDigit(i);
-      }
+                if (Math.floor(currentCount) >= finalDigit) {
+                    digitElements[digitIndex].innerText = finalDigit; // Ensure the final digit is exact
+                    clearInterval(digitInterval);
+                }
+            }, interval);
+        }
 
-      // Repeat the animation after the duration
-      setTimeout(() => {
-          animateCounter(element, finalValue);
-      }, duration);
-  }
+        // Start animation for each digit
+        digitElements.forEach((_, i) => {
+            updateDigit(i);
+        });
+    }
 
-  // Initialize counters
-  const counters = document.querySelectorAll(".home_count span");
-  counters.forEach(counter => {
-      const finalValue = counter.getAttribute("data-final");
-      animateCounter(counter, finalValue);
-  });
+    function startCounters(entries, observer) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const counter = entry.target;
+                const finalValue = counter.getAttribute("data-final");
+                animateCounter(counter, finalValue);
+            }
+        });
+    }
+
+    const observer = new IntersectionObserver(startCounters, { threshold: 0.5 });
+
+    const counters = document.querySelectorAll(".home_count span");
+    counters.forEach(counter => {
+        observer.observe(counter);
+    });
 });
