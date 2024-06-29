@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PowerKey International-Login</title>
     <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon/favicon-32x32.webp">
-    
 </head>
 
 <body>
@@ -27,25 +26,15 @@
                     LOGIN
                 </button>
                 <button onclick="redirectToHome()"
-                    style="cursor: pointer; border: 1px solid #fff; background-color: #000000e3; color: #ffffff;margin-left: 30%; padding: 3%; border-radius: 0.5rem;">
+                    style="cursor: pointer; border: 1px solid #fff; background-color: #000000e3; color: #ffffff; margin-left: 30%; padding: 3%; border-radius: 0.5rem;">
                     <i style="color: #ffffff77;" class="fa-solid fa-arrow-left"></i>&nbsp;&nbsp;Return home
                 </button>
-                <script>
-                    function redirectToHome(url) {
-                        window.location.href = "index.html";
-                    }
-                </script>
-                <!-- <a href="">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    Login
-                </a> -->
+                <p style="text-align:center; margin-top: 20px;">
+                    <a href="#" id="forgotPasswordLink">FORGOT PASSWORD?</a>
+                </p>
             </form>
         </div>
     </section>
-
 
     <!-- Import the Firebase core (always required) -->
     <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-app.js"></script>
@@ -56,22 +45,20 @@
     <script src="js/fireconfig.js"></script>
     <script src="js/login.js"></script>
 
-
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js";
         import { getDatabase, get, ref, child } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-database.js";
-        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-auth.js";
+        import { getAuth, signInWithEmailAndPassword, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-auth.js";
 
         var firebaseConfig = {
-    apiKey: "AIzaSyA8TezUtoFN4Yi9ZJGtawB5LC348GvfILc",
-    authDomain: "power-49793.firebaseapp.com",
-    databaseURL: "https://power-49793-default-rtdb.firebaseio.com",
-    projectId: "power-49793",
-    storageBucket: "power-49793.appspot.com",
-    messagingSenderId: "298921373198",
-    appId: "1:298921373198:web:53596cf1fcbbb69c79565f"
-  };
-
+            apiKey: "AIzaSyA8TezUtoFN4Yi9ZJGtawB5LC348GvfILc",
+            authDomain: "power-49793.firebaseapp.com",
+            databaseURL: "https://power-49793-default-rtdb.firebaseio.com",
+            projectId: "power-49793",
+            storageBucket: "power-49793.appspot.com",
+            messagingSenderId: "298921373198",
+            appId: "1:298921373198:web:53596cf1fcbbb69c79565f"
+        };
 
         const app = initializeApp(firebaseConfig);
         const db = getDatabase();
@@ -81,6 +68,7 @@
         let email = document.getElementById('emailInp');
         let password = document.getElementById('passwordInp');
         let mainForm = document.getElementById('mainForm');
+        let forgotPasswordLink = document.getElementById('forgotPasswordLink');
 
         let signInUser = evt => {
             evt.preventDefault();
@@ -88,31 +76,48 @@
             signInWithEmailAndPassword(auth, email.value, password.value)
                 .then((credentials) => {
                     console.log(credentials);
-
                     window.location.href = "admin.html";
                 })
                 .catch((error) => {
                     alert(error.message);
                     console.log(error.code);
                     console.log(error.message);
-                })
+                });
+        }
+
+        let handleForgotPassword = evt => {
+            evt.preventDefault();
+            if (email.value) {
+                sendPasswordResetEmail(auth, email.value)
+                    .then(() => {
+                        alert('Password reset email sent! Check your inbox.');
+                    })
+                    .catch((error) => {
+                        alert(error.message);
+                        console.log(error.code);
+                        console.log(error.message);
+                    });
+            } else {
+                alert('Please enter your email address to reset your password.');
+            }
         }
 
         mainForm.addEventListener('submit', signInUser);
+        forgotPasswordLink.addEventListener('click', handleForgotPassword);
+
+        function redirectToHome() {
+            window.location.href = "index.html";
+        }
     </script>
 
-
-
-
     <style>
-/* the color pallette*/
-:root {
-    --theme_color3: #FFFFFF;
+        /* the color palette */
+        :root {
+            --theme_color3: #FFFFFF;
 
-    --dark_bottom: linear-gradient(to bottom, #E62B00, #E25D00);
-    --dark_top: linear-gradient(to top, #E62B00, #E25D00);
-
-}
+            --dark_bottom: linear-gradient(to bottom, #E62B00, #E25D00);
+            --dark_top: linear-gradient(to top, #E62B00, #E25D00);
+        }
 
         body {
             margin: 0;
@@ -297,22 +302,6 @@
             100% {
                 bottom: 100%;
             }
-        }
-
-        .login-box p:last-child {
-            color: #000000;
-            font-size: 14px;
-        }
-
-        .login-box a.a2 {
-            color: #000000;
-            text-decoration: none;
-        }
-
-        .login-box a.a2:hover {
-            background: transparent;
-            color: #000000;
-            border-radius: 5px;
         }
     </style>
 </body>
