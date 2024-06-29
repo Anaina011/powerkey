@@ -850,6 +850,7 @@
     font-size: 5rem;
     color: var(--theme_color1);
     font-weight: 500;
+    font-family: "Poppins", sans-serif;
 }
 
 .home_count h5 {
@@ -2960,7 +2961,7 @@ justify-content: right;
         top: 45%;
         left: 45%;
         width: 70%;
-        font-size: 3.2rem; 
+        font-size: 1.7rem; 
     }
 
     .service_hero_sec1 a {
@@ -6702,8 +6703,8 @@ justify-content: right;
 }
 
 #products_table th {
-    /* position: sticky;
-    top: 0; */
+    position: sticky;
+    top: 0;
     background-color: #E62B00;
     /* Set heading background color */
     color: #FFFFFF;
@@ -6712,6 +6713,7 @@ justify-content: right;
     padding-bottom: 1%;
     font-size: 180%;
     font-weight: 600;
+    z-index: 1;
 }
 
 #products_table tbody tr {
@@ -7017,8 +7019,8 @@ justify-content: right;
 
 
 #projects_table th {
-    /* position: sticky;
-    top: 0; */
+    position: sticky;
+    top: 0;
     text-align: center;
     background-color: hwb(11 0% 10%);
     /* Set heading background color */
@@ -7028,6 +7030,7 @@ justify-content: right;
     padding-bottom: 1%;
     font-size: 180%;
     font-weight: 600;
+    z-index: 1;
 }
 
 #projects_table tbody tr {
@@ -7491,6 +7494,7 @@ justify-content: right;
 
 .admin_career_section {
     width: 40%;
+    padding-right: 3%;
 }
 
 .admin_career_table {
@@ -7553,6 +7557,13 @@ justify-content: right;
     outline: none;
     box-sizing: border-box;
 }
+
+.admin_career_sec2 p{
+    font-size: 120%;
+    font-family: "Poppins", sans-serif;
+    padding-left: 2%;
+}
+
 
 #job_name,
 #education_level,
@@ -7710,11 +7721,8 @@ html {
     color: var(--theme_color1);
 }
 
-#searchCareerInput {
-    /* position: sticky;
-    top: 0; */
+/* #searchCareerInput {
     width: 40%;
-    /* Adjust as needed */
     padding: 13px;
     margin-right: 5px;
     outline: none;
@@ -7722,6 +7730,14 @@ html {
     background-color: var(--theme_color3);
     border: 2px solid #E62B00;
     border-radius: 1rem;
+} */
+
+.admin_career_table thead th {
+    position: sticky;
+    top: 0;
+     /* Adjust according to the height of the search bar */
+    background-color: var(--theme_color2);
+    z-index: 1; /* Ensure it is above other elements */
 }
 
 @media only screen and (max-width: 1200px) {
@@ -7849,6 +7865,13 @@ html {
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
     padding: 8px;
+    background-color: var(--theme_color2);
+}
+
+.ql-toolbar.ql-snow .ql-picker-label {
+    border: 1px solid transparent;
+    font-size: 130%;
+    color: var(--theme_color3);
 }
 
 .admin_sidebar_mobile_career,
