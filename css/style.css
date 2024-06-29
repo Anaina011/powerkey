@@ -853,6 +853,10 @@
     font-family: "Poppins", sans-serif;
 }
 
+/* .home_count span {
+    font-family: "Poppins", sans-serif;
+} */
+
 .home_count h5 {
     color: var(--theme_color3);
     font-size: 1.4rem;
