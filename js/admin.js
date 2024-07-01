@@ -690,35 +690,54 @@ var jobDescriptionEditor = new Quill('#job_description', {
   function fetchVacancies() {
     const vacancyTable = document.getElementById('vacancy_table').getElementsByTagName('tbody')[0];
     firebase.database().ref('vacancies').orderByChild('timestamp').once('value', (snapshot) => {
-        vacancyTable.innerHTML = ''; // Clear the table
-        const vacancies = [];
-        snapshot.forEach((childSnapshot) => {
-            vacancies.push({ key: childSnapshot.key, ...childSnapshot.val() });
-        });
-
-        // Reverse the array to show the latest vacancy on top
-        vacancies.reverse();
-
-        vacancies.forEach((vacancy) => {
-            const row = vacancyTable.insertRow();
-            row.innerHTML = `
-                <td>${vacancy.jobName} <i class="fa fa-edit edit-icon" onclick="editVacancy('${vacancy.key}')"></i></td>
-                <td>${vacancy.educationLevel}</td>
-                <td>${vacancy.jobLocation}</td>
-                <td>${vacancy.jobShift}</td>
-                <td>${vacancy.positionType}</td>
-                <td>${vacancy.jobCategory}</td>
-                <td>
-                    <div class="details-wrapper">${vacancy.jobDescription}</div>
-                    <button class="expand-button" onclick="toggleDetails(this)"><i class="fa fa-chevron-down"></i></button>
-                </td>
-            `;
-        });
+      vacancyTable.innerHTML = ''; // Clear the table
+      const vacancies = [];
+      snapshot.forEach((childSnapshot) => {
+        vacancies.push({ key: childSnapshot.key, ...childSnapshot.val() });
+      });
+  
+      // Reverse the array to show the latest vacancy on top
+      vacancies.reverse();
+  
+      vacancies.forEach((vacancy) => {
+        const row = vacancyTable.insertRow();
+        row.innerHTML = `
+          <td>${vacancy.jobName} <i class="fa fa-edit edit-icon" onclick="editVacancy('${vacancy.key}')"></i></td>
+          <td>${vacancy.educationLevel}</td>
+          <td>${vacancy.jobLocation}</td>
+          <td>${vacancy.jobShift}</td>
+          <td>${vacancy.positionType}</td>
+          <td>${vacancy.jobCategory}</td>
+          <td>
+            <div class="details-wrapper">${vacancy.jobDescription}</div>
+            <button class="expand-button" onclick="showJobDescriptionModal('${vacancy.jobDescription}')">View</button>
+          </td>
+        `;
+      });
     });
-}
-
-// Initial fetch of vacancies
-fetchVacancies();
+  }
+  
+  // Function to show the job description in a modal
+  function showJobDescriptionModal(description) {
+    var modal = document.getElementById('jobDescriptionModal');
+    var modalContent = document.getElementById('modalJobDescription');
+    modalContent.innerHTML = description;
+    modal.style.display = "block";
+  }
+  
+  // Close the modal
+  var modal = document.getElementById('jobDescriptionModal');
+  var span = document.getElementsByClassName('close')[0];
+  span.onclick = function() {
+    modal.style.display = "none";
+  }
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+  
+  fetchVacancies();
 
   
   

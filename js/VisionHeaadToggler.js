@@ -1,5 +1,5 @@
 // Get all the div elements with class name 'home_vision'
-var homeVisionDivs = document.querySelectorAll('.home_vision h3');
+var homeVisionDivs = document.querySelectorAll('.home_vision ');
 var currentIndex = 0;
 
 // Function to change background color of the divs
