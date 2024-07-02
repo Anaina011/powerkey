@@ -639,35 +639,30 @@ window.onload = function () {
 
 
 
-
-// ADMIN DASHBOARD FOR CAREERS
-
 // Initialize Quill editor
 var jobDescriptionEditor = new Quill('#job_description', {
     theme: 'snow'
-  });
-  
-  // Function to get content from Quill editor and prepare data for Firebase
-  function getFormData() {
+});
+
+// Function to get content from Quill editor and prepare data for Firebase
+function getCareerFormData() {
     return {
-      jobName: document.getElementById('job_name').value,
-      educationLevel: document.getElementById('education_level').value,
-      jobLocation: document.getElementById('job_location').value,
-      jobShift: document.getElementById('job_shift').value,
-      positionType: document.getElementById('position_type').value,
-      jobCategory: document.getElementById('job_category').value,
-      jobDescription: jobDescriptionEditor.root.innerHTML,
-      timestamp: firebase.database.ServerValue.TIMESTAMP // Add timestamp
+        jobName: document.getElementById('job_name').value,
+        educationLevel: document.getElementById('education_level').value,
+        jobLocation: document.getElementById('job_location').value,
+        jobShift: document.getElementById('job_shift').value,
+        positionType: document.getElementById('position_type').value,
+        jobCategory: document.getElementById('job_category').value,
+        jobDescription: jobDescriptionEditor.root.innerHTML,
+        timestamp: firebase.database.ServerValue.TIMESTAMP // Add timestamp
     };
-  }
-  
-  // Add vacancy to Firebase
-  document.getElementById('add_vacancy').addEventListener('click', addVacancy);
-  document.getElementById('update').addEventListener('click', updateVacancy);
-  document.getElementById('delete').addEventListener('click', deleteVacancy);
-  document.getElementById('clear_form').addEventListener('click', clearForm);
-  
-  function clearForm() {
+}
+
+// Add event listeners for buttons
+document.getElementById('saveCareer').addEventListener('click', saveVacancy);
+document.getElementById('clear_form').addEventListener('click', clearForm);
+
+function clearForm() {
     document.getElementById('job_name').value = '';
     document.getElementById('education_level').value = '';
     document.getElementById('job_location').value = '';
@@ -675,161 +670,202 @@ var jobDescriptionEditor = new Quill('#job_description', {
     document.getElementById('position_type').value = '';
     document.getElementById('job_category').value = '';
     jobDescriptionEditor.root.innerHTML = '';
-  }
-  
-  function validateInput(vacancy) {
+}
+
+function validateCareerInput(vacancy) {
     for (const key in vacancy) {
-      if (vacancy[key] === '') {
-        alert(`${key.replace(/([A-Z])/g, ' $1')} is required.`);
-        return false;
-      }
+        if (vacancy[key] === '') {
+            alert(`${key.replace(/([A-Z])/g, ' $1')} is required.`);
+            return false;
+        }
     }
     return true;
-  }
-  
-  function fetchVacancies() {
+}
+
+// Function to add new shifts
+function addNewShift() {
+    const newShift = prompt("Please enter the new shift:");
+    if (newShift) {
+        const shiftDropdown = document.getElementById('job_shift');
+        const newOption = document.createElement('option');
+        newOption.value = newShift;
+        newOption.text = newShift;
+        shiftDropdown.add(newOption);
+        shiftDropdown.value = newShift; // Select the newly added shift
+    }
+}
+
+
+// Fetch existing job categories
+let jobCategories = [];
+
+function fetchJobCategories() {
+    firebase.database().ref('vacancies').once('value', (snapshot) => {
+        const categories = new Set();
+        snapshot.forEach((childSnapshot) => {
+            categories.add(childSnapshot.val().jobCategory);  // Keep the original case
+        });
+        jobCategories = Array.from(categories);
+    });
+}
+
+// Filter and display suggestions
+function showCategorySuggestions() {
+    const input = document.getElementById('job_category').value.toLowerCase(); // Convert input to lowercase
+    const suggestionsContainer = document.getElementById('categorySuggestions');
+    suggestionsContainer.innerHTML = '';
+
+    if (input) {
+        const filteredCategories = jobCategories.filter(category => 
+            category.toLowerCase().includes(input)  // Convert category to lowercase for comparison
+        );
+        filteredCategories.forEach(category => {
+            const suggestionItem = document.createElement('div');
+            suggestionItem.className = 'suggestion-item';
+            suggestionItem.innerText = category;
+            suggestionItem.onclick = () => selectCategory(category);
+            suggestionsContainer.appendChild(suggestionItem);
+        });
+    }
+}
+
+// Select a category from the suggestions
+function selectCategory(category) {
+    document.getElementById('job_category').value = category;
+    document.getElementById('categorySuggestions').innerHTML = '';
+}
+
+// Fetch categories on page load
+fetchJobCategories();
+
+
+function fetchVacancies() {
     const vacancyTable = document.getElementById('vacancy_table').getElementsByTagName('tbody')[0];
     firebase.database().ref('vacancies').orderByChild('timestamp').once('value', (snapshot) => {
-      vacancyTable.innerHTML = ''; // Clear the table
-      const vacancies = [];
-      snapshot.forEach((childSnapshot) => {
-        vacancies.push({ key: childSnapshot.key, ...childSnapshot.val() });
-      });
-  
-      // Reverse the array to show the latest vacancy on top
-      vacancies.reverse();
-  
-      vacancies.forEach((vacancy) => {
-        const row = vacancyTable.insertRow();
-        row.innerHTML = `
-          <td>${vacancy.jobName} <i class="fa fa-edit edit-icon" onclick="editVacancy('${vacancy.key}')"></i></td>
-          <td>${vacancy.educationLevel}</td>
-          <td>${vacancy.jobLocation}</td>
-          <td>${vacancy.jobShift}</td>
-          <td>${vacancy.positionType}</td>
-          <td>${vacancy.jobCategory}</td>
-          <td>
-            <div class="details-wrapper">${vacancy.jobDescription}</div>
-            <button class="expand-button" onclick="showJobDescriptionModal('${vacancy.jobDescription}')">View</button>
-          </td>
-        `;
-      });
+        vacancyTable.innerHTML = ''; // Clear the table
+        const vacancies = [];
+        snapshot.forEach((childSnapshot) => {
+            vacancies.push({ key: childSnapshot.key, ...childSnapshot.val() });
+        });
+
+        // Reverse the array to show the latest vacancy on top
+        vacancies.reverse();
+
+        vacancies.forEach((vacancy) => {
+            const row = vacancyTable.insertRow();
+            row.innerHTML = `
+                <td>${vacancy.jobName} <i class="fa fa-edit edit-icon" onclick="editVacancy('${vacancy.key}')"></i> <i class="fa fa-trash delete-icon" onclick="deleteVacancy('${vacancy.key}')"></i></td>
+                <td>${vacancy.educationLevel}</td>
+                <td>${vacancy.jobLocation}</td>
+                <td>${vacancy.jobShift}</td>
+                <td>${vacancy.positionType}</td>
+                <td>${vacancy.jobCategory}</td>
+                <td>
+                    <div class="details-wrapper">${vacancy.jobDescription}</div>
+                    <button class="expand-button" onclick="showJobDescriptionModal('${vacancy.jobDescription}')">View</button>
+                </td>
+            `;
+        });
     });
-  }
-  
-  // Function to show the job description in a modal
-  function showJobDescriptionModal(description) {
+}
+
+function showJobDescriptionModal(description) {
     var modal = document.getElementById('jobDescriptionModal');
     var modalContent = document.getElementById('modalJobDescription');
     modalContent.innerHTML = description;
     modal.style.display = "block";
-  }
-  
-  // Close the modal
-  var modal = document.getElementById('jobDescriptionModal');
-  var span = document.getElementsByClassName('close')[0];
-  span.onclick = function() {
-    modal.style.display = "none";
-  }
-  window.onclick = function(event) {
-    if (event.target == modal) {
-      modal.style.display = "none";
-    }
-  }
-  
-  fetchVacancies();
+}
 
-  
-  
-  function toggleDetails(button) {
+// Close the modal
+var modal = document.getElementById('jobDescriptionModal');
+var span = document.getElementsByClassName('close')[0];
+span.onclick = function() {
+    modal.style.display = "none";
+}
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+fetchVacancies();
+
+function toggleDetails(button) {
     const detailsWrapper = button.previousElementSibling;
     if (detailsWrapper.style.maxHeight === 'none') {
-      detailsWrapper.style.maxHeight = '5.5em'; // Approx. 3 lines
-      button.innerHTML = "<i class='fa fa-chevron-down'></i>"; // Arrow downwards
+        detailsWrapper.style.maxHeight = '5.5em'; // Approx. 3 lines
+        button.innerHTML = "<i class='fa fa-chevron-down'></i>"; // Arrow downwards
     } else {
-      detailsWrapper.style.maxHeight = 'none';
-      button.innerHTML = "<i class='fa fa-chevron-up'></i>"; // Arrow upwards
+        detailsWrapper.style.maxHeight = 'none';
+        button.innerHTML = "<i class='fa fa-chevron-up'></i>"; // Arrow upwards
     }
-  }
-  
-  function editVacancy(key) {
+}
+
+function editVacancy(key) {
     firebase.database().ref('vacancies/' + key).once('value').then((snapshot) => {
-      const vacancy = snapshot.val();
-      document.getElementById('job_name').value = vacancy.jobName;
-      document.getElementById('education_level').value = vacancy.educationLevel;
-      document.getElementById('job_location').value = vacancy.jobLocation;
-      document.getElementById('job_shift').value = vacancy.jobShift;
-      document.getElementById('position_type').value = vacancy.positionType;
-      document.getElementById('job_category').value = vacancy.jobCategory;
-      jobDescriptionEditor.root.innerHTML = vacancy.jobDescription;
+        const vacancy = snapshot.val();
+        document.getElementById('job_name').value = vacancy.jobName;
+        document.getElementById('education_level').value = vacancy.educationLevel;
+        document.getElementById('job_location').value = vacancy.jobLocation;
+        document.getElementById('job_shift').value = vacancy.jobShift;
+        document.getElementById('position_type').value = vacancy.positionType;
+        document.getElementById('job_category').value = vacancy.jobCategory;
+        jobDescriptionEditor.root.innerHTML = vacancy.jobDescription;
+        document.getElementById('saveCareer').dataset.key = key; // Store key in the button's dataset
     });
-  }
-  
-  
-  function addVacancy() {
-    const vacancy = getFormData();
-  
-    if (!validateInput(vacancy)) {
-      return;
+}
+
+function saveVacancy() {
+    const vacancy = getCareerFormData();
+    const key = document.getElementById('saveCareer').dataset.key;
+
+    if (!validateCareerInput(vacancy)) {
+        return;
     }
-  
-    const jobName = vacancy.jobName;
-    firebase.database().ref('vacancies/' + jobName).set(vacancy, (error) => {
-      if (error) {
-        alert('Error adding vacancy: ' + error.message);
-      } else {
-        alert('Vacancy added successfully!');
-        clearForm();
-        fetchVacancies(); // Refresh the table
-      }
-    });
-  }
-  
-  function updateVacancy() {
-    const vacancy = getFormData();
-    const jobName = vacancy.jobName;
-  
-    if (!validateInput(vacancy)) {
-      return;
-    }
-  
-    if (jobName) {
-      firebase.database().ref('vacancies/' + jobName).update(vacancy, (error) => {
-        if (error) {
-          alert('Error updating vacancy: ' + error.message);
-        } else {
-          alert('Vacancy updated successfully!');
-          clearForm();
-          fetchVacancies(); // Refresh the table
-        }
-      });
+
+    if (key) {
+        // Update existing vacancy
+        firebase.database().ref('vacancies/' + key).update(vacancy, (error) => {
+            if (error) {
+                alert('Error updating vacancy: ' + error.message);
+            } else {
+                alert('Vacancy updated successfully!');
+                fetchVacancies();
+                clearForm();
+                document.getElementById('saveCareer').removeAttribute('data-key'); // Clear key from dataset
+            }
+        });
     } else {
-      alert('Job Name is required to update a vacancy.');
+        // Add new vacancy
+        firebase.database().ref('vacancies').push(vacancy, (error) => {
+            if (error) {
+                alert('Error adding vacancy: ' + error.message);
+            } else {
+                alert('Vacancy added successfully!');
+                fetchVacancies();
+                clearForm();
+            }
+        });
     }
-  }
-  
-  function deleteVacancy() {
-    const jobName = document.getElementById('job_name').value;
-  
-    if (jobName) {
-      firebase.database().ref('vacancies/' + jobName).remove((error) => {
-        if (error) {
-          alert('Error deleting vacancy: ' + error.message);
-        } else {
-          alert('Vacancy deleted successfully!');
-          clearForm();
-          fetchVacancies(); // Refresh the table
-        }
-      });
-    } else {
-      alert('Job Name is required to delete a vacancy.');
+}
+
+function deleteVacancy(key) {
+    if (confirm('Are you sure you want to delete this vacancy?')) {
+        firebase.database().ref('vacancies/' + key).remove((error) => {
+            if (error) {
+                alert('Error deleting vacancy: ' + error.message);
+            } else {
+                alert('Vacancy deleted successfully!');
+                fetchVacancies();
+            }
+        });
     }
-  }
-  
-// Function to search Vacancies
+}
+
+// Function to search vacancies
 function searchVacancies() {
     var input, filter, table, tr, td, i, txtValue;
-    input = document.getElementById("searchCareerInput"); // Get the search input element
+    input = document.getElementById("searchInput"); // Get the search input element
     filter = input.value.toUpperCase(); // Convert input value to uppercase for case-insensitive comparison
     table = document.getElementById("vacancy_table"); // Reference the correct table by ID
     tr = table.getElementsByTagName("tr"); // Get all rows in the table
@@ -849,11 +885,10 @@ function searchVacancies() {
     }
 }
 
- 
-  // Initial fetch of vacancies
-  fetchVacancies();
-  
-  document.addEventListener('DOMContentLoaded', () => {
+// Initial fetch of vacancies
+fetchVacancies();
+
+document.addEventListener('DOMContentLoaded', () => {
     enableTableDragScroll();
   });
   

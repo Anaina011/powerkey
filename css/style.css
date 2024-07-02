@@ -7607,16 +7607,14 @@ justify-content: right;
     padding-right: 3%;
 }
 
-.admin_career_table {
+/* .admin_career_table {
     width: 55%;
     max-height: 700px;
-
-    /* Enable vertical scrolling */
     padding-left: 4%;
     overflow: hidden;
     white-space: nowrap;
     cursor: grab;
-}
+} */
 
 
 .admin_career_table:active {
@@ -7715,8 +7713,10 @@ justify-content: right;
 
 .admin_career_button {
     display: flex;
+    justify-content: space-around;
     padding-top: 4%;
-    padding-left: 5%;
+    padding-left: 12%;
+    padding-right: 12%;
 }
 
 .admin_career_button button {
@@ -7726,8 +7726,8 @@ justify-content: right;
     border-radius: 1rem;
     padding-top: 3%;
     padding-bottom: 3%;
-    padding-left: 5%;
-    padding-right: 5%;
+    padding-left: 8%;
+    padding-right: 8%;
     font-size: 120%;
 }
 
@@ -7831,6 +7831,16 @@ html {
     color: var(--theme_color1);
 }
 
+.delete-icon {
+    position: absolute;
+    right: 40px;
+    bottom: 10%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: var(--theme_color1);
+}
+
+
 /* #searchCareerInput {
     width: 40%;
     padding: 13px;
@@ -7851,6 +7861,26 @@ html {
 }
 
 @media only screen and (max-width: 1200px) {
+    .admin_career_button {
+        display: flex;
+        justify-content: space-around;
+        padding-top: 4%;
+        padding-left: 10%;
+        padding-right: 10%;
+    }
+    
+    .admin_career_button button {
+        background-color: var(--theme_color1);
+        color: var(--theme_color3);
+        border: none;
+        border-radius: 1rem;
+        padding-top: 3%;
+        padding-bottom: 3%;
+        padding-left: 8%;
+        padding-right: 8%;
+        font-size: 120%;
+    }
+
     #searchCareerInput {
         width: 50%;
     }
@@ -7903,16 +7933,22 @@ html {
 
     .admin_career_button {
         display: flex;
+        justify-content: space-around;
         padding-top: 4%;
-        padding-left: 2%;
+        padding-left: 12%;
+        padding-right: 12%;
     }
-
+    
     .admin_career_button button {
+        background-color: var(--theme_color1);
+        color: var(--theme_color3);
+        border: none;
+        border-radius: 1rem;
         padding-top: 3%;
         padding-bottom: 3%;
-        padding-left: 5%;
-        padding-right: 5%;
-        font-size: 100%;
+        padding-left: 10%;
+        padding-right: 10%;
+        font-size: 120%;
     }
 
     .admin_career_button :not(:last-child) {
@@ -7937,8 +7973,22 @@ html {
 @media only screen and (max-width: 518px) {
     .admin_career_button {
         display: flex;
-        flex-direction: column;
+        justify-content: space-around;
         padding-top: 4%;
+        padding-left: 12%;
+        padding-right: 12%;
+    }
+    
+    .admin_career_button button {
+        background-color: var(--theme_color1);
+        color: var(--theme_color3);
+        border: none;
+        border-radius: 1rem;
+        padding-top: 3%;
+        padding-bottom: 3%;
+        padding-left: 10%;
+        padding-right: 10%;
+        font-size: 120%;
     }
 
     #add_vacancy {
@@ -7982,6 +8032,50 @@ html {
     border: 1px solid transparent;
     font-size: 130%;
     color: var(--theme_color3);
+}
+.suggestions-container {
+    position: relative;
+    width: 100%;
+}
+
+.suggestion-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 10px;
+    cursor: pointer;
+    font-family: "Poppins", sans-serif;
+}
+
+.suggestion-item:hover {
+    background-color: #f0f0f0;
+}
+.job_shift_container {
+    display: flex;
+    align-items: center;
+}
+
+.job_shift_container select {
+    flex: 1;
+    padding: 5%;
+    border-radius: 1rem;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+#add_shift_button {
+    margin-left: 10px;
+    background-color: var(--theme_color1);
+    color: var(--theme_color3);
+    border: none;
+    border-radius: 1rem;
+    padding: 5%;
+    font-size: 120%;
+    cursor: pointer;
+    outline: none;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
 }
 
 .admin_sidebar_mobile_career,
