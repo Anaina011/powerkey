@@ -682,18 +682,32 @@ function validateCareerInput(vacancy) {
     return true;
 }
 
-// Function to add new shifts
-function addNewShift() {
-    const newShift = prompt("Please enter the new shift:");
-    if (newShift) {
-        const shiftDropdown = document.getElementById('job_shift');
-        const newOption = document.createElement('option');
-        newOption.value = newShift;
-        newOption.text = newShift;
-        shiftDropdown.add(newOption);
-        shiftDropdown.value = newShift; // Select the newly added shift
+function checkAddNewShiftOption() {
+    var select = document.getElementById("job_shift");
+    var selectedOption = select.options[select.selectedIndex].value;
+    if (selectedOption === "add_new_shift") {
+        var newShift = prompt("Please enter the new shift:");
+        if (newShift) {
+            var option = document.createElement("option");
+            option.text = newShift;
+            option.value = newShift;
+            
+            // Insert new option before the "Add New Shift" option
+            select.add(option, select.options[select.options.length - 1]);
+            select.value = newShift;
+        } else {
+            select.value = ""; // Reset to default if no new shift is added
+        }
     }
 }
+
+// Adjust dropdown width
+document.addEventListener('DOMContentLoaded', function() {
+    var jobShiftDropdown = document.getElementById('job_shift');
+    jobShiftDropdown.style.width = '100%';
+});
+
+
 
 
 // Fetch existing job categories

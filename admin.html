@@ -96,12 +96,13 @@
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6">
                                     <div class="job_shift_container">
-                                        <select id="job_shift">
+                                        <select id="job_shift" onchange="checkAddNewShiftOption()">
+                                            <option value="" disabled selected>Job Shift</option>
                                             <option value="Day shift">Day shift</option>
                                             <option value="Night shift">Night shift</option>
+                                            <option value="add_new_shift" style="color: orange; font-family: Poppins, sans-serif;">Add New Shift</option>
                                         </select>
-                                        <button id="add_shift_button" type="button" onclick="addNewShift()">+</button>
-                                    </div>
+                                    </div> 
                                 </div>
                             </div>
                             <div class="admin_career_sec1">
