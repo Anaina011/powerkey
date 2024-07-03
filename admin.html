@@ -87,12 +87,26 @@
                                     <input id="job_name" type="text" placeholder="Job Title">
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6">
-                                    <input id="education_level" type="text" placeholder="Education Level">
+                                    <div class="education_level_container">
+                                        <select id="education_level" onchange="checkAddNewEducationOption()">
+                                            <option value="" disabled selected>Education Level</option>
+                                            <option value="Graduation">Graduation</option>
+                                            <option value="Post Graduation">Post Graduation</option>
+                                            <option value="Diploma">Diploma</option>
+                                            <option value="add_new" style="color: #E62B00; font-family: Poppins, sans-serif;">Add New</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                             <div class="admin_career_sec1">
                                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6">
-                                    <input id="job_location" type="text" placeholder="Job Location">
+                                    <div class="job_location_container">
+                                        <select id="job_location" onchange="checkAddNewLocationOption()">
+                                            <option value="" disabled selected>Job Location</option>
+                                            <option value="Oman">Oman</option>
+                                            <option value="add_new_location" style="color: #E62B00; font-family: Poppins, sans-serif;">Add New Location</option>
+                                        </select>
+                                    </div> 
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6">
                                     <div class="job_shift_container">
@@ -100,14 +114,23 @@
                                             <option value="" disabled selected>Job Shift</option>
                                             <option value="Day shift">Day shift</option>
                                             <option value="Night shift">Night shift</option>
-                                            <option value="add_new_shift" style="color: orange; font-family: Poppins, sans-serif;">Add New Shift</option>
+                                            <option value="add_new_shift" style="color: #E62B00; font-family: Poppins, sans-serif;">Add New Shift</option>
                                         </select>
                                     </div> 
                                 </div>
                             </div>
                             <div class="admin_career_sec1">
                                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6">
-                                    <input id="position_type" type="text" placeholder="Position Type">
+                                    <div class="position_type_container">
+                                        <select id="position_type" onchange="checkAddNewPositionOption()">
+                                            <option value="" disabled selected>Position Type</option>
+                                            <option value="Full Time">Full Time</option>
+                                            <option value="Part Time">Part Time</option>
+                                            <option value="Internship">Internship</option>
+                                            <option value="Fresher">Fresher</option>
+                                            <option value="add_new_position" style="color: #E62B00; font-family: Poppins, sans-serif;">Add New Position Type</option>
+                                        </select>
+                                    </div> 
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6">
                                     <input id="job_category" type="text" placeholder="Job Category" oninput="showCategorySuggestions()">
@@ -166,19 +189,26 @@
             <div class="admin_right_input">
                 <!-- Input fields for adding/editing products -->
                 <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
                         <input id="product_name" type="text" placeholder="Product Name">
                     </div>
-                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
                         <textarea placeholder="Product Details" id="product_details" rows="2"></textarea>
                     </div>
-                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
                         <input id="product_image" type="file">
                         <input id="product_image_url" type="text" placeholder="Product Image URL" disabled>
+                        <div id="progress-container" style="display: none;">
+                            <progress id="upload-progress" value="0" max="100"></progress>
+                            <span id="progress-percentage"></span>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
+                        <button style="width: 60%; padding: 3% 6%;" id="save" type="submit">Save</button>
                     </div>
                 </div>
             </div>
-            <button id="save" type="submit">Save</button>
+            <!-- <button id="save" type="submit">Save</button> -->
 
             <!-- Search Bar -->
             <div class="search-bar">
@@ -207,19 +237,23 @@
             <div class="admin_project_input">
                 <!-- Input fields for adding/editing projects -->
                 <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
                         <input id="project_name" type="text" placeholder="Project Name">
                     </div>
-                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
                         <textarea placeholder="Project Details" id="project_details" rows="2"></textarea>
                     </div>
-                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
                         <input id="project_image" type="file">
                         <input id="project_image_url" type="text" placeholder="Project Image URL" disabled>
                     </div>
+                    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
+                        <button style="width: 60%; padding: 3% 6%;" id="save_project" type="submit">Save</button>
+                    </div>
                 </div>
+                
             </div>
-            <button id="save_project" type="submit">Save</button>
+            <!-- <button id="save_project" type="submit">Save</button> -->
 
             <!-- Search Bar -->
             <div class="search-bar">

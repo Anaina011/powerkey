@@ -6527,16 +6527,51 @@ justify-content: right;
 }
 
 .admin_right button {
-    font-size: 150%;
+    font-size: 130%;
     background-color: var(--theme_color1);
     color: var(--theme_color3);
     border: none;
     outline: none;
-    padding: 0.6% 4.8%;
+    padding: 0.9% 5.5%;
     border-radius: 0.7rem;
     margin-left: 1%;
     margin-top: 2%;
 }
+
+#progress-container {
+    margin-top: 10px;
+}
+
+#upload-progress {
+    width: 100%;
+    height: 20px;
+    background-color: #f3f3f3; /* Light grey background for the progress bar container */
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+#upload-progress::-webkit-progress-bar {
+    background-color: #f3f3f3;
+}
+
+#upload-progress::-webkit-progress-value {
+    background-color: #E62B00; /* Orange color for the progress value */
+}
+
+#upload-progress::-moz-progress-bar {
+    background-color: #E62B00; /* Orange color for the progress value */
+}
+
+#upload-progress::-ms-fill {
+    background-color: #E62B00; /* Orange color for the progress value */
+}
+
+#progress-percentage {
+    margin-left: 10px;
+    color: #E62B00; /* Orange color for the percentage text */
+}
+
+
 
 @media only screen and (max-width: 1200px) {
     .admin_sidebar {
@@ -6836,7 +6871,7 @@ justify-content: right;
 } */
 
 .product-name-cell {
-    font-size: 140%;
+    font-size: 120%;
     font-family: "Poppins", sans-serif;
 }
 
@@ -7000,7 +7035,7 @@ justify-content: right;
 }
 
 .admin_project button {
-    font-size: 150%;
+    font-size: 140%;
     background-color: var(--theme_color1);
     color: var(--theme_color3);
     border: none;
@@ -7154,7 +7189,7 @@ justify-content: right;
 } */
 
 .projects-name-cell {
-    font-size: 140%;
+    font-size: 120%;
     font-family: "Poppins", sans-serif;
 }
 
@@ -7687,6 +7722,7 @@ justify-content: right;
     font-family: "Poppins", sans-serif;
 }
 
+
 .admin_career_sec2 {
     margin-top: 4%;
     margin-bottom: 4%;
@@ -8077,6 +8113,59 @@ html {
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
 }
+
+.education_level_container{
+    display: flex;
+    align-items: center;
+}
+
+.education_level_container select {
+    flex: 1;
+    padding: 5%;
+    border-radius: 1rem;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+.job_location_container{
+    display: flex;
+    align-items: center;
+}
+
+.job_location_container select {
+    flex: 1;
+    padding: 5%;
+    border-radius: 1rem;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+.position_type_container{
+    display: flex;
+    align-items: center;
+}
+
+.position_type_container select {
+    flex: 1;
+    padding: 5%;
+    border-radius: 1rem;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+.admin_career_sec1 ::placeholder{
+color: var(--theme_color2);
+}
+
+
+
+
 
 .admin_sidebar_mobile_career,
 .admin_sidebar_mobile_products,
@@ -8674,13 +8763,23 @@ html {
 }
 
 .approve_btn {
-    background-color: #23e633;
+    background-color: #077410;
+    color: var(--theme_color3);
     border-radius: 5px;
+    padding-top: 4%;
+    padding-bottom: 4%;
 }
 
 .delete_btn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
     border: 1px solid red;
     border-radius: 5px;
+    line-height: 10%;
+    padding-top: 7%;
+    padding-bottom: 7%;
 }
 
 

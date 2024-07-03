@@ -46,41 +46,58 @@ document.getElementById("save").onclick = function (event) {
 };
 
 
-// Function to update product details with a new image
 function updateProductWithImage(oldImageUrl) {
-    // Upload new image to Firebase Storage
     var storageRef = firebase.storage().ref();
     var imageRef = storageRef.child('product_images/' + Productname + '_' + Date.now()); // Unique filename
 
-    imageRef.put(Productimage).then(function (snapshot) {
-        // Get download URL
-        imageRef.getDownloadURL().then(function (url) {
-            // Delete the old image
+    var uploadTask = imageRef.put(Productimage);
+
+    // Show the progress bar
+    document.getElementById('progress-container').style.display = 'block';
+
+    uploadTask.on('state_changed', function(snapshot) {
+        var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        document.getElementById('upload-progress').value = progress;
+        document.getElementById('progress-percentage').textContent = Math.round(progress) + '%';
+    }, function(error) {
+        alert("Failed to upload image: " + error.message);
+        // Hide the progress bar
+        document.getElementById('progress-container').style.display = 'none';
+    }, function() {
+        uploadTask.snapshot.ref.getDownloadURL().then(function(url) {
             var oldImageRef = firebase.storage().refFromURL(oldImageUrl);
-            oldImageRef.delete().then(function () {
-                // Update product with new image URL
+            oldImageRef.delete().then(function() {
                 updateProduct(Productname, Productdetails, url);
-            }).catch(function (error) {
+                // Hide the progress bar
+                document.getElementById('progress-container').style.display = 'none';
+            }).catch(function(error) {
                 alert("Failed to delete old image: " + error.message);
             });
-        }).catch(function (error) {
+        }).catch(function(error) {
             alert("Failed to get image download URL: " + error.message);
         });
-    }).catch(function (error) {
-        alert("Failed to upload image: " + error.message);
     });
 }
 
-// Function to add a new product
 function addNewProduct() {
-    // Upload image to Firebase Storage
     var storageRef = firebase.storage().ref();
     var imageRef = storageRef.child('product_images/' + Productname + '_' + Date.now()); // Unique filename
 
-    imageRef.put(Productimage).then(function (snapshot) {
-        // Get download URL
-        imageRef.getDownloadURL().then(function (url) {
-            // Add new product to the database
+    var uploadTask = imageRef.put(Productimage);
+
+    // Show the progress bar
+    document.getElementById('progress-container').style.display = 'block';
+
+    uploadTask.on('state_changed', function(snapshot) {
+        var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        document.getElementById('upload-progress').value = progress;
+        document.getElementById('progress-percentage').textContent = Math.round(progress) + '%';
+    }, function(error) {
+        alert("Failed to upload image: " + error.message);
+        // Hide the progress bar
+        document.getElementById('progress-container').style.display = 'none';
+    }, function() {
+        uploadTask.snapshot.ref.getDownloadURL().then(function(url) {
             firebase.database().ref("product/" + Productname).set({
                 product_name: Productname,
                 product_details: Productdetails,
@@ -89,16 +106,17 @@ function addNewProduct() {
                 alert("Product added successfully");
                 clearFormFields();
                 displayProducts(); // Refresh the table
+                // Hide the progress bar
+                document.getElementById('progress-container').style.display = 'none';
             }).catch(error => {
                 alert("Failed to add product: " + error.message);
             });
-        }).catch(function (error) {
+        }).catch(function(error) {
             alert("Failed to get image download URL: " + error.message);
         });
-    }).catch(function (error) {
-        alert("Failed to upload image: " + error.message);
     });
 }
+
 
 // Function to update product details without uploading a new image
 function updateProductDetails(name, details) {
@@ -181,6 +199,7 @@ function displayProducts() {
             // Create expand/collapse button
             var expandButton = document.createElement("button");
             expandButton.className = "expand-button";
+            expandButton.style.marginLeft = "-85%";
             expandButton.innerHTML = "<i class='fa fa-chevron-down'></i>";
             expandButton.onclick = function () {
                 toggleDetails(expandButton);
@@ -682,6 +701,86 @@ function validateCareerInput(vacancy) {
     return true;
 }
 
+
+function checkAddNewEducationOption() {
+    var select = document.getElementById("education_level");
+    var selectedOption = select.options[select.selectedIndex].value;
+    if (selectedOption === "add_new") {
+        var neweducation = prompt("Please enter the new education level:");
+        if (neweducation) {
+            var option = document.createElement("option");
+            option.text = neweducation;
+            option.value = neweducation;
+            
+            // Insert new option before the "Add New Shift" option
+            select.add(option, select.options[select.options.length - 1]);
+            select.value = neweducation;
+        } else {
+            select.value = ""; // Reset to default if no new shift is added
+        }
+    }
+}
+
+// Adjust dropdown width
+document.addEventListener('DOMContentLoaded', function() {
+    var educationlevelDropdown = document.getElementById('education_level');
+    educationlevelDropdown.style.width = '100%';
+});
+
+
+function checkAddNewLocationOption() {
+    var select = document.getElementById("job_location");
+    var selectedOption = select.options[select.selectedIndex].value;
+    if (selectedOption === "add_new_location") {
+        var newLocation = prompt("Please enter the new location:");
+        if (newLocation) {
+            var option = document.createElement("option");
+            option.text = newLocation;
+            option.value = newLocation;
+            
+            // Insert new option before the "Add New Shift" option
+            select.add(option, select.options[select.options.length - 1]);
+            select.value = newLocation;
+        } else {
+            select.value = ""; // Reset to default if no new shift is added
+        }
+    }
+}
+
+// Adjust dropdown width
+document.addEventListener('DOMContentLoaded', function() {
+    var locationDropdown = document.getElementById('job_location');
+    locationDropdown.style.width = '100%';
+});
+
+
+function checkAddNewPositionOption() {
+    var select = document.getElementById("position_type");
+    var selectedOption = select.options[select.selectedIndex].value;
+    if (selectedOption === "add_new_position") {
+        var newposition = prompt("Please enter the new position type:");
+        if (newposition) {
+            var option = document.createElement("option");
+            option.text = newposition;
+            option.value = newposition;
+            
+            // Insert new option before the "Add New Shift" option
+            select.add(option, select.options[select.options.length - 1]);
+            select.value = newposition;
+        } else {
+            select.value = ""; // Reset to default if no new shift is added
+        }
+    }
+}
+
+// Adjust dropdown width
+document.addEventListener('DOMContentLoaded', function() {
+    var positiontypeDropdown = document.getElementById('position_type');
+    positiontypeDropdown.style.width = '100%';
+});
+
+
+
 function checkAddNewShiftOption() {
     var select = document.getElementById("job_shift");
     var selectedOption = select.options[select.selectedIndex].value;
@@ -975,7 +1074,7 @@ document.addEventListener("DOMContentLoaded", function () {
             row.innerHTML = "<td>" + reviewData.name + "</td>" +
                 "<td>" + reviewData.email + "</td>" +
                 "<td>" + reviewData.message + "</td>" +
-                "<td class='actionColumn'><button class='approve_btn'><i class='fa-solid fa-square-check'>&nbsp; Approve</i></button>" +
+                "<td class='actionColumn'><button style='margin-right:5px;' class='approve_btn'> Approve</i></button>" +
                 "<button class='delete_btn'><i class='fa-solid fa-trash-can'></i>&nbsp; Delete</button></td>";
 
             // Add event listener to the approve button
