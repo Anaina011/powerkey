@@ -34,6 +34,9 @@
                 <p style="text-align:center; margin-top: 10px;">
                     <a href="#" id="forgotPasswordLink">FORGOT PASSWORD?</a>
                 </p>
+                <p style="text-align:center; margin-top: 10px;">
+                    <a href="#" id="signUpLink">SIGN UP</a>
+                </p>
             </form>
         </div>
     </section>
@@ -63,14 +66,13 @@
         };
 
         const app = initializeApp(firebaseConfig);
-        const db = getDatabase();
         const auth = getAuth(app);
-        const dbref = ref(db);
 
         let email = document.getElementById('emailInp');
         let password = document.getElementById('passwordInp');
         let mainForm = document.getElementById('mainForm');
         let forgotPasswordLink = document.getElementById('forgotPasswordLink');
+        let signUpLink = document.getElementById('signUpLink');
 
         let signInUser = evt => {
             evt.preventDefault();
@@ -104,8 +106,25 @@
             }
         }
 
+        let handleSignUp = evt => {
+            evt.preventDefault();
+            let email = prompt('Please enter your email for sign up:');
+            if (email) {
+                let xhr = new XMLHttpRequest();
+                xhr.open("POST", "signup.php", true);
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        alert(xhr.responseText);
+                    }
+                };
+                xhr.send("email=" + email);
+            }
+        }
+
         mainForm.addEventListener('submit', signInUser);
         forgotPasswordLink.addEventListener('click', handleForgotPassword);
+        signUpLink.addEventListener('click', handleSignUp);
 
         function redirectToHome() {
             window.location.href = "index.html";
