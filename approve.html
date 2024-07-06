@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Approve Sign-Up</title>
+</head>
+<body>
+    <div id="container">
+        <h2>Approve New User</h2>
+        <p id="userEmail"></p>
+        <button id="addUserBtn">Add New User</button>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-database.js"></script>
+    <script>
+        // Your Firebase configuration
+         var firebaseConfig = {
+            apiKey: "AIzaSyA8TezUtoFN4Yi9ZJGtawB5LC348GvfILc",
+            authDomain: "power-49793.firebaseapp.com",
+            databaseURL: "https://power-49793-default-rtdb.firebaseio.com",
+            projectId: "power-49793",
+            storageBucket: "power-49793.appspot.com",
+            messagingSenderId: "298921373198",
+            appId: "1:298921373198:web:53596cf1fcbbb69c79565f"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const email = urlParams.get('email');
+            const userEmailElement = document.getElementById('userEmail');
+            userEmailElement.textContent = `User Email: ${decodeURIComponent(email)}`;
+
+            document.getElementById('addUserBtn').addEventListener('click', function() {
+                addUser(email);
+            });
+        });
+
+        function addUser(email) {
+            const auth = firebase.auth();
+            const db = firebase.database();
+
+            // Create a new user with a temporary password
+            auth.createUserWithEmailAndPassword(email, "temporaryPassword123")
+                .then((userCredential) => {
+                    console.log('User created:', userCredential);
+
+                    // Send password reset email
+                    auth.sendPasswordResetEmail(email)
+                        .then(() => {
+                            console.log('Password reset email sent successfully');
+                            alert('User added and password reset email sent!');
+                        })
+                        .catch((error) => {
+                            console.error('Error sending password reset email:', error);
+                            alert('Failed to send password reset email.');
+                        });
+
+                    // Add user to the database
+                    const userId = userCredential.user.uid;
+                    db.ref('users/' + userId).set({
+                        email: email,
+                        approved: true
+                    })
+                    .then(() => {
+                        console.log('User added to database successfully');
+                    })
+                    .catch((error) => {
+                        console.error('Error adding user to database:', error);
+                        alert('Failed to add user to database.');
+                    });
+
+                })
+                .catch((error) => {
+                    console.error('Error creating user:', error);
+                    alert('Failed to create user.');
+                });
+        }
+    </script>
+</body>
+</html>

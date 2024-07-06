@@ -6,7 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $subject = "New Sign-Up Request";
     $message = "A new sign-up request has been made with the following email: $email.\n\n";
     $message .= "Click the link below to approve the signup request:\n";
-    $message .= "https://demo.illforddigital.com/powerkey/approve.php?email=$encodedEmail";
+    $message .= "https://demo.illforddigital.com/powerkey/approve.html?email=$encodedEmail";
     $headers = "From: anainass.id@gmail.com"; // Replace with your email
 
     if (mail($to, $subject, $message, $headers)) {
