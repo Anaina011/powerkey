@@ -27,6 +27,8 @@
 
     <!-- Font Awesome link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <script src="https://kit.fontawesome.com/6c53136549.js" crossorigin="anonymous"></script>
+
 
 </head>
 
@@ -899,6 +901,40 @@
 
 
 
+    <div class="floating_btn">
+        <a target="_blank" href="https://wa.me/+968 22544509" style="text-decoration: none;">
+            <div class="contact_icon">
+                <i class="fa fa-whatsapp my-float"></i>
+            </div>
+        </a>
+        <p class="text_icon">Talk to us?</p>
+    </div>
+
+    <div id="cookies_float" class="cookies_float">
+        <p>This page places and reads third party cookies on your browser that are used for non-essential purposes
+            including targeting of ads. <a style="font-family: Poppins, sans-serif;" href="cookies-policy.html">Learn more.</a> Through these cookies, <a style="font-family: Poppins, sans-serif;"
+                href="">Twitter</a>, <a style="font-family: Poppins, sans-serif;" href="">Facebook</a> , and <a style="font-family: Poppins, sans-serif;" href="">Linkedin</a> collect
+            personal data about you for their own purposes.
+        </p>
+        <div class="coookie_buttons">
+            <button onclick="document.querySelectorAll('.cookies_float').forEach(element => {
+                element.style.display = 'none';
+            });">Accept</button>
+            <button onclick="document.querySelectorAll('.cookies_float').forEach(element => {
+                element.style.display = 'none';
+            });">Decline</button>
+        </div>
+    </div>
+
+    <script src="js/cookies.js"></script>
+
+
+
+
+
+
+
+
 
 
 
@@ -911,6 +947,8 @@
     <script src="js/projects.js"></script>
     <script src="js/fireconfig.js"></script>
     <script src="js/HomeProjectCard.js"></script>
+    <script src="js/cookies.js"></script>
+
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

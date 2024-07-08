@@ -91,7 +91,23 @@
 
 
 
+    <div id="cookies_float" class="cookies_float">
+        <p>This page places and reads third party cookies on your browser that are used for non-essential purposes
+            including targeting of ads. <a style="font-family: Poppins, sans-serif;" href="cookies-policy.html">Learn more.</a> Through these cookies, <a style="font-family: Poppins, sans-serif;"
+                href="">Twitter</a>, <a style="font-family: Poppins, sans-serif;" href="">Facebook</a> , and <a style="font-family: Poppins, sans-serif;" href="">Linkedin</a> collect
+            personal data about you for their own purposes.
+        </p>
+        <div class="coookie_buttons">
+            <button onclick="document.querySelectorAll('.cookies_float').forEach(element => {
+                element.style.display = 'none';
+            });">Accept</button>
+            <button onclick="document.querySelectorAll('.cookies_float').forEach(element => {
+                element.style.display = 'none';
+            });">Decline</button>
+        </div>
+    </div>
 
+    <script src="js/cookies.js"></script>
 
 
 
