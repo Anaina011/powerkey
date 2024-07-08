@@ -1,10 +1,12 @@
 // Variables for auto-logout
 let logoutTimer;
+// let isPageRefreshed = false;
+// let isRefreshButtonClicked = false;
 
 // Function to handle auto-logout after inactivity
 function startAutoLogoutTimer() {
     // Set the timer for 30 minutes (1800000 milliseconds)
-    const autoLogoutTime = 1800000;
+    const autoLogoutTime = 5000;
 
     // Clear any existing timer
     if (logoutTimer) {
@@ -14,7 +16,6 @@ function startAutoLogoutTimer() {
     // Set a new timer
     logoutTimer = setTimeout(() => {
         firebase.auth().signOut().then(() => {
-            
             window.location.href = "login.html"; // Redirect to login page
         }).catch((error) => {
             console.error("Error signing out: ", error);
@@ -30,6 +31,19 @@ function resetAutoLogoutTimer() {
 // Event listeners to reset the auto-logout timer on user interactions
 document.addEventListener("mousemove", resetAutoLogoutTimer);
 document.addEventListener("keypress", resetAutoLogoutTimer);
+
+// Add beforeunload event listener to handle logout on tab or browser close
+window.addEventListener("beforeunload", (event) => {
+    // Check if the page is being refreshed
+    if (!sessionStorage.getItem('isPageRefreshed') && !isRefreshButtonClicked) {
+        firebase.auth().signOut().then(() => {
+            localStorage.clear();
+            sessionStorage.clear();
+        }).catch((error) => {
+            console.error("Error signing out: ", error);
+        });
+    }
+});
 
 // Function to handle login
 function login() {
@@ -80,6 +94,7 @@ firebase.auth().onAuthStateChanged((user) => {
         }
     }
 });
+
 // Ensure that these scripts are included in your dashboard page
 document.addEventListener("DOMContentLoaded", function () {
     // Check user authentication state on page load
@@ -100,34 +115,23 @@ document.addEventListener("DOMContentLoaded", function () {
     // Attach event listeners for login and logout buttons
     document.getElementById("login_button").addEventListener("click", login);
     document.getElementById("logout_button").addEventListener("click", logout);
+
+    // Clear the flags indicating page actions on page load
+    sessionStorage.setItem('isPageRefreshed', false);
+    isPageRefreshed = false;
+    isRefreshButtonClicked = false;
 });
 
-
-function logoutUser() {
-    const confirmation = confirm("Are you sure you want to log out?");
-    if (confirmation) {
-        firebase.auth().signOut().then(() => {
-            localStorage.clear();
-            sessionStorage.clear();
-            window.location.href = 'index.html';
-        }).catch((error) => {
-            console.error(error.message);
-        });
-    }
-}
-
-firebase.auth().onAuthStateChanged(function (user) {
-    if (!user) {
-        window.location.href = 'login.html';
+// Detect page refresh
+window.addEventListener('beforeunload', function(event) {
+    if (event.target.activeElement.id === 'refreshButton') {
+        isRefreshButtonClicked = true;
+    } else {
+        sessionStorage.setItem('isPageRefreshed', true);
     }
 });
 
-document.getElementById("signoutbtn").addEventListener("click", logoutUser);
 
-function checkUserCred() {
-    firebase.auth().onAuthStateChanged(function (user) {
-        if (!user) {
-            window.location.href = 'login.html';
-        }
-    });
-}
+window.addEventListener('unload', function () {
+    logout();
+});
