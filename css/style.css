@@ -2224,6 +2224,7 @@ justify-content: right;
     z-index: 10;
 }
 
+
 /* .Review_popup {
     display: none;
     position: fixed;
@@ -10170,4 +10171,43 @@ color: var(--theme_color1);
     margin-top: 8px;
     color: #000000;
     font-size: 13px;
+}
+
+
+
+
+
+
+
+
+
+.ql-toolbar .ql-formats button, 
+.ql-toolbar .ql-formats button .ql-stroke,
+.ql-toolbar .ql-formats button .ql-fill,
+.ql-toolbar .ql-formats button .ql-picker-label,
+.ql-toolbar .ql-formats button .ql-picker-item {
+    color: white;
+    stroke: white;
+    fill: white;
+}
+
+/* To handle hover and active states, you can add: */
+.ql-toolbar .ql-formats button:hover, 
+.ql-toolbar .ql-formats button:hover .ql-stroke,
+.ql-toolbar .ql-formats button:hover .ql-fill,
+.ql-toolbar .ql-formats button:hover .ql-picker-label,
+.ql-toolbar .ql-formats button:hover .ql-picker-item,
+.ql-toolbar .ql-formats button:focus,
+.ql-toolbar .ql-formats button:focus .ql-stroke,
+.ql-toolbar .ql-formats button:focus .ql-fill,
+.ql-toolbar .ql-formats button:focus .ql-picker-label,
+.ql-toolbar .ql-formats button:focus .ql-picker-item,
+.ql-toolbar .ql-formats button.ql-active,
+.ql-toolbar .ql-formats button.ql-active .ql-stroke,
+.ql-toolbar .ql-formats button.ql-active .ql-fill,
+.ql-toolbar .ql-formats button.ql-active .ql-picker-label,
+.ql-toolbar .ql-formats button.ql-active .ql-picker-item {
+    color: white;
+    stroke: white;
+    fill: white;
 }
