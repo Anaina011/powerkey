@@ -135,3 +135,13 @@ window.addEventListener('beforeunload', function(event) {
 window.addEventListener('unload', function () {
     logout();
 });
+
+
+
+// Function to log out user
+function logoutUser() {
+    const confirmation = confirm("Are you sure you want to log out?");
+    if (confirmation) {
+       logout();
+    }
+}
