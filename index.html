@@ -708,7 +708,7 @@
             </div>
 
         </div>
-        
+
         <div id="home_review_img3" class="home_review_img3 row">
             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 add_review_col">
                 <button onclick="DisplayReviewPopup()" class="Review_button">
@@ -717,18 +717,22 @@
             </div>
             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 review_popup_col">
                 <div class="Review_popup">
-                    <div class="Review_popup_closer">
-                        <a onclick="CloseReviewPopup()"><i class="fa-solid fa-x"></i></a><br><br>
+                    <div class="Review_popup_content_wrap">
+                        <div class="Review_popup_closer">
+                            <a onclick="CloseReviewPopup()"><i class="fa-solid fa-x"></i></a><br><br>
+                        </div>
+
+                        <form action="">
+                            <input type="text" placeholder="Full Name" id="fullName" name="fullName"><br>
+                            <input type="email" placeholder="Email ID" id="email" name="email"><br>
+                            <textarea placeholder="Your Message" id="message" name="message" rows="5"
+                                maxlength="500"></textarea><br>
+                            <button id="submitReview">Send &nbsp;<i class="fa-solid fa-paper-plane"></i></button>
+                        </form>
                     </div>
 
-                    <form action="">
-                        <input type="text" placeholder="Full Name" id="fullName" name="fullName"><br>
-                        <input type="email" placeholder="Email ID" id="email" name="email"><br>
-                        <textarea placeholder="Your Message" id="message" name="message" rows="5"
-                            maxlength="500"></textarea><br>
-                        <button id="submitReview">Send &nbsp;<i class="fa-solid fa-paper-plane"></i></button>
-                    </form>
                 </div>
+
                 <img src="img/home_review_img3.webp" alt="">
             </div>
 
@@ -833,8 +837,8 @@
             </div>
         </div>
     </section>
-    
-    
+
+
 
 
 
@@ -989,8 +993,10 @@
 
     <div id="cookies_float" class="cookies_float">
         <p>This page places and reads third party cookies on your browser that are used for non-essential purposes
-            including targeting of ads. <a style="font-family: Poppins, sans-serif;" href="cookies-policy.html">Learn more.</a> Through these cookies, <a style="font-family: Poppins, sans-serif;"
-                href="">Twitter</a>, <a style="font-family: Poppins, sans-serif;" href="">Facebook</a> , and <a style="font-family: Poppins, sans-serif;" href="">Linkedin</a> collect
+            including targeting of ads. <a style="font-family: Poppins, sans-serif;" href="cookies-policy.html">Learn
+                more.</a> Through these cookies, <a style="font-family: Poppins, sans-serif;" href="">Twitter</a>, <a
+                style="font-family: Poppins, sans-serif;" href="">Facebook</a> , and <a
+                style="font-family: Poppins, sans-serif;" href="">Linkedin</a> collect
             personal data about you for their own purposes.
         </p>
         <div class="coookie_buttons">
