@@ -892,7 +892,7 @@
 
 .home_counter_card h6 {
     color: var(--theme_color3);
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-family: "Poppins", sans-serif;
     font-weight: 300;
     padding-bottom: 4%;
@@ -904,13 +904,13 @@
 
 .home_counter_card_content i {
     color: var(--theme_color3);
-    padding-right: 2.6%;
+    padding-right: 2.4%;
     font-size: 1.3rem;
 }
 
 .home_counter_card_content h6 {
     color: var(--theme_color3);
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-family: "Poppins", sans-serif;
     font-weight: 300;
 }
