@@ -21,6 +21,8 @@
     --theme_color3: #FFFFFF;
     --theme_color4: #4D4D4D;
     --themr-color5: #737373;
+    --themr-color6: #FE820A;
+
 
     --background_gray: #111111;
     --background_career: #F1F5F8;
@@ -28,6 +30,9 @@
     --admin_light_gray: #ECECEC;
 
 
+--theme_down: linear-gradient(to bottom, #F7E91C, #FD5F07, #E70E06, #CC0D0C);
+--theme_bottom: linear-gradient(to bottom, #F7E91C, #C10504, #CC0D0C);
+--theme_top: linear-gradient(to top, #F7E91C, #FE820A, #CC0D0C);
 
     --dark_right: linear-gradient(to right, #E62B00, #DF7800);
     --dark_bottom: linear-gradient(to bottom, #E62B00, #E25D00);
@@ -132,7 +137,7 @@
     padding-left: 9%;
     padding-right: 9%; */
     font-size: 160%;
-    background-image: var(--dark_bottom);
+    background-image: var(--theme_down);
     color: #fff;
     border: none;
     border-top-right-radius: 0.8rem;
@@ -201,7 +206,7 @@
 }
 
 .home-slide-button button {
-    --primary-color: linear-gradient(to top, #E62B00, #E25D00);
+    --primary-color: linear-gradient(to top, #FAD60B, #FE820A, #CC0D0C);
     --secondary-color: #ffffff;
     --hover-color: #eceff2;
     --arrow-width: 20px;
@@ -238,7 +243,7 @@
 .home-slide-button button .arrow {
     margin-top: 0px;
     width: var(--arrow-width);
-    background: var(--primary-color);
+    background: var(--#FE820A);
     height: 2px;
     position: relative;
     transition: 0.2s;
@@ -876,7 +881,7 @@
     position: absolute;
     bottom: -16%;
     left: 65%;
-    background-image: var(--dark_bottom);
+    background-image: var(--theme_down);
     width: 30%;
     padding-left: 3%;
     padding-right: 3%;
@@ -1258,7 +1263,7 @@
 }
 
 .home_vision {
-    background-color: var(--theme_color3);
+    background-image: var(--theme_top);
     height: auto;
     width: 30%;
     /* padding-left: 1.5rem;
@@ -2324,6 +2329,8 @@ justify-content: right;
 .home_review_cmpy {
     width: 100%;
     overflow: hidden;
+    padding-top: 2%;
+    padding-bottom: 3%;
 }
 
 .marquee {
@@ -2426,7 +2433,7 @@ justify-content: right;
 .home_contact_form {
     width: 84%;
     height: auto;
-    background-image: var(--dark_top);
+    background-image: var(--theme_down);
     margin-top: 12%;
     padding-top: 19%;
     padding-left: 5%;
@@ -4957,7 +4964,7 @@ justify-content: right;
 
 .solutions_content_container {
     width: 32%;
-    background-color: var(--theme_color1);
+    background: var(--theme_down);
     height: auto;
     border-top-right-radius: 2.5rem;
     padding-top: 8%;
@@ -4968,7 +4975,7 @@ justify-content: right;
 }
 
 .solutions_video_container:hover .solutions_content_container {
-    background-color: var(--theme_color2);
+    background: var(--theme_color2);
 }
 
 .solutions_video_container:hover .solutions_content_line {

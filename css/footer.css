@@ -26,6 +26,8 @@
     --background_gray: #111111;
 
 
+    --theme_down: linear-gradient(to bottom, #F7E91C, #FE820A, #CC0D0C);
+    --theme_top: linear-gradient(to top, #F7E91C, #FE820A, #CC0D0C);
 
     --dark_right: linear-gradient(to right, #E62B00, #DF7800);
     --dark_bottom: linear-gradient(to bottom, #E62B00, #E25D00);
@@ -75,7 +77,7 @@
     width: max-content;
     height: 400px;
     border-top-right-radius: 3rem;
-    background-image: linear-gradient(to top, #E62B00, #E25D00);
+    background-image: linear-gradient(to bottom, #F7E91C, #FE820A, #CC0D0C);
 }
 
 .footer_col1_subcsribe_container h3 {

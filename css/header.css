@@ -6,6 +6,8 @@
     --background_gray: #111111;
 
 
+--theme_down: linear-gradient(to bottom, #F7E91C, #FE820A, #CC0D0C);
+--theme_top: linear-gradient(to top, #F7E91C, #FE820A, #CC0D0C);
 
     --dark_right: linear-gradient(to right, #E62B00, #DF7800);
     --dark_top: linear-gradient(to top, #E62B00, #E25D00);
@@ -46,7 +48,7 @@ STYLES FOR HEADER AND NAVBAR START HERE
 }
 
 .home_header {
-    background-image: var(--dark_right);
+    background-image: var(--theme_down);
 }
 
 .header_logo_container {

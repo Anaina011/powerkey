@@ -11,7 +11,7 @@ function changeColor() {
     });
 
     // Change background to linear gradient for the current div
-    homeVisionDivs[currentIndex].style.background = 'linear-gradient(to bottom, #E62B00, #E25D00)';
+    homeVisionDivs[currentIndex].style.background = 'linear-gradient(to bottom, #F7E91C, #FE820A, #CC0D0C)';
     
     // Move to the next div
     currentIndex = (currentIndex + 1) % homeVisionDivs.length;
