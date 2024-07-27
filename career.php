@@ -13,21 +13,41 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         die("Invalid vacancy ID.");
     }
 
-    // Email details
+    // Email details for admin notification
     $to = "anainass.id@gmail.com"; // Replace with your email address
     $subject = "New Job Application for Vacancy: $vacancyId";
     $message = "
         <html>
         <head>
             <title>New Job Application</title>
+            <style>
+                .container {
+                    border: 2px solid #E62B00;
+                    padding: 20px;
+                    max-width: 600px;
+                    margin: auto;
+                }
+                .header {
+                    text-align: center;
+                }
+                .header img {
+                    max-width: 100px;
+                }
+            </style>
         </head>
         <body>
-            <h2>New Job Application</h2>
-            <p><strong>Vacancy Name:</strong> $vacancyId</p>
-            <p><strong>First Name:</strong> $firstName</p>
-            <p><strong>Last Name:</strong> $lastName</p>
-            <p><strong>Email:</strong> $email</p>
-            <p><strong>Phone:</strong> $phone</p>
+            <div class='container'>
+                <div class='header'>
+                    <img src='https://demo.illforddigital.com/powerkey/img/powerkey_logo.webp' alt='Company Logo'>
+                    <h1>Power Key International LLC</h1>
+                </div>
+                <h2>New Job Application</h2>
+                <p><strong>Vacancy Name:</strong> $vacancyId</p>
+                <p><strong>First Name:</strong> $firstName</p>
+                <p><strong>Last Name:</strong> $lastName</p>
+                <p><strong>Email:</strong> $email</p>
+                <p><strong>Phone:</strong> $phone</p>
+            </div>
         </body>
         </html>
     ";
@@ -35,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Boundary for separating parts of the email
     $boundary = md5(uniqid(time()));
 
-    // Headers for the email
+    // Headers for the admin email
     $headers = "MIME-Version: 1.0\r\n";
     $headers .= "Content-Type: multipart/mixed; boundary=\"$boundary\"\r\n";
     $headers .= "From: $email\r\n";
@@ -60,11 +80,52 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $body .= "--$boundary--";
     }
 
-    // Sending the email
+    // Sending the email to admin
     if (mail($to, $subject, $body, $headers)) {
-        echo "Application submitted successfully.";
+        // Send confirmation email to the applicant
+        $replySubject = "Thank you for your application";
+        $replyMessage = "
+            <html>
+            <head>
+                <title>Thank You for Your Application</title>
+                <style>
+                    .container {
+                        border: 2px solid #E62B00;
+                        padding: 20px;
+                        max-width: 600px;
+                        margin: auto;
+                    }
+                    .header {
+                        text-align: center;
+                    }
+                    .header img {
+                        max-width: 100px;
+                    }
+                </style>
+            </head>
+            <body>
+                <div class='container'>
+                    <div class='header'>
+                        <img src='https://demo.illforddigital.com/powerkey/img/powerkey_logo.webp' alt='Company Logo'>
+                        <h1>Power Key International LLC</h1>
+                    </div>
+                    <h2>Dear $firstName $lastName,</h2>
+                    <p>Thank you for applying for the <strong>$vacancyId</strong> position. We have received your application and will review it shortly.</p>
+                    <p>Best regards,</p>
+                    <p>Power Key International LLC</p>
+                </div>
+            </body>
+            </html>
+        ";
+        $replyHeaders = "MIME-Version: 1.0\r\n";
+        $replyHeaders .= "Content-Type: text/html; charset=UTF-8\r\n";
+        $replyHeaders .= "From: anainass.id@gmail.com\r\n"; // Replace with your email address
+
+        mail($email, $replySubject, $replyMessage, $replyHeaders);
+
+        echo "<script type='text/javascript'>alert('Email sent successfully.'); window.location.href = 'career.html';</script>";
     } else {
-        echo "Error submitting application.";
+        echo "<script type='text/javascript'>alert('Failed to send message.'); window.location.href = 'career.html';</script>";
     }
 } else {
     echo "Invalid request.";
