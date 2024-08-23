@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PowerKey International-Agricultural-Chemical-Products</title>
+    <title>Power Key International-Agricultural-Chemical-Products</title>
 
     <link rel="stylesheet" href="css/style.css">
 
@@ -22,6 +22,14 @@
     <link rel="stylesheet" type="text/css" href="path/to/slick/slick.css" />
     <link rel="stylesheet" type="text/css" href="path/to/slick/slick-theme.css" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick.css" />
+
+    <!-- Font Awesome link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
+    <!-- Font Awesome link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <script src="https://kit.fontawesome.com/6c53136549.js" crossorigin="anonymous"></script>
+
 
 
     <!--================= BIG SHOULDER FONT LINK ================= -->
@@ -53,7 +61,7 @@
                     <img src="../img/service_hero_back.webp" alt="">
                 </div>
                 <a href="services.html">BACK</a>
-                
+
             </div>
         </div>
     </section>
@@ -124,7 +132,7 @@
                     </div>
                 </div>
                 <div class="service_product_content_sec1">
-                    <h6>PowerKey Oil and Gas Company's Agricultural Chemical Products Services cater to the diverse
+                    <p>Power Key Oil and Gas Company's Agricultural Chemical Products Services cater to the diverse
                         needs of the agricultural sector, providing innovative solutions to enhance crop productivity,
                         quality, and sustainability. With a commitment to excellence, environmental stewardship, and
                         customer satisfaction, we offer a comprehensive suite of services tailored to the unique
@@ -135,7 +143,7 @@
                         security.<br> <br>
 
                         Crop Protection: Crop protection is essential for safeguarding crops from pests, diseases, and
-                        weeds that can significantly impact yield and quality. At PowerKey Oil and Gas Company, we offer
+                        weeds that can significantly impact yield and quality. At Power Key Oil and Gas Company, we offer
                         a wide range of crop protection products, including herbicides, insecticides, fungicides, and
                         plant growth regulators, designed to protect crops throughout their growth cycle. Our products
                         are formulated using advanced technologies and active ingredients to deliver effective and
@@ -146,7 +154,7 @@
                         <br><br>
 
                         Soil Health Management: Healthy soil is the foundation of productive and sustainable
-                        agriculture, providing essential nutrients, water, and support for plant growth. At PowerKey Oil
+                        agriculture, providing essential nutrients, water, and support for plant growth. At Power Key Oil
                         and Gas Company, we offer soil health management solutions aimed at improving soil fertility,
                         structure, and resilience. Our soil health products, including soil conditioners, fertilizers,
                         and microbial inoculants, are designed to replenish essential nutrients, enhance soil structure,
@@ -156,14 +164,14 @@
                         <br><br>
 
                         Plant Nutrition: Optimizing plant nutrition is crucial for maximizing crop yield, quality, and
-                        resilience to environmental stresses. At PowerKey Oil and Gas Company, we offer a comprehensive
+                        resilience to environmental stresses. At Power Key Oil and Gas Company, we offer a comprehensive
                         range of plant nutrition products and services designed to meet the nutritional needs of crops
                         throughout their growth cycle. Our products include fertilizers, micronutrients, biostimulants,
                         and specialty nutrients formulated to provide balanced nutrition and support optimal plant
                         growth and development. We also offer customized nutrient management plans tailored to the
                         specific requirements of crops and growing conditions, helping farmers optimize nutrient uptake,
                         minimize nutrient losses, and achieve superior crop performance.
-                    </h6>
+                    </p>
                 </div>
             </div>
         </div>
@@ -311,12 +319,30 @@
 
 
 
+    <button id="scrollToTopBtn" onclick="scrollToTop()"><i class="bi bi-arrow-up-short"></i></button>
+
+
+
+
+
+
+
+    <div class="floating_btn">
+        <a target="_blank" href="https://wa.me/+968 2254 4509" style="text-decoration: none;">
+            <div class="contact_icon">
+                <i class="fa fa-whatsapp my-float"></i>
+            </div>
+        </a>
+        <p class="text_icon">Talk to us?</p>
+    </div>
 
 
     <div id="cookies_float" class="cookies_float">
         <p>This page places and reads third party cookies on your browser that are used for non-essential purposes
-            including targeting of ads. <a style="font-family: Poppins, sans-serif;" href="cookies-policy.html">Learn more.</a> Through these cookies, <a style="font-family: Poppins, sans-serif;"
-                href="">Twitter</a>, <a style="font-family: Poppins, sans-serif;" href="">Facebook</a> , and <a style="font-family: Poppins, sans-serif;" href="">Linkedin</a> collect
+            including targeting of ads. <a style="font-family: Poppins, sans-serif;" href="cookies-policy.html">Learn
+                more.</a> Through these cookies, <a style="font-family: Poppins, sans-serif;" href="">Twitter</a>, <a
+                style="font-family: Poppins, sans-serif;" href="">Facebook</a> , and <a
+                style="font-family: Poppins, sans-serif;" href="">Linkedin</a> collect
             personal data about you for their own purposes.
         </p>
         <div class="coookie_buttons">
@@ -336,11 +362,30 @@
 
 
 
+    <!-- scroll to top -->
+    <script>
+        window.onscroll = function () {
+            let scrollToTopBtn = document.getElementById("scrollToTopBtn");
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                scrollToTopBtn.style.display = "block";
+            } else {
+                scrollToTopBtn.style.display = "none";
+            }
+        };
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+
+    </script>
 
 
 
 
-    
     <!--footer start-->
     <script>
         function includeHTML(filePath, targetElement) {
@@ -353,14 +398,14 @@
             };
             xhr.send();
         }
-        
-        
-        var headerPath = '../header.html'; 
+
+
+        var headerPath = '../header.html';
         var footerPath = '../footer.html';
-        
+
         var headerContainer = document.getElementById('header-container');
         includeHTML(headerPath, headerContainer);
-        
+
         var xhrFooter = new XMLHttpRequest();
         xhrFooter.open('GET', footerPath, true);
         xhrFooter.onreadystatechange = function () {
@@ -400,7 +445,7 @@
         integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
         crossorigin="anonymous"></script>
 
-    
+
 
 
 

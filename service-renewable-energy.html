@@ -4,11 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PowerKey International-Renewable-Energy</title>
+    <title>Power Key International-Renewable-Energy</title>
 
     <link rel="stylesheet" href="css/style.css">
 
     <link rel="shortcut icon" type="image/jpg" href="favicon.webp">
+<!-- Font Awesome link -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
+<!-- Font Awesome link -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+<script src="https://kit.fontawesome.com/6c53136549.js" crossorigin="anonymous"></script>
+
 
     <!-- bootstrap cdn links -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -119,7 +126,7 @@
                     </div>
                 </div>
                 <div class="service_product_content_sec1">
-                    <h6>PowerKey Oil and Gas Company stands at the forefront of the global transition to renewable
+                    <p>Power Key Oil and Gas Company stands at the forefront of the global transition to renewable
                         energy, recognizing the imperative of sustainable energy sources in mitigating climate change
                         and securing a resilient energy future. Our Renewable Energy Services division is dedicated to
                         developing, investing in, and operating renewable energy projects worldwide. In this
@@ -128,7 +135,7 @@
                         sustainability, highlighting our commitment to driving the renewable energy transition and
                         delivering value to our clients and communities. <br> <br>
 
-                        Project Development: At PowerKey Oil and Gas Company, we undertake a meticulous process of
+                        Project Development: At Power Key Oil and Gas Company, we undertake a meticulous process of
                         project development to identify, assess, and develop renewable energy projects that align with
                         our strategic objectives and sustainability goals. Our experienced team of developers,
                         engineers, and environmental specialists conducts thorough site assessments, feasibility
@@ -138,7 +145,7 @@
                         environmentally sustainable manner.
                         <br><br>
 
-                        Investment: PowerKey Oil and Gas Company is committed to investing in renewable energy projects
+                        Investment: Power Key Oil and Gas Company is committed to investing in renewable energy projects
                         that offer attractive returns and contribute to a cleaner, more sustainable energy future.
                         Leveraging our financial strength, industry expertise, and global network, we identify and
                         evaluate investment opportunities in renewable energy projects across a variety of technologies,
@@ -155,7 +162,7 @@
                         the performance of renewable energy assets. We prioritize safety, environmental stewardship, and
                         regulatory compliance in our operations, ensuring that our projects operate safely and
                         sustainably throughout their lifecycle while delivering consistent returns to our investors.
-                    </h6>
+                    </p>
                 </div>
             </div>
         </div>
@@ -303,6 +310,24 @@
 
 
 
+    
+    <button id="scrollToTopBtn" onclick="scrollToTop()"><i class="bi bi-arrow-up-short"></i></button>
+
+
+
+
+
+
+
+    <div class="floating_btn">
+        <a target="_blank" href="https://wa.me/+968 2254 4509" style="text-decoration: none;">
+            <div class="contact_icon">
+                <i class="fa fa-whatsapp my-float"></i>
+            </div>
+        </a>
+        <p class="text_icon">Talk to us?</p>
+    </div>
+
 
     <div id="cookies_float" class="cookies_float">
         <p>This page places and reads third party cookies on your browser that are used for non-essential purposes
@@ -348,6 +373,31 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
         integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
         crossorigin="anonymous"></script>
+
+
+
+
+      <!-- scroll to top -->
+      <script>
+        window.onscroll = function () {
+            let scrollToTopBtn = document.getElementById("scrollToTopBtn");
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                scrollToTopBtn.style.display = "block";
+            } else {
+                scrollToTopBtn.style.display = "none";
+            }
+        };
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+
+    </script>
+
 
     <!--header and footer script start-->
 

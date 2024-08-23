@@ -4,11 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PowerKey International-Wastewater-Treatment</title>
+    <title>Power Key International-Wastewater-Treatment</title>
 
     <link rel="stylesheet" href="css/style.css">
 
     <link rel="shortcut icon" type="image/jpg" href="favicon.webp">
+<!-- Font Awesome link -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
+<!-- Font Awesome link -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+<script src="https://kit.fontawesome.com/6c53136549.js" crossorigin="anonymous"></script>
+
 
     <!-- bootstrap cdn links -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -119,7 +126,7 @@
                     </div>
                 </div>
                 <div class="service_product_content_sec1">
-                    <h6>PowerKey Oil and Gas Company's Wastewater Treatment Services division is dedicated to providing
+                    <p>Power Key Oil and Gas Company's Wastewater Treatment Services division is dedicated to providing
                         innovative and sustainable solutions for the treatment and management of wastewater in various
                         industrial, municipal, and commercial settings. With a focus on environmental stewardship,
                         regulatory compliance, and cost-effectiveness, we offer a comprehensive suite of services
@@ -129,7 +136,7 @@
                         commitment to protecting water resources and promoting a cleaner, healthier environment.<br>
                         <br>
 
-                        Treatment Technologies: At PowerKey Oil and Gas Company, we employ a wide range of treatment
+                        Treatment Technologies: At Power Key Oil and Gas Company, we employ a wide range of treatment
                         technologies and processes to address the unique characteristics and contaminants present in
                         wastewater streams. Our team of engineers, chemists, and environmental specialists conducts
                         thorough assessments of wastewater composition, flow rates, and treatment objectives to identify
@@ -141,13 +148,13 @@
 
                         Process Optimization: Efficient process optimization is essential for maximizing treatment
                         efficiency, minimizing operating costs, and ensuring reliable performance of wastewater
-                        treatment systems. At PowerKey Oil and Gas Company, we employ advanced process modeling,
+                        treatment systems. At Power Key Oil and Gas Company, we employ advanced process modeling,
                         simulation, and control techniques to optimize the design and operation of wastewater treatment
                         processes. Our team continuously monitors key performance indicators, such as hydraulic loading
                         rates, retention times, and treatment efficiency, to identify opportunities for improvement and
                         implement operational adjustments that enhance treatment performance and reduce energy and
                         chemical consumption.
-                    </h6>
+                    </p>
                 </div>
             </div>
         </div>
@@ -294,6 +301,23 @@
     </section>
 
 
+    
+    <button id="scrollToTopBtn" onclick="scrollToTop()"><i class="bi bi-arrow-up-short"></i></button>
+
+
+
+
+
+
+
+    <div class="floating_btn">
+        <a target="_blank" href="https://wa.me/+968 2254 4509" style="text-decoration: none;">
+            <div class="contact_icon">
+                <i class="fa fa-whatsapp my-float"></i>
+            </div>
+        </a>
+        <p class="text_icon">Talk to us?</p>
+    </div>
 
     <div id="cookies_float" class="cookies_float">
         <p>This page places and reads third party cookies on your browser that are used for non-essential purposes
@@ -340,6 +364,32 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
         integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
         crossorigin="anonymous"></script>
+
+
+
+      <!-- scroll to top -->
+      <script>
+        window.onscroll = function () {
+            let scrollToTopBtn = document.getElementById("scrollToTopBtn");
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                scrollToTopBtn.style.display = "block";
+            } else {
+                scrollToTopBtn.style.display = "none";
+            }
+        };
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+
+    </script>
+
+
+
 
     <!--header and footer script start-->
 

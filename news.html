@@ -4,11 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PowerKey International-News</title>
+    <title>Power Key International-News</title>
 
     <link rel="stylesheet" href="css/style.css">
 
     <link rel="shortcut icon" type="image/jpg" href="favicon.webp">
+
+
+    <!-- Font Awesome link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
+     <!-- Font Awesome link -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+     <script src="https://kit.fontawesome.com/6c53136549.js" crossorigin="anonymous"></script>
+ 
 
     <!-- bootstrap cdn links -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -59,29 +68,29 @@
 
 
 
-    <section class="news_section">
-        <div class="new_sec1">
-            <div class="news_img">
+    <section class="news_section animate fadeInUp">
+        <div class="new_sec1 animate fadeInUp">
+            <div class="news_img animate fadeInUp">
                 <img src="img/news_img1.webp" alt="">
             </div>
-            <div class="new_content">
-                <h3>PowerKey Oil and Gas Reports Record Production Numbers in Q1</h3>
-                <h5>PowerKey Oil and Gas Company has achieved record-breaking production numbers in the first quarter of
+            <div class="new_content animate fadeInUp">
+                <h3>Power Key Oil and Gas Reports Record Production Numbers in Q1</h3>
+                <h5>Power Key Oil and Gas Company has achieved record-breaking production numbers in the first quarter of
                     the fiscal year. With increased efficiency and optimized operations across its assets, the company
                     has surpassed previous production milestones, demonstrating its operational excellence and ability
                     to maximize output even in challenging market conditions.</h5>
             </div>
         </div>
-        <div class="new_sec1">
-            <div class="news_img">
+        <div class="new_sec1 animate fadeInUp">
+            <div class="news_img animate fadeInUp">
                 <img src="img/news_img2.webp" alt="">
             </div>
-            <div class="new_content">
-                <h3>PowerKey Oil and Gas Recognized for Safety Excellence</h3>
-                <h5>PowerKey Oil and Gas Company has been recognized for its outstanding commitment to safety in the
+            <div class="new_content animate fadeInUp">
+                <h3>Power Key Oil and Gas Recognized for Safety Excellence</h3>
+                <h5>Power Key Oil and Gas Company has been recognized for its outstanding commitment to safety in the
                     workplace. The company's unwavering dedication to maintaining the highest safety standards has
                     earned it prestigious accolades from industry regulators and safety organizations. This recognition
-                    highlights PowerKey's proactive approach to ensuring the well-being of its employees and fostering a
+                    highlights Power Key's proactive approach to ensuring the well-being of its employees and fostering a
                     culture of safety across its operations.</h5>
             </div>
         </div>
@@ -89,6 +98,22 @@
 
 
 
+    <button id="scrollToTopBtn" onclick="scrollToTop()"><i class="bi bi-arrow-up-short"></i></button>
+
+
+
+
+
+
+
+    <div class="floating_btn">
+        <a target="_blank" href="https://wa.me/+968 2254 4509" style="text-decoration: none;">
+            <div class="contact_icon">
+                <i class="fa fa-whatsapp my-float"></i>
+            </div>
+        </a>
+        <p class="text_icon">Talk to us?</p>
+    </div>
 
 
     <div id="cookies_float" class="cookies_float">
@@ -109,7 +134,7 @@
 
     <script src="js/cookies.js"></script>
 
-
+    <script src="js/animation.js"></script>
 
 
 
@@ -128,6 +153,29 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
         integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
         crossorigin="anonymous"></script>
+
+
+      <!-- scroll to top -->
+      <script>
+        window.onscroll = function () {
+            let scrollToTopBtn = document.getElementById("scrollToTopBtn");
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                scrollToTopBtn.style.display = "block";
+            } else {
+                scrollToTopBtn.style.display = "none";
+            }
+        };
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+
+    </script>
+
 
     <!--header and footer script start-->
 

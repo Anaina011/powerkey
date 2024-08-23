@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PowerKey International-Admin</title>
+    <title>Power Key International-Admin</title>
 
     <link rel="stylesheet" href="css/style.css">
 
@@ -19,6 +19,12 @@
 
     <!-- Font Awesome link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
+    <!-- Font Awesome link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <script src="https://kit.fontawesome.com/6c53136549.js" crossorigin="anonymous"></script>
+
+
 
     <!--================= BIG SHOULDER FONT LINK ================= -->
     <link href='https://fonts.googleapis.com/css?family=Big Shoulders Text' rel='stylesheet'>
@@ -93,7 +99,9 @@
                                             <option value="Graduation">Graduation</option>
                                             <option value="Post Graduation">Post Graduation</option>
                                             <option value="Diploma">Diploma</option>
-                                            <option value="add_new" style="color: #E62B00; font-family: Poppins, sans-serif;">Add New</option>
+                                            <option value="add_new"
+                                                style="color: #E62B00; font-family: Poppins, sans-serif;">Add New
+                                            </option>
                                         </select>
                                     </div>
                                 </div>
@@ -104,9 +112,11 @@
                                         <select id="job_location" onchange="checkAddNewLocationOption()">
                                             <option value="" disabled selected>Job Location</option>
                                             <option value="Oman">Oman</option>
-                                            <option value="add_new_location" style="color: #E62B00; font-family: Poppins, sans-serif;">Add New Location</option>
+                                            <option value="add_new_location"
+                                                style="color: #E62B00; font-family: Poppins, sans-serif;">Add New
+                                                Location</option>
                                         </select>
-                                    </div> 
+                                    </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6">
                                     <div class="job_shift_container">
@@ -114,9 +124,11 @@
                                             <option value="" disabled selected>Job Shift</option>
                                             <option value="Day shift">Day shift</option>
                                             <option value="Night shift">Night shift</option>
-                                            <option value="add_new_shift" style="color: #E62B00; font-family: Poppins, sans-serif;">Add New Shift</option>
+                                            <option value="add_new_shift"
+                                                style="color: #E62B00; font-family: Poppins, sans-serif;">Add New Shift
+                                            </option>
                                         </select>
-                                    </div> 
+                                    </div>
                                 </div>
                             </div>
                             <div class="admin_career_sec1">
@@ -128,19 +140,23 @@
                                             <option value="Part Time">Part Time</option>
                                             <option value="Internship">Internship</option>
                                             <option value="Fresher">Fresher</option>
-                                            <option value="add_new_position" style="color: #E62B00; font-family: Poppins, sans-serif;">Add New Position Type</option>
+                                            <option value="add_new_position"
+                                                style="color: #E62B00; font-family: Poppins, sans-serif;">Add New
+                                                Position Type</option>
                                         </select>
-                                    </div> 
+                                    </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6">
-                                    <input id="job_category" type="text" placeholder="Job Category" oninput="showCategorySuggestions()">
+                                    <input id="job_category" type="text" placeholder="Job Category"
+                                        oninput="showCategorySuggestions()">
                                     <div id="categorySuggestions" class="suggestions-container"></div>
                                 </div>
-                                
+
                             </div>
                             <div class="admin_career_sec2">
                                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                    <p><span style="color: azure; font-family: Poppins; font-size: 90%;", sans-serif;>Job Description</p>
+                                    <p><span style="color: azure; font-family: Poppins; font-size: 90%;" ,
+                                            sans-serif;>Job Description</p>
                                     <div id="job_description" class="editor-container"></div>
                                 </div>
                             </div>
@@ -170,7 +186,7 @@
                 </table>
             </div>
         </section>
-        
+
         <!-- Modal for job description -->
         <div id="jobDescriptionModal" class="modal">
             <div class="modal-content">
@@ -179,9 +195,9 @@
                 <div id="modalJobDescription"></div>
             </div>
         </div>
-        
-        
-  
+
+
+
 
 
 
@@ -251,7 +267,7 @@
                         <button style="width: 60%; padding: 3% 6%;" id="save_project" type="submit">Save</button>
                     </div>
                 </div>
-                
+
             </div>
             <!-- <button id="save_project" type="submit">Save</button> -->
 
@@ -286,8 +302,8 @@
                     <!-- <button class="admin_searchButtton"
                         onclick="refreshPendingReviewsTable(), refreshApprovedReviewsTable()"><i
                             class="fa-solid fa-arrows-rotate"></i>&nbsp;&nbsp;Refresh Table</button> -->
-                    <button onclick="window.location.href='index.html#home_review_img3'"
-                        class="admin_searchButtton">ADD NEW</button>
+                    <button onclick="window.location.href='index.html#home_review_img3'" class="admin_searchButtton">ADD
+                        NEW</button>
 
                     <div class="reviewToggler">
                         <button class="reviewTogglerPending" onclick="showPendingReviews()">
@@ -334,13 +350,13 @@
 
     <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 
-     <!-- Import the Firebase core (always required) -->
-     <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-app.js"></script>
-     <!-- Import only the Firebase database module -->
-     <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-auth.js"></script>
-     <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-database.js"></script>
-     <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-storage.js"></script>
-     <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase.js"></script>
+    <!-- Import the Firebase core (always required) -->
+    <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-app.js"></script>
+    <!-- Import only the Firebase database module -->
+    <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase.js"></script>
 
     <script src="js/AdminToggler.js"></script>
     <script src="js/fireconfig.js"></script>
