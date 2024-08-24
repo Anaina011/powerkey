@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PowerKey International-Career</title>
+    <title>Power Key International-Career</title>
 
     <link rel="stylesheet" href="css/style.css">
 
@@ -17,6 +17,15 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
+
+    <!-- Font Awesome link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
+     <!-- Font Awesome link -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+     <script src="https://kit.fontawesome.com/6c53136549.js" crossorigin="anonymous"></script>
+ 
 
 
     <!--================= BIG SHOULDER FONT LINK ================= -->
@@ -80,6 +89,26 @@
     </div>
     
 
+
+
+    <button id="scrollToTopBtn" onclick="scrollToTop()"><i class="bi bi-arrow-up-short"></i></button>
+
+
+
+
+
+
+
+    <div class="floating_btn">
+        <a target="_blank" href="https://wa.me/+968 2254 4509" style="text-decoration: none;">
+            <div class="contact_icon">
+                <i class="fa fa-whatsapp my-float"></i>
+            </div>
+        </a>
+        <p class="text_icon">Talk to us?</p>
+    </div>
+
+
     <div id="cookies_float" class="cookies_float">
         <p>This page places and reads third party cookies on your browser that are used for non-essential purposes
             including targeting of ads. <a style="font-family: Poppins, sans-serif;" href="cookies-policy.html">Learn more.</a> Through these cookies, <a style="font-family: Poppins, sans-serif;"
@@ -125,6 +154,29 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
         integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
         crossorigin="anonymous"></script>
+
+
+      <!-- scroll to top -->
+      <script>
+        window.onscroll = function () {
+            let scrollToTopBtn = document.getElementById("scrollToTopBtn");
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                scrollToTopBtn.style.display = "block";
+            } else {
+                scrollToTopBtn.style.display = "none";
+            }
+        };
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+
+    </script>
+
 
     <!--header and footer script start-->
 
