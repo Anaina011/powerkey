@@ -33,6 +33,468 @@
         rel="stylesheet">
 
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+
+    <style>
+        .row {
+            width: 100%;
+            margin: 0 !important;
+        }
+
+        .footer_container {
+            width: 100%;
+            height: auto;
+            border-top: 1px solid black;
+            position: relative;
+        }
+
+        .footer_col1 {
+            padding: 0 !important;
+        }
+
+        .footer_col2 {
+            padding: 0 !important;
+        }
+
+        .footer_col1_rib1 {
+            width: 100%;
+            height: 150px;
+        }
+
+        .footer_col1_rib2 {
+            width: 100%;
+            height: 700px;
+            background-color: #111111;
+        }
+
+        .footer_col1_subcsribe_container {
+            position: absolute;
+            bottom: 400px;
+            left: 5%;
+            padding: 2%;
+            width: max-content;
+            height: 450px;
+            border-top-right-radius: 3rem;
+            background-image: linear-gradient(to bottom, #F7E91C, #FE820A, #CC0D0C);
+        }
+
+        .footer_col1_subcsribe_container h3 {
+            color: #ffffff;
+        }
+
+        .footer_col1_subcsribe_container p {
+            color: #ffffff;
+            font-weight: 100;
+        }
+
+        .footer_col1_subcsribe_container input {
+            width: 100%;
+            height: 50px;
+            border: none;
+            outline: none;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+
+        .footer_col1_subcsribe_container button {
+            background-color: #000000;
+            border: none;
+            color: #ffffff;
+            padding: 0.8rem 2rem;
+            margin-top: 2%;
+        }
+
+        .footer_col2_rib1 {
+            width: 100%;
+            height: 150px !important;
+            padding-top: 6%;
+            padding-bottom: 5%;
+
+        }
+
+        .footer_col2_rib2 {
+            width: 100%;
+            height: 700px;
+            padding-top: 5%;
+            background-color: #111111;
+        }
+
+        .footer_col2_rib1 {
+            width: 100%;
+            /* height: 120px; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-left: 3%;
+        }
+
+        .footer_head_item {
+            display: flex;
+
+            align-items: center;
+            padding-bottom: 3%;
+        }
+
+        .footer_head_item img {
+            width: 20%;
+            height: auto;
+            margin-right: 5%;
+        }
+
+        .footer_head_item1 {
+            display: flex;
+            align-items: center;
+        }
+
+        .footer_head_item_text {
+            width: 100%;
+        }
+
+        .footer_head_item1 img {
+            width: 13%;
+            height: auto;
+            margin-right: 5%;
+        }
+
+        .footer_col2_rib2_map_container {
+            padding-left: 25%;
+            padding-right: 10%;
+        }
+
+        .footer_col2_footer_items {
+            width: 100%;
+            height: auto;
+        }
+
+        .footer_col2_footer_items_col {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+            margin-top: 4%;
+        }
+
+        .footer_col2_footer_items_col h3 {
+            color: #ffffff;
+            margin-bottom: 9%;
+        }
+
+        .footer_col2_footer_items_col a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 400;
+            font-family: "Poppins", sans-serif;
+            padding-bottom: 4%;
+            font-size: 110%;
+        }
+
+        .sub_subscribe_container {
+            padding: 8%;
+            width: 100%;
+            height: auto;
+            background-image: linear-gradient(to bottom, #E62B00, #E25D00);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #ffffff;
+        }
+
+        .sub_subscribe_box {
+            width: 60%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .sub_subscribe_box input {
+            width: 100%;
+            border: none;
+        }
+
+        .sub_subscribe_box button {
+            background-color: #000000;
+            border: none;
+            border-radius: 0.1rem;
+            color: #ffffff;
+            padding: 0.2rem;
+            width: 100%;
+            margin-bottom: 2%;
+        }
+
+        .subs_but {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer_basement_container {
+            width: 100%;
+            height: auto;
+            background-color: #111111;
+            display: flex;
+            justify-content: right;
+        }
+
+        .footer_basement_holder {
+            width: 90%;
+            height: auto;
+            border-top-left-radius: 2rem;
+            background-color: #000000;
+        }
+
+        .footer_basement_col1 {
+            text-align: left;
+        }
+
+        .footer_basement_col1_rib1 {
+            display: flex;
+            align-items: center;
+            justify-content: left;
+            padding-left: 5%;
+            padding-top: 5%;
+            padding-bottom: 2%;
+
+        }
+
+        .footer_basement_col1_rib2 {
+            display: flex;
+            flex-direction: column;
+            /* align-items: center; */
+            justify-content: left;
+            padding-left: 5%;
+            padding-bottom: 5%;
+        }
+
+        .footer_basement_col1_rib1 a {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 115%;
+            letter-spacing: 1px;
+            font-family: "Poppins", sans-serif;
+        }
+
+        .footer_basement_col1_rib2 a {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 105%;
+            letter-spacing: 1px;
+            font-family: "Poppins", sans-serif;
+        }
+
+        .footer_basement_col2_sec {
+            padding-top: 3%;
+        }
+
+        .footer_basement_col2_sec a {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 105%;
+            letter-spacing: 1px;
+            font-family: "Poppins", sans-serif;
+            padding-top: 2%;
+        }
+
+        .footer_basement_col2 {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            padding-bottom: 2%;
+        }
+
+        .footer_basement_col2 i {
+            color: #ffffff;
+            font-size: 150%;
+        }
+
+        .footer_head_item_text a {
+            text-decoration: none;
+            color: var(--theme_color2);
+        }
+
+        @media screen and (max-width: 500px) {
+            .footer_col2_rib1 {
+                padding-top: 12%;
+                padding-left: 12%;
+                padding-bottom: 10%;
+
+            }
+        }
+
+        @media screen and (max-width: 1128px) {
+            .footer_col2_footer_items_col a {
+                font-size: 85%;
+            }
+
+
+            .footer_basement_col1_rib1 a {
+                font-size: 90%;
+            }
+
+            .footer_basement_col1_rib2 a {
+                font-size: 90%;
+            }
+
+            .footer_basement_col2 a {
+                font-size: 90%;
+            }
+
+        }
+
+        @media screen and (max-width: 1104px) {
+            .footer_basement_col1_rib1 a {
+                font-size: 75%;
+            }
+
+            .footer_basement_col1_rib2 a {
+                font-size: 75%;
+            }
+
+            .footer_basement_col2 a {
+                font-size: 75%;
+            }
+        }
+
+
+        @media screen and (max-width: 1128px) {
+            .footer_col2_footer_items_col h3 {
+                margin-bottom: 2%
+            }
+
+            .footer_col2_footer_items_col {
+                margin-top: 1%;
+            }
+        }
+
+        @media screen and (min-width: 831px) {
+            .sub_subscribe_container {
+                display: none;
+            }
+        }
+
+        @media screen and (max-width: 830px) {
+            .footer_col1 {
+                display: none;
+            }
+
+            .footer_col2 {
+                width: 100%;
+            }
+
+            .footer_col1_rib1 {
+                display: none;
+            }
+
+            .footer_col1_rib2 {
+                display: none;
+            }
+
+            .footer_col1_subcsribe_container {
+                display: none;
+            }
+
+            .footer_col2_rib1 {
+                width: 100% !important;
+            }
+
+            .footer_col2 {
+                width: 100% !important;
+            }
+
+            .footer_col2_rib2 {
+                width: 100%;
+                height: max-content;
+                padding-top: 5%;
+                background-color: #111111;
+            }
+
+            .footer_head_item_text h3 {
+                font-size: 60%;
+            }
+
+            .footer_head_item_text p {
+                font-size: 85%;
+            }
+
+            .footer_col2_rib2_map_container {
+                padding-left: 10%;
+                padding-right: 10%;
+            }
+
+            .footer_col2_rib2_map_container iframe {
+                border-bottom-left-radius: 0rem !important;
+            }
+
+            .footer_col2_footer_items_col {
+                text-align: center;
+            }
+
+            .footer_basement_holder {
+                width: 100%;
+                border-top-left-radius: 0rem;
+            }
+
+            .footer_basement_col1_rib1 a {
+                font-size: 70%;
+            }
+
+            .footer_basement_col1_rib2 a {
+                font-size: 70%;
+                width: 100%;
+            }
+
+            .footer_basement_col2 a {
+                font-size: 70%;
+            }
+
+            .footer_basement_col1_rib2 {
+                flex-direction: column;
+            }
+
+            .footer_basement_col1_rib1 {
+                justify-content: center;
+            }
+        }
+
+        @media screen and (max-width: 500px) {
+            .footer_head_item_text h4 {
+                font-size: 80%;
+                font-weight: bold;
+            }
+
+            .footer_col2_rib1 {
+                width: 100%;
+                height: 300px !important;
+                padding-top: 3%;
+                padding-bottom: 3%;
+            }
+
+            .footer_head_item_text {
+                padding-bottom: 6%;
+            }
+        }
+
+        @media screen and (max-width: 500px) {
+            .sub_subscribe_box {
+                width: 80%;
+            }
+
+            .footer_col2_rib1 {
+                padding-top: 9%;
+                padding-left: 12%;
+                padding-bottom: 9%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: start;
+                height: 220px;
+            }
+
+            .footer_head_item_text p {
+                width: 80%;
+            }
+        }
+
+        /* ============== CSS FOR FOOTER END ============== */
+    </style>
 </head>
 
 <body>
@@ -40,7 +502,6 @@
     <div id="header-container">
         <!-- The header content will be inserted here -->
     </div>
-
 
 
     <section class="admin_panel">
@@ -53,7 +514,7 @@
                 <div class="admin_sidebar_mobile_products" onclick="showSection('products')">PRODUCTS</div>
             </div>
             <div class="admin_sidebar_mobile_sec1">
-                <div class="admin_sidebar_mobile_news" onclick="showSection('news')">NEWS</div>
+                <div class="admin_sidebar_mobile_news" onclick="showSection('news')">NEWS/ BLOG</div>
                 <div class="admin_sidebar_mobile_projects" onclick="showSection('projects')">PROJECTS</div>
             </div>
             <div class="admin_sidebar_mobile_sec2">
@@ -72,7 +533,7 @@
             <div class="admin_sidebar_sec">
                 <div class="admin_sidebar_careers" onclick="showSection('career')">CAREERS</div>
                 <div class="admin_sidebar_products" onclick="showSection('products')">PRODUCTS</div>
-                <div class="admin_sidebar_news" onclick="showSection('news')">NEWS</div>
+                <div class="admin_sidebar_news" onclick="redirectToBlogAdmin()">NEWS/ BLOG</div>
                 <div class="admin_sidebar_projects" onclick="showSection('projects')">PROJECTS</div>
                 <div class="admin_sidebar_reviews" onclick="showSection('reviews')">REVIEWS</div>
                 <div class="admin_sidebar_logout" onclick="logoutUser()">Log Out</div>
@@ -336,7 +797,155 @@
 
 
 
+    <footer>
+        <div class="footer_container">
+            <div class="row">
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-0 col-xs-0 footer_col1">
+                    <div class="footer_col1_rib1"></div>
+                    <div class="footer_col1_rib2"></div>
+                    <div class="footer_col1_subcsribe_container">
+                        <img src="img/footer_mail.webp" alt="">
+                        <br>
+                        <br>
+                        <h3>
+                            Sign up for industry <br>
+                            alerts, news & insights
+                        </h3>
+                        <p>Email address:</p>
+                        <input type="email" id="emailInput1">
+                        <br>
+                        <div class="subs_but">
+                            <button onclick="subscribe('emailInput1')">SUBSCRIBE</button>
+        <button onclick="downloadEmails()">Download Emails</button>
+                        </div>
+                    </div>
+                </div>
 
+                <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-xs-12 footer_col2">
+                    <div class="footer_col2_rib1">
+                        <div class="footer_head_item1">
+                            <img src="img/home_header_img-1.webp" alt="">
+                            <div class="footer_head_item_text">
+                                <h4>OUR LOCATION</h4>
+                                <p>Powerkey International LLC, <br>
+                                    PO Box No 449, Postal Code 119,
+                                    Ghala, Muscat, Oman.</p>
+                            </div>
+                        </div>
+                        <div class="footer_head_item">
+                            <img src="img/home_header_img-2.webp" alt="">
+                            <div class="footer_head_item_text">
+                                <h4>E-MAIL ADDRESS</h4>
+                                <a href="tel:+96822544509">+ 968 24218333</a>
+
+                            </div>
+                        </div>
+                        <div class="footer_head_item">
+                            <img src="img/home_header_img-3.webp" alt="">
+                            <div class="footer_head_item_text">
+                                <h4>HOT LINE</h4>
+                                <a href="mailto:info@pk-int.com">info@pk-int.com</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer_col2_rib2">
+                        <div class="footer_col2_rib2_map_container">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14626.300445494524!2d58.3715374!3d23.5836988!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e8e01e802e5dc5f%3A0x6246663909e2e8b5!2sPower%20Key%20International%20LLC!5e0!3m2!1sen!2sin!4v1713612010902!5m2!1sen!2sin"
+                                width="100%" height="200" style="border:0; border-bottom-left-radius: 4rem;"
+                                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+                        <div class="footer_col2_footer_items">
+                            <div class="row">
+                                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-xs-12 footer_col2_footer_items_col">
+                                    <h3>ABOUT PKI</h3>
+                                    <a href="about.html">Overview</a>
+                                    <a href="index.html#home_vision_sec">Vision Mission & Values</a>
+                                </div>
+                                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-xs-12 footer_col2_footer_items_col">
+                                    <h3>OUR SERVICES</h3>
+                                    <a href="services/oil-and-gas-well-services.html">Oil & Gas Well Services</a>
+                                    <a href="services/supply-chain-services.html">Supply Chain Services</a>
+                                    <a href="services/energy-environmental-techand-chemical-solutions.html">Energy,
+                                        Environmental Tech & Chemical Solutions</a>
+                                    <a href="services/construction-and-maintenance-services.html">Construction &
+                                        Maintenance Services</a>
+                                    <a href="services/manpower-supply-services.html">Manpower Supply Services</a>
+                                </div>
+                                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-xs-12 footer_col2_footer_items_col">
+                                    <h3>COMPANY POLICIES</h3>
+                                    <a href="QHSE-policy.html">QHSE Policy</a>
+                                    <a href="social-responsibility.html">Social Responsibility</a>
+                                    <a href="career.html">Career</a>
+                                    <a href="">Compliance</a>
+                                </div>
+                                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-xs-12 footer_col2_footer_items_col">
+                                    <h3>ADDRESS</h3>
+                                    <a href="">Powerkey International LLC, <br>
+                                        PO Box No 449, <br>
+                                        Postal Code 119,
+                                        Ghala, Muscat, Oman.<br><br>
+                                        Email: info@pk-int.com <br>
+                                        Tel: + 968 24218333</a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sub_subscribe_container">
+                <h4>Sign up for industry alerts, news & insights</h4>
+                <div class="sub_subscribe_box">
+                    <input type="email" id="emailInput2">
+                    <button onclick="subscribe('emailInput2')">SUBSCRIBE</button>
+                    <button onclick="downloadEmails()">Download Emails</button>
+
+                </div>
+            </div>
+            <!-- Admin Download Button -->
+            <!-- <div>
+                <button onclick="downloadEmails()">Download Emails</button>
+            </div> -->
+            <div class="footer_basement_container">
+                <div class="footer_basement_holder">
+                    <div class="row">
+                        <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-xs-12 footer_basement_col1">
+                            <div class="footer_basement_col1_rib1">
+                                <a href="html-sitemap.html">SITE MAP &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</a>
+                                <a href="login.html">LOGIN &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</a>
+                                <a href="terms-and-conditions.html">TERMS AND CONDITIONS&nbsp; &nbsp; &nbsp; &nbsp;
+                                    &nbsp; &nbsp;</a>
+                                <a href="privacy-policy.html">PRIVACY POLICY</a>
+                            </div>
+                            <div class="footer_basement_col1_rib2">
+                                <a href="index.html">© 2024 Power Key International. All Rights Reserved.&nbsp; &nbsp;
+                                    &nbsp;
+                                    &nbsp; &nbsp; &nbsp;</a>
+
+
+                            </div>
+
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 footer_basement_col2_sec">
+                            <div class="footer_basement_col2">
+                                <a href=""><i class="bi bi-facebook"></i></a>
+                                <a href=""><i class="bi bi-twitter"></i></a>
+                                <a href=""><i class="bi bi-instagram"></i></a>
+                                <a href=""><i class="bi bi-youtube"></i></a>
+                            </div>
+                            <div class="footer_basement_col2">
+                                <a href="">Designed and Developed by: Illford Digital</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </footer>
 
 
 
@@ -387,7 +996,6 @@
             xhr.send();
         }
         var headerPath = 'header.html';
-        var footerPath = 'footer.html';
         var headerContainer = document.getElementById('header-container');
         includeHTML(headerPath, headerContainer);
 

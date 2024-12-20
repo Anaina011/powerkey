@@ -2,11 +2,11 @@
 
 <?php
     // Email configuration
-    $to = "anainass.id@gmail.com";
+    $to = "admin@powerkeyint.com";
     $subject = "New review submission ";
     $message = "You have a new review submission \n";
     $message .= "Click the link below to access dashboard \n";
-    $message .= "https://demo.illforddigital.com/powerkey/admin";
+    $message .= "https://powerkeyint.com/powerkey/admin";
 
     // Additional headers for the main email
     $headers = "From: Admin\r\n";

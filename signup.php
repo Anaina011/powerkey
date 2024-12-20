@@ -2,7 +2,7 @@
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     $encodedEmail = urlencode($email);
-    $to = "anainass.id@gmail.com"; // Replace with your admin email
+    $to = "admin@powerkeyint.com"; // Replace with your admin email
     $subject = "New Sign-Up Request";
     
     $message = "
@@ -59,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <p>A new sign-up request has been made with the following email: <strong>$email</strong>.</p>
                 <div class='email-link-box'>
                     <p>Click the link below to approve the signup request:</p>
-                    <a href='https://demo.illforddigital.com/powerkey/approve.html?email=$encodedEmail'>Approve Signup Request</a>
+                    <a href='https://powerkeyint.com/powerkey/approve.html?email=$encodedEmail'>Approve Signup Request</a>
                 </div>
             </div>
         </div>
@@ -70,7 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Headers for HTML email
     $headers = "MIME-Version: 1.0" . "\r\n";
     $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-    $headers .= "From: anainass.id@gmail.com"; // Replace with your email
+    $headers .= "From: admin@powerkeyint.com"; // Replace with your email
 
     if (mail($to, $subject, $message, $headers)) {
         echo "Email sent successfully.";

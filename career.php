@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Email details for admin notification
-    $to = "anainass.id@gmail.com"; // Replace with your email address
+    $to = "admin@powerkeyint.com"; // Replace with your email address
     $subject = "New Job Application for Vacancy: $vacancyId";
     $message = "
         <html>
@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <body>
             <div class='container'>
                 <div class='header'>
-                    <img src='https://demo.illforddigital.com/powerkey/img/powerkey_logo.webp' alt='Company Logo'>
+                    <img src='https://powerkeyint.com/powerkey/img/powerkey_logo.webp' alt='Company Logo'>
                     <h1>Power Key International LLC</h1>
                 </div>
                 <h2>New Job Application</h2>
@@ -106,7 +106,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <body>
                 <div class='container'>
                     <div class='header'>
-                        <img src='https://demo.illforddigital.com/powerkey/img/powerkey_logo.webp' alt='Company Logo'>
+                        <img src='https://powerkeyint.com/powerkey/img/powerkey_logo.webp' alt='Company Logo'>
                         <h1>Power Key International LLC</h1>
                     </div>
                     <h2>Dear $firstName $lastName,</h2>
@@ -119,7 +119,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         ";
         $replyHeaders = "MIME-Version: 1.0\r\n";
         $replyHeaders .= "Content-Type: text/html; charset=UTF-8\r\n";
-        $replyHeaders .= "From: anainass.id@gmail.com\r\n"; // Replace with your email address
+        $replyHeaders .= "From: admin@powerkeyint.com\r\n"; // Replace with your email address
 
         mail($email, $replySubject, $replyMessage, $replyHeaders);
 

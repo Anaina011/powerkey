@@ -131,7 +131,7 @@ html {
     writing-mode: vertical-rl;
     font-size: 150%;
     font-weight: 600;
-    margin-top: 210%;
+    margin-top: 150%;
     transform: rotate(180deg);
     margin-left: 29%;
 }
@@ -9470,6 +9470,76 @@ html {
 
 
 
+.cookies_policy_sec {
+    width: 100%;
+    height: auto;
+    padding-top: 4%;
+    padding-left: 12%;
+    padding-right: 12%;
+    padding-bottom: 5%;
+}
+
+.cookies_policy_content {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--theme_color3);
+    line-height: 160%;
+    border: 5px solid #E62B00;
+    padding: 4%;
+}
+
+.cookies_policy_content h4 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+}
+
+.cookies_policy_content p {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-size: 100%;
+    line-height: 150%;
+    padding-bottom: 1%;
+}
+
+.cookies_policy_content a {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-size: 100%;
+    line-height: 150%;
+    padding-bottom: 1%;
+}
+
+.cookies_policy_content h5 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+}
+
+@media screen and (max-width: 767px) {
+    .privacy_policy_content p {
+        font-size: 90%;
+    }
+
+    .privacy_policy_content li {
+        font-size: 90%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .privacy_policy_content p {
+        font-size: 80%;
+    }
+
+    .privacy_policy_content li {
+        font-size: 80%;
+    }
+}
+
+
+
+
+
+
+
 
 
 
@@ -10520,8 +10590,9 @@ html {
 
 .text_icon {
     margin-top: 8px;
-    color: #000000;
-    font-size: 13px;
+    color: #E62B00;
+    font-weight: 600;
+    font-size: 14px;
     font-family: "Poppins", sans-serif;
 }
 

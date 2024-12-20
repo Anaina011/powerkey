@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit;
     }
 
-    $to = "anainass.id@gmail.com"; // Replace with your email address
+    $to = "admin@powerkeyint.com"; // Replace with your email address
     $subject = "New Contact Request";
     $body = "Name: $name\nEmail: $email\nPhone Number: $number\nServices: $services\nMessage: $message";
     $headers = "From: $email";

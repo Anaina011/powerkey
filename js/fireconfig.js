@@ -1,13 +1,13 @@
-  // Your web app's Firebase configuration
-  var firebaseConfig = {
-    apiKey: "AIzaSyA8TezUtoFN4Yi9ZJGtawB5LC348GvfILc",
-    authDomain: "power-49793.firebaseapp.com",
-    databaseURL: "https://power-49793-default-rtdb.firebaseio.com",
-    projectId: "power-49793",
-    storageBucket: "power-49793.appspot.com",
-    messagingSenderId: "298921373198",
-    appId: "1:298921373198:web:53596cf1fcbbb69c79565f"
-  };
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyAXzO9gcjdPf8P8-z476SsryKUgNVAuneA",
+  authDomain: "powerkeyint.firebaseapp.com",
+  databaseURL: "https://powerkeyint-default-rtdb.firebaseio.com",
+  projectId: "powerkeyint",
+  storageBucket: "powerkeyint.appspot.com",
+  messagingSenderId: "762411477471",
+  appId: "1:762411477471:web:4d7497bfa3a1ade7817c6a"
+};
 
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);

@@ -1298,3 +1298,90 @@ function showApprovedReviews() {
     document.querySelector('.reviewTogglerPending').style.backgroundColor = '#ff2f0083';
     document.querySelector('.reviewTogglerApproved').style.backgroundColor = 'var(--theme_color1)';
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function redirectToBlogAdmin() {
+    window.location.href = 'blog/admin.html'; // Adjust the path if necessary
+}
+
+
+
+
+// Function to subscribe a user
+function subscribe(emailInputId) {
+    const email = document.getElementById(emailInputId).value.trim();
+    if (!validateEmail(email)) {
+        alert("Please enter a valid email address.");
+        return;
+    }
+
+    const emailKey = email.replace(/[.#$[\]]/g, ''); // Clean email for Firebase key
+
+    firebase.database().ref('subscribers/' + emailKey).once('value')
+        .then((snapshot) => {
+            if (snapshot.exists()) {
+                alert("This email is already subscribed!");
+            } else {
+                firebase.database().ref('subscribers/' + emailKey).set({ email: email })
+                    .then(() => {
+                        alert("Thank you for subscribing!");
+                        document.getElementById(emailInputId).value = ''; // Clear input field
+                    })
+                    .catch((error) => {
+                        alert("Error subscribing: " + error.message);
+                    });
+            }
+        })
+        .catch((error) => {
+            alert("Error checking subscription: " + error.message);
+        });
+}
+
+// Email validation function
+function validateEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}
+
+
+
+// Function to download emails as a CSV file
+function downloadEmails() {
+    firebase.database().ref('subscribers').once('value', (snapshot) => {
+        let emails = [];
+        snapshot.forEach((childSnapshot) => {
+            emails.push(childSnapshot.val().email);
+        });
+
+        if (emails.length === 0) {
+            alert("No subscribers found.");
+            return;
+        }
+
+        // Generate CSV content
+        let csvContent = "data:text/csv;charset=utf-8,Email\n" + emails.join("\n");
+
+        // Create a download link and trigger download
+        const encodedUri = encodeURI(csvContent);
+        const link = document.createElement("a");
+        link.setAttribute("href", encodedUri);
+        link.setAttribute("download", "subscribers.csv");
+        document.body.appendChild(link); // Required for Firefox
+        link.click();
+        document.body.removeChild(link);
+    }).catch((error) => {
+        alert("Error fetching subscribers: " + error.message);
+    });
+}
