@@ -536,6 +536,7 @@
                 <div class="admin_sidebar_news" onclick="redirectToBlogAdmin()">NEWS/ BLOG</div>
                 <div class="admin_sidebar_projects" onclick="showSection('projects')">PROJECTS</div>
                 <div class="admin_sidebar_reviews" onclick="showSection('reviews')">REVIEWS</div>
+                <div class="admin_sidebar_solutions" onclick="showSection('solutions')">SOLUTIONS</div>
                 <div class="admin_sidebar_logout" onclick="logoutUser()">Log Out</div>
             </div>
         </section>
@@ -786,6 +787,46 @@
             </div>
         </section>
 
+        <section class="admin_solutions" style="display:none;">
+            <div class="admin_solutions_input">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
+                        <input id="solutions_name" type="text" placeholder="Solution Name">
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
+                        <textarea placeholder="Solution Description" id="solutions_description" rows="2"></textarea>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
+                        <input id="solutions_image" type="file">
+                        <input id="solutions_image_url" type="text" placeholder="Solution Image URL" disabled>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
+                        <button style="width: 60%; padding: 3% 6%;" id="save_solutions" type="submit">Save</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Solutions Table -->
+            <div id="solutions_container">
+                <table id="solutions_table">
+                    <thead>
+                        <tr>
+                            <th>Solution Name</th>
+                            <th>Solution Description</th>
+                            <th>Solution Image</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Table rows will be dynamically added here -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+
+
+
 
     </section>
 
@@ -816,7 +857,7 @@
                         <br>
                         <div class="subs_but">
                             <button onclick="subscribe('emailInput1')">SUBSCRIBE</button>
-        <button onclick="downloadEmails()">Download Emails</button>
+                            <button onclick="downloadEmails()">Download Emails</button>
                         </div>
                     </div>
                 </div>
@@ -971,6 +1012,7 @@
     <script src="js/fireconfig.js"></script>
     <script src="js/admin.js"></script>
     <script src="js/credentials.js"></script>
+    <script src="js/admin_solutions.js"></script>
 
 
 

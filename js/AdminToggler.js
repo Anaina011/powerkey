@@ -1,6 +1,6 @@
 function showSection(section) {
     // Hide all sections
-    document.querySelectorAll('.admin_career, .admin_right, .admin_project, .admin_news, .admin_reviews').forEach(function (el) {
+    document.querySelectorAll('.admin_career, .admin_right, .admin_project, .admin_news, .admin_reviews, .admin_solutions').forEach(function (el) {
         el.style.display = 'none';
     });
 
@@ -41,6 +41,10 @@ function showSection(section) {
         //     document.querySelector('.admin_sidebar_news').classList.add('active');
         //     document.querySelector('.admin_sidebar_mobile_news').classList.add('active');
         //     break;
+        case 'solutions':
+            document.querySelector('.admin_solutions').style.display = 'block';
+            document.querySelector('.admin_sidebar_solutions').classList.add('active');
+            break;
         default:
             break;
     }
