@@ -44,16 +44,15 @@ document.getElementById("save_solutions").onclick = function (event) {
     });
 };
 
-// Function to update solution with a new image
 function updateSolutionsWithImage(oldImageUrl) {
     var storageRef = firebase.storage().ref();
-    var imageRef = storageRef.child('solutions_images/' + Solutionsname + '_' + Date.now());
+    var imageRef = storageRef.child('solutions_images/' + Solutionsname + '_' + Date.now()); // Unique filename
 
     var uploadTask = imageRef.put(Solutionsimage);
 
     uploadTask.on('state_changed', function(snapshot) {
         var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        // Show progress here
+        // Show progress here (optional)
     }, function(error) {
         alert("Failed to upload image: " + error.message);
     }, function() {
@@ -69,6 +68,7 @@ function updateSolutionsWithImage(oldImageUrl) {
         });
     });
 }
+
 
 // Function to add a new solution
 function addNewSolutions() {
@@ -101,7 +101,6 @@ function addNewSolutions() {
     });
 }
 
-// Function to update solution details without uploading a new image
 function updateSolutionsDetails(name, description) {
     firebase.database().ref("solutions/" + name).update({
         solutions_name: name,
@@ -115,7 +114,7 @@ function updateSolutionsDetails(name, description) {
     });
 }
 
-// Function to update solution details with or without a new image
+
 function updateSolutions(name, description, imageUrl) {
     firebase.database().ref("solutions/" + name).set({
         solutions_name: name,
@@ -130,6 +129,32 @@ function updateSolutions(name, description, imageUrl) {
     });
 }
 
+function deleteSolution(solutionName) {
+    var confirmation = confirm("Are you sure you want to delete this solution?");
+    if (confirmation) {
+        var solutionRef = firebase.database().ref("solutions/" + solutionName);
+
+        solutionRef.once("value", function(snapshot) {
+            var solutionData = snapshot.val();
+            var imageRef = firebase.storage().refFromURL(solutionData.solutions_image);
+
+            // First, delete the image from Firebase Storage
+            imageRef.delete().then(function() {
+                // Then, delete the solution data from Firebase Realtime Database
+                solutionRef.remove().then(function() {
+                    alert("Solution deleted successfully");
+                    displaySolutions(); // Refresh the table
+                }).catch(function(error) {
+                    alert("Failed to delete solution from database: " + error.message);
+                });
+            }).catch(function(error) {
+                alert("Failed to delete image: " + error.message);
+            });
+        });
+    }
+}
+
+
 // Function to clear form fields
 function clearSolutionsFormFields() {
     document.getElementById("solutions_name").value = "";
@@ -138,15 +163,13 @@ function clearSolutionsFormFields() {
     document.getElementById("solutions_image_url").value = "";
 }
 
-// Function to display solutions in a table
 function displaySolutions() {
     var solutionsTable = document.getElementById("solutions_table").getElementsByTagName('tbody')[0];
     solutionsTable.innerHTML = ""; // Clear previous data
 
-    // Retrieve solution data from Firebase Realtime Database
-    firebase.database().ref("solutions").once("value", function (snapshot) {
-        snapshot.forEach(function (childSnapshot) {
-            var solutionKey = childSnapshot.key;
+    // Retrieve solution data from Firebase
+    firebase.database().ref("solutions").once("value", function(snapshot) {
+        snapshot.forEach(function(childSnapshot) {
             var solutionData = childSnapshot.val();
 
             // Create table row for each solution
@@ -156,13 +179,8 @@ function displaySolutions() {
             var imageCell = row.insertCell(2);
             var actionsCell = row.insertCell(3);
 
-            // Set solution name
             nameCell.textContent = solutionData.solutions_name;
-
-            // Set solution description
             descriptionCell.textContent = solutionData.solutions_description.join(', ');
-
-            // Set solution image
             var solutionImage = document.createElement("img");
             solutionImage.src = solutionData.solutions_image;
             solutionImage.style.maxWidth = "100px";
@@ -173,17 +191,34 @@ function displaySolutions() {
             var editButton = document.createElement("button");
             editButton.className = "edit-button";
             editButton.innerHTML = "<i class='fa-regular fa-pen-to-square'></i> Update";
+            editButton.onclick = function() {
+                // Populate the form with the solution data for editing
+                document.getElementById("solutions_name").value = solutionData.solutions_name;
+                document.getElementById("solutions_description").value = solutionData.solutions_description.join('\n'); // Convert array to string
+                document.getElementById("solutions_image_url").value = solutionData.solutions_image; // Populate image URL
+                Solutionsname = solutionData.solutions_name;
+                Solutionsdescription = solutionData.solutions_description;
+                Solutionsimage = solutionData.solutions_image;
+            };
             actionsCell.appendChild(editButton);
 
             var deleteButton = document.createElement("button");
             deleteButton.className = "delete-button";
             deleteButton.innerHTML = "<i class='fa-regular fa-trash-can'></i> Delete";
+            deleteButton.onclick = function() {
+                deleteSolution(solutionData.solutions_name);
+            };
             actionsCell.appendChild(deleteButton);
         });
-    }).catch(function (error) {
+    }).catch(function(error) {
         console.error("Error retrieving solutions: ", error);
     });
 }
+
+// Call this after adding or updating a solution
+displayProducts();
+displayProjects();
+
 
 // Call displaySolutions() to populate the table when the page loads
 window.onload = function () {

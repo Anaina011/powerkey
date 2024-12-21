@@ -6703,6 +6703,14 @@ justify-content: right;
     margin-right: 0.5%;
 }
 
+.admin_sidebar_mobile_solutions {
+    background-color: var(--theme_color2);
+    color: var(--theme_color3);
+    width: 50%;
+    text-align: center;
+    margin-right: 0.5%;
+}
+
 .admin_sidebar_mobile_logout {
     width: 50%;
     background-color: var(--theme_color1);
@@ -6808,6 +6816,17 @@ justify-content: right;
 }
 
 .admin_sidebar_reviews {
+    font-size: 210%;
+    font-weight: 600;
+    background-color: var(--theme_color2);
+    color: var(--theme_color3);
+
+    text-align: center;
+    padding-top: 7%;
+    padding-bottom: 7%;
+}
+
+.admin_sidebar_solutions {
     font-size: 210%;
     font-weight: 600;
     background-color: var(--theme_color2);
@@ -6964,6 +6983,10 @@ justify-content: right;
         font-size: 180%;
     }
 
+    .admin_sidebar_solutions {
+        font-size: 180%;
+    }
+
     .admin_sidebar_logout {
         font-size: 130%;
     }
@@ -7031,7 +7054,16 @@ justify-content: right;
         font-size: 120%;
     }
 
+    .admin_sidebar_mobile_solutions {
+        padding: 1.5%;
+        font-size: 120%;
+    }
+
     .admin_sidebar_mobile_reviews {
+        padding: 1.5%;
+        font-size: 120%;
+    }
+    .admin_sidebar_mobile_solutions {
         padding: 1.5%;
         font-size: 120%;
     }
@@ -7067,6 +7099,10 @@ justify-content: right;
     }
 
     .admin_sidebar_reviews {
+        font-size: 140%;
+    }
+
+    .admin_sidebar_solutions {
         font-size: 140%;
     }
 
@@ -7129,6 +7165,11 @@ justify-content: right;
     }
 
     .admin_sidebar_mobile_reviews {
+        padding: 2%;
+        font-size: 120%;
+    }
+
+    .admin_sidebar_mobile_solutions {
         padding: 2%;
         font-size: 120%;
     }
@@ -8522,10 +8563,12 @@ html {
 .admin_sidebar_mobile_news,
 .admin_sidebar_mobile_projects,
 .admin_sidebar_mobile_reviews,
+.admin_sidebar_mobile_solutions,
 .admin_sidebar_careers,
 .admin_sidebar_products,
 .admin_sidebar_news,
 .admin_sidebar_projects,
+.admin_sidebar_solutions,
 .admin_sidebar_reviews {
     cursor: pointer;
     padding: 10px;
@@ -11034,3 +11077,358 @@ height: 78vh;
 
 
 
+
+.admin_solutions {
+    width: 82%;
+}
+
+.admin_solutions {
+    padding-left: 4%;
+    padding-right: 6%;
+}
+
+.admin_solutions_input {
+    width: 100%;
+    height: auto;
+
+    padding-top: 8.5%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.admin_solutions_input input {
+    width: 90%;
+    background-color: var(--admin_light_gray);
+    border: none;
+    outline: none;
+    padding: 4.5% 4%;
+    border-radius: 0.7rem;
+    font-family: "Poppins", sans-serif;
+}
+
+.admin_solutions_input textarea {
+    width: 90%;
+    background-color: var(--admin_light_gray);
+    border: none;
+    outline: none;
+    padding: 1.5% 2%;
+    border-radius: 0.7rem;
+    font-family: "Poppins", sans-serif;
+}
+
+#solutions_image_url {
+    background-color: var(--theme_color3);
+}
+
+.admin_solutions button {
+    font-size: 140%;
+    background-color: var(--theme_color1);
+    color: var(--theme_color3);
+    border: none;
+    outline: none;
+    padding: 0.6% 4.8%;
+    border-radius: 0.7rem;
+    margin-left: 1%;
+    margin-top: 2%;
+}
+
+@media only screen and (max-width: 1200px) {
+
+    .admin_solutions_input input {
+        width: 90%;
+        padding: 6.7% 4%;
+    }
+
+    .admin_solutions_input textarea {
+        width: 90%;
+        background-color: var(--admin_light_gray);
+        border: none;
+        outline: none;
+        padding: 1.5% 2%;
+        border-radius: 0.7rem;
+        font-family: "Poppins", sans-serif;
+    }
+
+}
+
+
+@media only screen and (max-width: 991px) {
+    .admin_solutions {
+        width: 100%;
+    }
+
+    .admin_solutions_input input {
+        width: 90%;
+        padding: 7% 4%;
+    }
+
+    .admin_solutions_input textarea {
+        padding: 1.5% 2%;
+    }
+
+    .admin_solutions button {
+        font-size: 120%;
+        padding: 0.6% 4.8%;
+        margin-left: 6%;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .admin_solutions {
+        width: 100%;
+    }
+
+    .admin_solutions_input {
+        padding-left: 17%;
+    }
+
+    .admin_solutions_input input {
+        width: 80%;
+        padding: 3.4% 4%;
+        margin-bottom: 1%;
+    }
+
+    .admin_solutions_input textarea {
+        width: 80%;
+        padding: 1% 2%;
+    }
+
+    .admin_solutions button {
+        font-size: 130%;
+        padding: 1% 7%;
+        margin-left: 19%;
+    }
+
+}
+
+@media only screen and (max-width: 400px) {
+    .admin_solutions_input {
+        padding-left: 2%;
+    }
+
+    .admin_solutions_input input {
+        width: 100%;
+        padding: 1.7% 1%;
+    }
+
+    .admin_solutions_input textarea {
+        width: 100%;
+        padding: 1.7% 1%;
+    }
+}
+
+
+
+
+#solutions_table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 5%;
+}
+
+#solutions_table th,
+#solutions_table td {
+    border: 4px solid #ffffff;
+    /* Set border color */
+    padding: 8px;
+}
+
+
+
+#solutions_table th {
+    position: sticky;
+    top: 0;
+    text-align: center;
+    background-color: hwb(11 0% 10%);
+    /* Set heading background color */
+    color: #FFFFFF;
+    /* Set heading text color */
+    padding-top: 1%;
+    padding-bottom: 1%;
+    font-size: 180%;
+    font-weight: 600;
+    z-index: 1;
+}
+
+#solutions_table tbody tr {
+    background-color: #ECECEC;
+    /* Set row background color */
+    overflow: hidden;
+}
+
+/* #products_table tbody tr:hover {
+    background-color: #D1D1D1;
+} */
+
+.solutions-name-cell {
+    font-size: 120%;
+    font-family: "Poppins", sans-serif;
+}
+
+#solutions_table img {
+    max-width: 100px;
+    max-height: 100px;
+    display: block;
+    margin: 0 auto;
+}
+
+
+#solutions_container {
+    max-height: 700px;
+    /* Adjust the height as needed */
+    overflow: auto;
+}
+
+/* CSS to style the details cell and expand/collapse button */
+.details-wrapper {
+    max-width: 250px;
+    /* Set maximum width of details column */
+    overflow: hidden;
+    white-space: pre-wrap;
+    /* Ensure text wraps properly */
+    position: relative;
+}
+
+.details-wrapper.collapsed {
+    max-height: 4.5em;
+    /* Approx. 3 lines */
+}
+
+.details-wrapper.expanded {
+    max-height: none;
+}
+
+
+#solutions_container {
+    max-height: 700px;
+    /* Adjust the height as needed */
+    overflow: auto;
+}
+
+
+@media only screen and (max-width: 1400px) {
+    #solutions_table tbody tr {
+        overflow: hidden;
+    }
+
+    .details-wrapper {
+        max-width: 220px;
+        /* Set maximum width of details column */
+        overflow: hidden;
+        white-space: pre-wrap;
+    }
+
+    #solutions_table td:nth-child(2) {
+        width: 30%;
+        /* Adjust the width as needed */
+    }
+
+    #solutions_table td:nth-child(1) {
+        width: 30%;
+        /* Adjust the width as needed */
+    }
+
+    #solutions_table td:nth-child(3) {
+        width: 15%;
+        /* Adjust the width as needed */
+    }
+}
+
+
+
+
+
+@media only screen and (max-width: 991px) {
+    #projects_container {
+        overflow-x: auto;
+        /* Enable horizontal scrolling */
+        overflow-y: auto;
+        /* Enable vertical scrolling */
+        -webkit-overflow-scrolling: touch;
+        /* Enable smooth scrolling on iOS */
+        max-height: 600px;
+    }
+
+    #projects_table {
+        width: 1300px;
+        /* Set a minimum width to enable horizontal scrolling */
+    }
+
+    #projects_table th,
+    #projects_table td {
+        white-space: nowrap;
+        /* Prevent text wrapping */
+    }
+
+    .details-wrapper {
+        max-width: 340px;
+        /* Set maximum width of details column */
+        overflow: hidden;
+        white-space: pre-wrap;
+    }
+
+    .projects-name-cell {
+        font-size: 100%;
+    }
+
+    #projects_table td:nth-child(2) {
+        width: 30%;
+        /* Adjust the width as needed */
+    }
+
+    #projects_table td:nth-child(1) {
+        width: 20%;
+        /* Adjust the width as needed */
+    }
+
+    #projects_table td:nth-child(3) {
+        width: 15%;
+        /* Adjust the width as needed */
+    }
+
+}
+
+
+@media only screen and (max-width: 767px) {
+    #searchProjectInput {
+        width: 35%;
+    }
+
+
+    #projects_container {
+        width: 100%;
+        /* Set full width */
+    }
+
+    #projects_table {
+        width: 1500px;
+        /* Set a minimum width to enable horizontal scrolling */
+    }
+
+    #projects_table td:nth-child(2) {
+        width: 30%;
+        /* Adjust the width as needed */
+    }
+
+    #projects_table td:nth-child(1) {
+        width: 10%;
+        /* Adjust the width as needed */
+    }
+
+    #projects_table td:nth-child(3) {
+        width: 15%;
+        /* Adjust the width as needed */
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    #searchProjectInput {
+        width: 60%;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    #searchProjectInput {
+        width: 80%;
+    }
+}

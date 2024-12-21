@@ -163,6 +163,7 @@ function displayProducts() {
 
     // Retrieve product data from Firebase Realtime Database
     firebase.database().ref("product").once("value", function (snapshot) {
+        console.log("Products fetched:", snapshot.val());
         snapshot.forEach(function (childSnapshot) {
             var productKey = childSnapshot.key;
             var productData = childSnapshot.val();
@@ -491,6 +492,7 @@ function displayProjects() {
 
     // Retrieve project data from Firebase Realtime Database
     firebase.database().ref("project").once("value", function (snapshot) {
+        console.log("Projects fetched:", snapshot.val());
         snapshot.forEach(function (childSnapshot) {
             var projectKey = childSnapshot.key;
             var projectData = childSnapshot.val();
