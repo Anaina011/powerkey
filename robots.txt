@@ -1,6 +1,8 @@
 User-agent: *
 Disallow: /
-Disallow: /login
+Disallow: /blog/login
+Disallow: /blog/admin
+Disallow: /blog/blog-editor
 Disallow: /admin
-Disallow: /blog-editor
+Disallow: /login
 Disallow: /cgi-bin/

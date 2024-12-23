@@ -167,7 +167,6 @@ function displaySolutions() {
     var solutionsTable = document.getElementById("solutions_table").getElementsByTagName('tbody')[0];
     solutionsTable.innerHTML = ""; // Clear previous data
 
-    // Retrieve solution data from Firebase
     firebase.database().ref("solutions").once("value", function(snapshot) {
         snapshot.forEach(function(childSnapshot) {
             var solutionData = childSnapshot.val();
@@ -179,40 +178,72 @@ function displaySolutions() {
             var imageCell = row.insertCell(2);
             var actionsCell = row.insertCell(3);
 
+            // Set solution name
             nameCell.textContent = solutionData.solutions_name;
-            descriptionCell.textContent = solutionData.solutions_description.join(', ');
+
+            // Set solution description with expand/collapse functionality
+            var descriptionWrapper = document.createElement("div");
+            descriptionWrapper.classList.add("details-wrapper", "collapsed");
+
+            var descriptionText = document.createElement("p");
+            descriptionText.textContent = solutionData.solutions_description.join(', ');
+            descriptionWrapper.appendChild(descriptionText);
+
+            var expandButton = document.createElement("button");
+            expandButton.className = "expand-button collapsed";
+            expandButton.innerHTML = "<i class='fa fa-chevron-down'></i>";
+            expandButton.onclick = function () {
+                toggleDescription(expandButton);
+            };
+
+            descriptionCell.appendChild(descriptionWrapper);
+            descriptionCell.appendChild(expandButton);
+
+            // Set solution image
             var solutionImage = document.createElement("img");
             solutionImage.src = solutionData.solutions_image;
-            solutionImage.style.maxWidth = "100px";
-            solutionImage.style.maxHeight = "100px";
             imageCell.appendChild(solutionImage);
 
-            // Add edit and delete buttons
-            var editButton = document.createElement("button");
-            editButton.className = "edit-button";
-            editButton.innerHTML = "<i class='fa-regular fa-pen-to-square'></i> Update";
-            editButton.onclick = function() {
-                // Populate the form with the solution data for editing
-                document.getElementById("solutions_name").value = solutionData.solutions_name;
-                document.getElementById("solutions_description").value = solutionData.solutions_description.join('\n'); // Convert array to string
-                document.getElementById("solutions_image_url").value = solutionData.solutions_image; // Populate image URL
-                Solutionsname = solutionData.solutions_name;
-                Solutionsdescription = solutionData.solutions_description;
-                Solutionsimage = solutionData.solutions_image;
-            };
-            actionsCell.appendChild(editButton);
-
-            var deleteButton = document.createElement("button");
-            deleteButton.className = "delete-button";
-            deleteButton.innerHTML = "<i class='fa-regular fa-trash-can'></i> Delete";
-            deleteButton.onclick = function() {
-                deleteSolution(solutionData.solutions_name);
-            };
-            actionsCell.appendChild(deleteButton);
-        });
+             // Add edit and delete buttons
+             var editButton = document.createElement("button");
+             editButton.className = "edit-button";
+             editButton.innerHTML = "<i class='fa-regular fa-pen-to-square'></i> Update";
+             editButton.onclick = function() {
+                 // Populate the form with the solution data for editing
+                 document.getElementById("solutions_name").value = solutionData.solutions_name;
+                 document.getElementById("solutions_description").value = solutionData.solutions_description.join('\n'); // Convert array to string
+                 document.getElementById("solutions_image_url").value = solutionData.solutions_image; // Populate image URL
+                 Solutionsname = solutionData.solutions_name;
+                 Solutionsdescription = solutionData.solutions_description;
+                 Solutionsimage = solutionData.solutions_image;
+             };
+             actionsCell.appendChild(editButton);
+ 
+             var deleteButton = document.createElement("button");
+             deleteButton.className = "delete-button";
+             deleteButton.innerHTML = "<i class='fa-regular fa-trash-can'></i> Delete";
+             deleteButton.onclick = function() {
+                 deleteSolution(solutionData.solutions_name);
+             };
+             actionsCell.appendChild(deleteButton);
+         });
     }).catch(function(error) {
-        console.error("Error retrieving solutions: ", error);
+        console.error("Error fetching solutions:", error);
     });
+}
+
+// Function to toggle the description visibility (expand/collapse)
+function toggleDescription(button) {
+    const detailsWrapper = button.previousElementSibling;
+    const isExpanded = detailsWrapper.classList.contains('expanded');
+    
+    if (isExpanded) {
+        detailsWrapper.classList.remove('expanded');
+        button.innerHTML = "<i class='fa fa-chevron-down'></i>"; // Arrow downwards
+    } else {
+        detailsWrapper.classList.add('expanded');
+        button.innerHTML = "<i class='fa fa-chevron-up'></i>"; // Arrow upwards
+    }
 }
 
 // Call this after adding or updating a solution
@@ -224,3 +255,4 @@ displayProjects();
 window.onload = function () {
     displaySolutions();
 };
+

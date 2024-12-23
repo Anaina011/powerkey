@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,10 +8,10 @@
     <!-- Font Awesome link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 
-     <!-- Font Awesome link -->
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-     <script src="https://kit.fontawesome.com/6c53136549.js" crossorigin="anonymous"></script>
- 
+    <!-- Font Awesome link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <script src="https://kit.fontawesome.com/6c53136549.js" crossorigin="anonymous"></script>
+
 
     <style>
         body {
@@ -63,6 +64,7 @@
         }
     </style>
 </head>
+
 <body>
     <div id="container">
         <h2>Approve New User</h2>
@@ -75,26 +77,26 @@
     <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-database.js"></script>
     <script>
         // Your Firebase configuration
-         var firebaseConfig = {
-            apiKey: "AIzaSyA8TezUtoFN4Yi9ZJGtawB5LC348GvfILc",
-            authDomain: "power-49793.firebaseapp.com",
-            databaseURL: "https://power-49793-default-rtdb.firebaseio.com",
-            projectId: "power-49793",
-            storageBucket: "power-49793.appspot.com",
-            messagingSenderId: "298921373198",
-            appId: "1:298921373198:web:53596cf1fcbbb69c79565f"
+        const firebaseConfig = {
+            apiKey: "AIzaSyAXzO9gcjdPf8P8-z476SsryKUgNVAuneA",
+            authDomain: "powerkeyint.firebaseapp.com",
+            databaseURL: "https://powerkeyint-default-rtdb.firebaseio.com",
+            projectId: "powerkeyint",
+            storageBucket: "powerkeyint.appspot.com",
+            messagingSenderId: "762411477471",
+            appId: "1:762411477471:web:4d7497bfa3a1ade7817c6a"
         };
 
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
 
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const urlParams = new URLSearchParams(window.location.search);
             const email = urlParams.get('email');
             const userEmailElement = document.getElementById('userEmail');
             userEmailElement.textContent = `User Email: ${decodeURIComponent(email)}`;
 
-            document.getElementById('addUserBtn').addEventListener('click', function() {
+            document.getElementById('addUserBtn').addEventListener('click', function () {
                 addUser(email);
             });
         });
@@ -125,13 +127,13 @@
                         email: email,
                         approved: true
                     })
-                    .then(() => {
-                        console.log('User added to database successfully');
-                    })
-                    .catch((error) => {
-                        console.error('Error adding user to database:', error);
-                        alert('Failed to add user to database.');
-                    });
+                        .then(() => {
+                            console.log('User added to database successfully');
+                        })
+                        .catch((error) => {
+                            console.error('Error adding user to database:', error);
+                            alert('Failed to add user to database.');
+                        });
 
                 })
                 .catch((error) => {
@@ -141,4 +143,5 @@
         }
     </script>
 </body>
+
 </html>

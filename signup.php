@@ -59,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <p>A new sign-up request has been made with the following email: <strong>$email</strong>.</p>
                 <div class='email-link-box'>
                     <p>Click the link below to approve the signup request:</p>
-                    <a href='https://powerkeyint.com/powerkey/approve.html?email=$encodedEmail'>Approve Signup Request</a>
+                    <a href='https://powerkeyint.com/approve.html?email=$encodedEmail'>Approve Signup Request</a>
                 </div>
             </div>
         </div>

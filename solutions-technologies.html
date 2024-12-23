@@ -33,7 +33,44 @@
         rel="stylesheet">
 
 
+<style>
+    #solutions-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
 
+.solution-item {
+    display: flex;
+    max-width: 600px;
+    width: 100%;
+    border: 1px solid #ccc;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.solution-image {
+    max-width: 200px;
+    margin-right: 20px;
+}
+
+.solution-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.solution-text h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.solution-text p {
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+</style>
 </head>
 
 <body>
@@ -64,6 +101,7 @@
 
 
 
+    <div id="solutions-container"></div>
 
 
 
@@ -72,6 +110,7 @@
 
 
 
+<!-- 
     <section class="solutions_video animate fadeInUp">
 
         <div class="solutions_video_sec_container animate fadeInUp">
@@ -83,20 +122,7 @@
 
             <div class="solutions_video_container">
 
-                <div class="popup-wrapper" id="popup">
-                    <div class="popup-content">
-                        <span class="close-btn" onclick="closePopup()">&times;</span>
-                        <iframe width="990" height="480"
-                            src="https://www.youtube.com/embed/hRd27BG9auI?rel=0&modestbranding=1&showinfo=0&iv_load_policy=3&autoplay=1&loop=1"
-                            title="YouTube video player" frameborder="0"
-                            allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
-                        </iframe>
-                    </div>
-                </div>
-
-                <div class="video-thumbnail"
-                    onclick="openPopup('https://www.youtube.com/embed/hRd27BG9auI?rel=0&modestbranding=1&showinfo=0&iv_load_policy=3&autoplay=1&loop=1')">
+                <div class="video-thumbnail">
                     <div class="thumbnail_hover">
                         <img src="img/solutions_vid1.webp" alt="Video Thumbnail">
                     </div>
@@ -161,21 +187,7 @@
 
             <div class="solutions_video_container">
 
-                <div class="popup-wrapper" id="popup">
-                    <div class="popup-content">
-                        <span class="close-btn" onclick="closePopup()">&times;</span>
-                        <iframe width="990" height="480"
-                            src="https://www.youtube.com/embed/dLdBJgQmjMw?autoplay=1&rel=0&modestbranding=1&showinfo=0&iv_load_policy=3"
-                            title="YouTube video player" frameborder="0"
-                            allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-
-                    </div>
-                </div>
-
-                <div class="video-thumbnail"
-                    onclick="openPopup('https://www.youtube.com/embed/dLdBJgQmjMw?si=IdMzOh9A_QYSJxXY')">
+                <div class="video-thumbnail">
                     <div class="thumbnail_hover">
                         <img src="img/solutions_vid2.webp" alt="Video Thumbnail">
                     </div>
@@ -226,7 +238,7 @@
             </div>
         </div>
     </section>
-
+ -->
 
 
 
@@ -407,6 +419,7 @@
         </div>
     </div>
 
+
     <script src="js/cookies.js"></script>
 
 
@@ -415,19 +428,25 @@
 
 
 
+    
+
+
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!-- Slick JS -->
-    <script src="js/AboutCard.js"></script>
+
     <!-- Slick CSS -->
     <link rel="stylesheet" type="text/css" href="path/to/slick/slick.css" />
     <link rel="stylesheet" type="text/css" href="path/to/slick/slick-theme.css" />
 
-    <script src="js/animation.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase.js"></script>
+
+    <script src="js/fireconfig.js"></script>
+    <script src="js/solutions.js"></script>
 
 
-
-    <script src="js/SolutionsPopup.js"></script>
 
 
     <!-- jQuery library -->
